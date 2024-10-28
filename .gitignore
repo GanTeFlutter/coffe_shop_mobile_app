@@ -1,0 +1,40 @@
+# Genel Dosyalar
+*.class         
+*.log            
+*.pyc            
+*.swp            
+.DS_Store        
+.buildlog/        
+.history        
+.svn/            
+assets/
+ios/
+# IDE ve Editör Dosyaları
+*.iml           
+*.ipr
+*.iws
+.idea/          
+# .vscode/         
+
+# Flutter/Dart/Pub ile İlgili Dosyalar
+**/doc/api/      
+**/ios/Flutter/.last_build_id 
+.dart_tool/      
+.flutter-plugins 
+.flutter-plugins-dependencies 
+.pub-cache/      
+.pub/            
+/build/           
+
+# Firebase Dosyaları (Hassas Bilgiler)
+android/app/google-services.json 
+ios/Runner/GoogleService-Info.plist 
+
+# Sembolleştirme ve Obfuscation Dosyaları
+app.*.symbols     
+app.*.map.json  
+
+# Android Studio Build Dosyaları
+/android/app/debug  
+/android/app/profile
+/android/app/release 
