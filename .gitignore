@@ -14,7 +14,7 @@ ios/
 *.ipr
 *.iws
 .idea/          
-lib/product/service/firebase/firebase_options.dart
+lib/product/service/firebase/
 # .vscode/         
 
 # Flutter/Dart/Pub ile İlgili Dosyalar
