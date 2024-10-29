@@ -1,10 +1,9 @@
 part of 'home_view_bloc.dart';
 
 @immutable
-abstract class HomeViewEvent {}
+abstract class HomeViewEvent extends Equatable {
+  @override
+  List<Object> get props => [];
+}
 
-class HomeViewInitialEvent extends HomeViewEvent {}
-
-class HomeViewLoadingEvent extends HomeViewEvent {}
-
-class HomeViewLoadedEvent extends HomeViewEvent {}
+class LoadHomeView extends HomeViewEvent {}
