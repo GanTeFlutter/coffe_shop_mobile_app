@@ -13,10 +13,9 @@ class HomeViewLoading extends HomeViewState {}
 class HomeViewLoaded extends HomeViewState {
   final List<Postmodel> coffeList;
 
-  HomeViewLoaded({required this.coffeList}); // coffeList olarak değiştirildi
-
+  HomeViewLoaded({required this.coffeList});
   @override
-  List<Object?> get props => [coffeList]; // coffeList'i buraya ekledik
+  List<Object?> get props => [coffeList];
 }
 
 class HomeViewError extends HomeViewState {
@@ -25,5 +24,5 @@ class HomeViewError extends HomeViewState {
   HomeViewError(this.message);
 
   @override
-  List<Object?> get props => [message]; // Hata durumunda mesajı ekledik
+  List<Object?> get props => [message];
 }
