@@ -11,7 +11,10 @@ class HomeViewTextfield extends StatelessWidget {
     return TextField(
       decoration: InputDecoration(
         hintText: 'Search coffee',
-        hintStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(color: ApplicationColors.white),
+        hintStyle: Theme.of(context)
+            .textTheme
+            .bodyMedium
+            ?.copyWith(color: ApplicationColors.white),
         prefixIcon: const Icon(
           Icons.search,
           color: ApplicationColors.white,

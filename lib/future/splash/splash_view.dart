@@ -67,10 +67,9 @@ class _SplashViewState extends State<SplashView> {
               ApplicationStrings.splashTitleText,
               textAlign: TextAlign.center,
               style: GoogleFonts.b612(
-                textStyle: Theme.of(context)
-                    .textTheme
-                    .displaySmall
-                    ?.copyWith(color: ApplicationColors.white, fontWeight: FontWeight.bold),
+                textStyle: Theme.of(context).textTheme.displaySmall?.copyWith(
+                    color: ApplicationColors.white,
+                    fontWeight: FontWeight.bold),
               ),
             ),
             SizedBox(height: paddingHeight),

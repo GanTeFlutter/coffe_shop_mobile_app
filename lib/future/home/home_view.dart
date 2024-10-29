@@ -79,7 +79,8 @@ class _HomeViewState extends HomeViewModel {
                       child: GridView.builder(
                         padding: const EdgeInsets.only(top: 0, bottom: 100),
                         itemCount: 5,
-                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
                           childAspectRatio: 0.75,
                           mainAxisSpacing: 10,
@@ -97,7 +98,8 @@ class _HomeViewState extends HomeViewModel {
           ),
           //Renklam için ş
           banner
-              ? GestureDetector(onTap: banerisCheek, child: screenBanner(context))
+              ? GestureDetector(
+                  onTap: banerisCheek, child: screenBanner(context))
               : Container(),
         ],
       ),
@@ -124,15 +126,19 @@ class _HomeViewState extends HomeViewModel {
                   width: 120,
                   color: isSelected ? ApplicationColors.kahve : null,
                   alignment: Alignment.center,
-                  padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0),
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 8.0, horizontal: 12.0),
                   child: Text(
                     item,
                     textAlign: TextAlign.center,
                     style: GoogleFonts.arima(
-                      textStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            color: isSelected ? ApplicationColors.white : ApplicationColors.black,
-                            fontWeight: FontWeight.w700,
-                          ),
+                      textStyle:
+                          Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                color: isSelected
+                                    ? ApplicationColors.white
+                                    : ApplicationColors.black,
+                                fontWeight: FontWeight.w700,
+                              ),
                     ),
                   ),
                 ),
@@ -218,7 +224,8 @@ class _HomeViewState extends HomeViewModel {
             ),
           ],
         ),
-        width: MediaQuery.of(context).size.width * 0.9, // Ekran genişliğine göre ayar
+        width: MediaQuery.of(context).size.width *
+            0.9, // Ekran genişliğine göre ayar
         height: 200,
         child: Padding(
           padding: const EdgeInsets.all(20),
@@ -226,7 +233,8 @@ class _HomeViewState extends HomeViewModel {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 1),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 1),
                 decoration: const BoxDecoration(
                   color: ApplicationColors.red,
                   borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -241,7 +249,8 @@ class _HomeViewState extends HomeViewModel {
               ),
               Text('Buy one get one free',
                   style: GoogleFonts.b612(
-                    textStyle: Theme.of(context).textTheme.displayMedium?.copyWith(
+                    textStyle:
+                        Theme.of(context).textTheme.displayMedium?.copyWith(
                       color: ApplicationColors.white,
                       shadows: [
                         Shadow(
@@ -279,10 +288,13 @@ class ScreenCustomContainerDeceration {
           offset: const Offset(0, 3),
         ),
       ],
-      gradient: const LinearGradient(begin: Alignment.topRight, end: Alignment.bottomLeft, colors: [
-        ApplicationColors.black,
-        ApplicationColors.kahvesiyah,
-      ]),
+      gradient: const LinearGradient(
+          begin: Alignment.topRight,
+          end: Alignment.bottomLeft,
+          colors: [
+            ApplicationColors.black,
+            ApplicationColors.kahvesiyah,
+          ]),
     );
   }
 }

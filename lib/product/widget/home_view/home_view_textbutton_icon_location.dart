@@ -9,16 +9,21 @@ class HomeViewTextButtonIconLocation extends StatefulWidget {
   });
 
   @override
-  State<HomeViewTextButtonIconLocation> createState() => _HomeViewTextButtonIconLocationState();
+  State<HomeViewTextButtonIconLocation> createState() =>
+      _HomeViewTextButtonIconLocationState();
 }
 
-class _HomeViewTextButtonIconLocationState extends State<HomeViewTextButtonIconLocation> {
+class _HomeViewTextButtonIconLocationState
+    extends State<HomeViewTextButtonIconLocation> {
   @override
   Widget build(BuildContext context) {
     return TextButton.icon(
       onPressed: widget.onPressed,
       label: Text('Turkey, Istanbul',
-          style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: ApplicationColors.white)),
+          style: Theme.of(context)
+              .textTheme
+              .bodyMedium
+              ?.copyWith(color: ApplicationColors.white)),
       icon: const Icon(
         Icons.location_on_rounded,
         color: ApplicationColors.kahve,

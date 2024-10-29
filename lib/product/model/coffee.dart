@@ -14,6 +14,4 @@ class Coffee {
     required this.description,
     required this.raitng,
   });
-
-  
 }
