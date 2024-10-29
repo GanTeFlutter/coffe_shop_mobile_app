@@ -13,7 +13,7 @@ ios/
 *.iml           
 *.ipr
 *.iws
-.idea/          
+.idea/     
 lib/product/service/firebase/
 # .vscode/         
 
