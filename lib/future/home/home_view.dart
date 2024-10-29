@@ -1,3 +1,4 @@
+import 'package:coffe_shop_mobile_app/future/home/bloc/home_view_bloc.dart';
 import 'package:coffe_shop_mobile_app/future/home/home_view_model.dart';
 import 'package:coffe_shop_mobile_app/product/constant/application_colors.dart';
 import 'package:coffe_shop_mobile_app/product/constant/application_strings.dart';
@@ -6,6 +7,7 @@ import 'package:coffe_shop_mobile_app/product/widget/home_view/home_view_textbut
 import 'package:coffe_shop_mobile_app/product/widget/home_view/home_view_textfield.dart';
 import 'package:coffe_shop_mobile_app/product/widget/home_view/show_bottomshhet.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomeView extends StatefulWidget {
@@ -22,86 +24,107 @@ class _HomeViewState extends HomeViewModel {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: ApplicationColors.acikbeyaz,
-      body: Stack(
-        children: [
-          Column(
-            children: [
-              Expanded(
-                flex: titleExpandetSize1,
-                child: Container(
-                  width: double.infinity,
-                  decoration: containerDeceration,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const SizedBox(height: 50),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 15, bottom: 0),
-                          child: Text(ApplicationStrings.location,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyLarge
-                                  ?.copyWith(color: ApplicationColors.grey)),
-                        ),
-                        HomeViewTextButtonIconLocation(
-                          onPressed: () {
-                            showModalBottomSheetCustom(screenHeigth);
-                            debugPrint('Location');
-                          },
-                        ),
-                        const SizedBox(height: 20),
-                        Row(
-                          children: [
-                            const Expanded(
-                              flex: 5,
-                              child: HomeViewTextfield(),
-                            ),
-                            const SizedBox(width: 10),
-                            filterButton()
-                          ],
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              Expanded(
-                flex: bottomExpandetSize,
-                child: Column(
+      body: BlocBuilder<HomeViewBloc, HomeViewState>(
+        builder: (context, state) {
+          if (state is HomeViewLoading || state is HomeViewInitial) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (state is HomeViewLoaded) {
+            return Stack(
+              children: [
+                Column(
                   children: [
-                    const SizedBox(height: 10),
-                    caffeeCesitleri(),
-                    const SizedBox(height: 10),
                     Expanded(
-                      child: GridView.builder(
-                        padding: const EdgeInsets.only(top: 0, bottom: 100),
-                        itemCount: 5,
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          childAspectRatio: 0.75,
-                          mainAxisSpacing: 10,
-                          crossAxisSpacing: 10,
+                      flex: titleExpandetSize1,
+                      child: Container(
+                        width: double.infinity,
+                        decoration: containerDeceration,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const SizedBox(height: 50),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 15, bottom: 0),
+                                child: Text(
+                                  ApplicationStrings.location,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyLarge
+                                      ?.copyWith(color: ApplicationColors.grey),
+                                ),
+                              ),
+                              HomeViewTextButtonIconLocation(
+                                onPressed: () {
+                                  showModalBottomSheetCustom(screenHeigth);
+                                },
+                              ),
+                              const SizedBox(height: 20),
+                              Row(
+                                children: [
+                                  const Expanded(
+                                    flex: 5,
+                                    child: HomeViewTextfield(),
+                                  ),
+                                  const SizedBox(width: 10),
+                                  filterButton()
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
-                        itemBuilder: (context, index) {
-                          return const HomeViewCoffeeCard();
-                        },
+                      ),
+                    ),
+                    Expanded(
+                      flex: bottomExpandetSize,
+                      child: Column(
+                        children: [
+                          const SizedBox(height: 10),
+                          caffeeCesitleri(),
+                          const SizedBox(height: 10),
+                          Expanded(
+                            child: GridView.builder(
+                              padding: const EdgeInsets.only(top: 0, bottom: 100),
+                              itemCount: 2,
+                              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                childAspectRatio: 0.75,
+                                mainAxisSpacing: 10,
+                                crossAxisSpacing: 10,
+                              ),
+                              itemBuilder: (context, index) {
+                                final modelitem = state.coffeList[index];
+                                return HomeViewCoffeeCard(
+                                  post: modelitem,
+                                );
+                              },
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ],
                 ),
-              )
-            ],
-          ),
-          //Renklam için ş
-          banner
-              ? GestureDetector(
-                  onTap: banerisCheek, child: screenBanner(context))
-              : Container(),
-        ],
+                // Reklam için
+                banner
+                    ? GestureDetector(onTap: banerisCheek, child: screenBanner(context))
+                    : Container(),
+              ],
+            );
+          } else if (state is HomeViewError) {
+            return const Center(
+              child: Text(
+                'Bir hata oluştu',
+                style: TextStyle(color: Colors.red),
+              ),
+            );
+          } else {
+            return const Center(
+              child: Text('Veri yüklenemedi.'),
+            );
+          }
+        },
       ),
     );
   }
@@ -126,19 +149,15 @@ class _HomeViewState extends HomeViewModel {
                   width: 120,
                   color: isSelected ? ApplicationColors.kahve : null,
                   alignment: Alignment.center,
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 8.0, horizontal: 12.0),
+                  padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0),
                   child: Text(
                     item,
                     textAlign: TextAlign.center,
                     style: GoogleFonts.arima(
-                      textStyle:
-                          Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                color: isSelected
-                                    ? ApplicationColors.white
-                                    : ApplicationColors.black,
-                                fontWeight: FontWeight.w700,
-                              ),
+                      textStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                            color: isSelected ? ApplicationColors.white : ApplicationColors.black,
+                            fontWeight: FontWeight.w700,
+                          ),
                     ),
                   ),
                 ),
@@ -211,7 +230,7 @@ class _HomeViewState extends HomeViewModel {
       child: Container(
         decoration: BoxDecoration(
           image: const DecorationImage(
-            image: AssetImage('assets/icon/banner.png'),
+            image: AssetImage('assets/image/banner/home_view_banner.png'),
             fit: BoxFit.cover,
           ),
           borderRadius: BorderRadius.circular(20),
@@ -224,8 +243,7 @@ class _HomeViewState extends HomeViewModel {
             ),
           ],
         ),
-        width: MediaQuery.of(context).size.width *
-            0.9, // Ekran genişliğine göre ayar
+        width: MediaQuery.of(context).size.width * 0.9, // Ekran genişliğine göre ayar
         height: 200,
         child: Padding(
           padding: const EdgeInsets.all(20),
@@ -233,8 +251,7 @@ class _HomeViewState extends HomeViewModel {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 1),
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 1),
                 decoration: const BoxDecoration(
                   color: ApplicationColors.red,
                   borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -249,8 +266,7 @@ class _HomeViewState extends HomeViewModel {
               ),
               Text('Buy one get one free',
                   style: GoogleFonts.b612(
-                    textStyle:
-                        Theme.of(context).textTheme.displayMedium?.copyWith(
+                    textStyle: Theme.of(context).textTheme.displayMedium?.copyWith(
                       color: ApplicationColors.white,
                       shadows: [
                         Shadow(
@@ -288,13 +304,10 @@ class ScreenCustomContainerDeceration {
           offset: const Offset(0, 3),
         ),
       ],
-      gradient: const LinearGradient(
-          begin: Alignment.topRight,
-          end: Alignment.bottomLeft,
-          colors: [
-            ApplicationColors.black,
-            ApplicationColors.kahvesiyah,
-          ]),
+      gradient: const LinearGradient(begin: Alignment.topRight, end: Alignment.bottomLeft, colors: [
+        ApplicationColors.black,
+        ApplicationColors.kahvesiyah,
+      ]),
     );
   }
 }

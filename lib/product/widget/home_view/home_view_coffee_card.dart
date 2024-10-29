@@ -1,12 +1,20 @@
 import 'package:coffe_shop_mobile_app/product/constant/application_colors.dart';
+import 'package:coffe_shop_mobile_app/product/model/postmodel/postmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class HomeViewCoffeeCard extends StatelessWidget {
+class HomeViewCoffeeCard extends StatefulWidget {
+  final Postmodel post;
+
   const HomeViewCoffeeCard({
-    super.key,
+    super.key, required this.post,
   });
 
+  @override
+  State<HomeViewCoffeeCard> createState() => _HomeViewCoffeeCardState();
+}
+
+class _HomeViewCoffeeCardState extends State<HomeViewCoffeeCard> {
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -30,8 +38,8 @@ class HomeViewCoffeeCard extends StatelessWidget {
                   ),
                 ],
                 borderRadius: BorderRadius.circular(15),
-                image: const DecorationImage(
-                  image: AssetImage('assets/image/coffee_3.png'),
+                image:  DecorationImage(
+                  image: AssetImage(widget.post.image!),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -44,7 +52,7 @@ class HomeViewCoffeeCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Cappuccino',
+                 widget.post.name!,
                   style: GoogleFonts.b612(
                     textStyle: Theme.of(context)
                         .textTheme
@@ -60,16 +68,13 @@ class HomeViewCoffeeCard extends StatelessWidget {
                         textStyle: Theme.of(context)
                             .textTheme
                             .bodyMedium
-                            ?.copyWith(
-                                color: ApplicationColors.black,
-                                fontWeight: FontWeight.w600),
+                            ?.copyWith(color: ApplicationColors.black, fontWeight: FontWeight.w600),
                       ),
                     ),
                     const Spacer(),
                     IconButton(
                       style: ButtonStyle(
-                        backgroundColor:
-                            WidgetStateProperty.all(ApplicationColors.kahve),
+                        backgroundColor: WidgetStateProperty.all(ApplicationColors.kahve),
                         shape: WidgetStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),

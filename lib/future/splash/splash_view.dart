@@ -27,7 +27,7 @@ class _SplashViewState extends State<SplashView> {
           children: [
             const Image(
               fit: BoxFit.scaleDown,
-              image: AssetImage('assets/image/aiCoffee.jpg'),
+              image: AssetImage('assets/image/splash/aiCoffee.jpg'),
             ),
             linearGradient(),
             bottomTextsAndButton(context, paddingHeight),

@@ -42,4 +42,6 @@ flutter:
   assets:
     - assets/icon/
     - assets/icon/bottomnavbaricon/
-    - assets/image/
+    - assets/image/banner/
+    - assets/image/coffee/
+    - assets/image/splash/
