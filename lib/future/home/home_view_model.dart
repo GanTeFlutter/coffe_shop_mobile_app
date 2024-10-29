@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 
 abstract class HomeViewModel extends State<HomeView> {
   final containerDeceration = ScreenCustomContainerDeceration().customContainerDeceration();
+
+  //Bunlar bloc üzerinden veri yönetimi yapılana kadar deneme amaçlı yazıldı
+
   bool banner = true;
 
   void banerisCheek() {
@@ -41,7 +44,7 @@ abstract class HomeViewModel extends State<HomeView> {
     'Mocha',
     'Americano',
     'Flat White'
-  ]; // Örnek liste
+  ];
 
   String dropdownValue = 'Other';
 }

@@ -95,8 +95,9 @@ class _HomeViewState extends HomeViewModel {
               )
             ],
           ),
+          //Renklam için ş
           banner
-              ? GestureDetector(onDoubleTap: banerisCheek, child: screenBanner(context))
+              ? GestureDetector(onTap: banerisCheek, child: screenBanner(context))
               : Container(),
         ],
       ),
