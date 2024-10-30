@@ -9,6 +9,7 @@
 .svn/            
 assets/
 ios/
+lib/product/dinleme/
 # IDE ve Editör Dosyaları
 *.iml           
 *.ipr
