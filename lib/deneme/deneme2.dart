@@ -1,4 +1,3 @@
-import 'package:coffe_shop_mobile_app/product/core/database/firebase_enum.dart';
 import 'package:coffe_shop_mobile_app/product/model/coffee/coffee.dart';
 import 'package:coffe_shop_mobile_app/product/service/firebase_service.dart';
 import 'package:flutter/material.dart';
@@ -15,27 +14,18 @@ class _DenemeScreensState extends State<DenemeScreens> {
 
   List<Coffee> coffees2 = [];
 
-  Future<List<Coffee>> firebaseVeriCekme() async {
-    final posts = await firebaseService.firebaseService(
-        FirebaseCollectionName.coffee.name, Coffee.fromJson, 'EspressoBazlıKahveler');
-    print('Firebase Veri Çekme-------: $posts');
-    debugPrint('Firebase Veri Çekme-------: $posts');
-    return posts;
-  }
-
   Future<List<Coffee>> firebaseVeriCekme3() async {
-    final posts = await firebaseService.firebaseService3();
-    coffees2 = posts;
-    print('Firebase Veri Çekme-------: $coffees2');
-    return coffees2;
-  }
+    final posts = await firebaseService.firebaseService();
 
-  // Future<List<KahveModel>> firebaseVeriCekme() async {
-  //   final posts = await firebaseService.firebaseService(
-  //       FirebaseCollectionName.coffee.name, KahveModel.fromJson);
-  //   print('Firebase Veri Çekme-------: $posts');
-  //   return posts;
-  // }
+    if (posts.isNotEmpty) {
+      coffees2 = posts;
+      print('Firebase Veri Çekme-------: $coffees2');
+      return coffees2;
+    } else {
+      print('Firebase Veri Çekme-------: $coffees2');
+      return [];
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,15 +35,22 @@ class _DenemeScreensState extends State<DenemeScreens> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          firebaseVeriCekme3();
+          final response = firebaseVeriCekme3();
+          debugPrint('Firebase Veri Çekme-------: $response');
         },
         child: const Icon(Icons.add),
       ),
-      body: const Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [],
-        ),
+      body: ListView.builder(
+        itemCount: coffees2.length,
+        itemBuilder: (context, index) {
+          final coffee = coffees2[index];
+
+          return ListTile(
+            title: Text(coffee.name!),
+            subtitle: Text(coffee.aciklama!),
+            trailing: Text(coffee.fiyat!),
+          );
+        },
       ),
     );
   }

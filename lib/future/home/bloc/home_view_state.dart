@@ -11,7 +11,7 @@ class HomeViewInitial extends HomeViewState {}
 class HomeViewLoading extends HomeViewState {}
 
 class HomeViewLoaded extends HomeViewState {
-  final List<Postmodel> coffeList;
+  final List<Coffee> coffeList;
 
   HomeViewLoaded({required this.coffeList});
   @override
