@@ -24,3 +24,9 @@ Daha fazla geliştirme ve güncelleme aşamasında proje güncellenmeye devam ed
 <img src="https://github.com/user-attachments/assets/d795f7ba-3845-41c9-9b0f-740a474238cd" width="150" /> 
 <img src="https://github.com/user-attachments/assets/cd7e0066-22c2-4e6e-84ae-5f6d59bc4c50" width="150" /> 
 <img src="https://github.com/user-attachments/assets/e192de72-41cb-4e7e-9bba-3838b6c491c7" width="150" />
+
+## New-update
+
+Card Verileri Bloc ile firebase ten geliyor
+
+<img src="https://github.com/user-attachments/assets/46a669db-c640-4844-b699-b868da7dcb39" width="150" />
