@@ -21,7 +21,9 @@ class _DenemeState extends State<Deneme> {
       body: const Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [Image(image: AssetImage('assets/image/banner/home_view_banner.png'))],
+          children: [
+            Image(image: AssetImage('assets/image/banner/home_view_banner.png'))
+          ],
         ),
       ),
     );

@@ -7,7 +7,8 @@ class HomeViewCoffeeCard extends StatefulWidget {
   final Postmodel post;
 
   const HomeViewCoffeeCard({
-    super.key, required this.post,
+    super.key,
+    required this.post,
   });
 
   @override
@@ -38,7 +39,7 @@ class _HomeViewCoffeeCardState extends State<HomeViewCoffeeCard> {
                   ),
                 ],
                 borderRadius: BorderRadius.circular(15),
-                image:  DecorationImage(
+                image: DecorationImage(
                   image: AssetImage(widget.post.image!),
                   fit: BoxFit.cover,
                 ),
@@ -52,7 +53,7 @@ class _HomeViewCoffeeCardState extends State<HomeViewCoffeeCard> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                 widget.post.name!,
+                  widget.post.name!,
                   style: GoogleFonts.b612(
                     textStyle: Theme.of(context)
                         .textTheme
@@ -68,13 +69,16 @@ class _HomeViewCoffeeCardState extends State<HomeViewCoffeeCard> {
                         textStyle: Theme.of(context)
                             .textTheme
                             .bodyMedium
-                            ?.copyWith(color: ApplicationColors.black, fontWeight: FontWeight.w600),
+                            ?.copyWith(
+                                color: ApplicationColors.black,
+                                fontWeight: FontWeight.w600),
                       ),
                     ),
                     const Spacer(),
                     IconButton(
                       style: ButtonStyle(
-                        backgroundColor: WidgetStateProperty.all(ApplicationColors.kahve),
+                        backgroundColor:
+                            WidgetStateProperty.all(ApplicationColors.kahve),
                         shape: WidgetStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),

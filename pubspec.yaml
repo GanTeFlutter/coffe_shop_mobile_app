@@ -22,7 +22,6 @@ dependencies:
   #Bloc
   bloc: ^8.1.4
   flutter_bloc: ^8.1.6
-  hydrated_bloc: ^9.1.5
   meta: ^1.15.0
 
   #Firebase
