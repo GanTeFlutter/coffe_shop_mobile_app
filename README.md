@@ -11,7 +11,7 @@ Bu uygulama, kullanıcıların favori kahvelerini seçip sepetlerine eklemelerin
 
 ## Durum
 
--firebaseten coffee model cekilip bloc ile emit ediliyor simdi homeview buna uygun dizayn edip coffee modeller icin bir kart tasarimi yapip farkli coffee kategorileri icin firebase servisteki model cekmek fonksiyonunu guncelleyecegim 
+-firebaseten coffee model cekilip bloc ile emit ediliyor simdi homeview buna uygun dizayn edip coffee modeller icin bir kart tasarimi yapip farkli coffee kategorileri icin firebase servisteki model cekme fonksiyonunu guncelleyecegim.
 
 Daha fazla geliştirme ve güncelleme aşamasında proje güncellenmeye devam edecektir.
 
