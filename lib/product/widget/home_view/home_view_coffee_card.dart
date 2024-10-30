@@ -61,7 +61,7 @@ class _HomeViewCoffeeCardState extends State<HomeViewCoffeeCard> {
                 Row(
                   children: [
                     Text(
-                      '\$20',
+                      widget.coffee.fiyat!,
                       style: GoogleFonts.b612(
                         textStyle: Theme.of(context)
                             .textTheme

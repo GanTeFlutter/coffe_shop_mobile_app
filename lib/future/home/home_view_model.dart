@@ -2,8 +2,7 @@ import 'package:coffe_shop_mobile_app/future/home/home_view.dart';
 import 'package:flutter/material.dart';
 
 abstract class HomeViewModel extends State<HomeView> {
-  final containerDeceration =
-      ScreenCustomContainerDeceration().customContainerDeceration();
+  final containerDeceration = ScreenCustomContainerDeceration().customContainerDeceration();
 
   //Bunlar bloc üzerinden veri yönetimi yapılana kadar deneme amaçlı yazıldı
 
@@ -39,12 +38,9 @@ abstract class HomeViewModel extends State<HomeView> {
   bool isFilterSecili = false;
   int? caffeFilter;
   final List<String> coffeeList = [
-    'Espresso',
-    'Latte',
-    'Cappuccino',
-    'Mocha',
-    'Americano',
-    'Flat White'
+    'Espresso Bazlı Kahveler',
+    'Soğuk Kahveler',
+    'Sütlü Kahveler',
   ];
 
   String dropdownValue = 'Other';

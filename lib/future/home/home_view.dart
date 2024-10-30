@@ -86,7 +86,7 @@ class _HomeViewState extends HomeViewModel {
                           Expanded(
                             child: GridView.builder(
                               padding: const EdgeInsets.only(top: 0, bottom: 100),
-                              itemCount: 2,
+                              itemCount: state.coffeList.length,
                               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 2,
                                 childAspectRatio: 0.75,
@@ -132,7 +132,7 @@ class _HomeViewState extends HomeViewModel {
 
   SizedBox caffeeCesitleri() {
     return SizedBox(
-      height: 50,
+      height: 60,
       width: double.infinity,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
@@ -147,7 +147,7 @@ class _HomeViewState extends HomeViewModel {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(15),
                 child: Container(
-                  width: 120,
+                  width: 150,
                   color: isSelected ? ApplicationColors.kahve : null,
                   alignment: Alignment.center,
                   padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0),
