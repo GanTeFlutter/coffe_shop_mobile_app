@@ -9,14 +9,13 @@
 .svn/            
 assets/
 ios/
-lib/product/dinleme/
+lib/product/dinleme/firebase_options.dart
 # IDE ve Editör Dosyaları
 *.iml           
 *.ipr
 *.iws
 .idea/     
 # .vscode/         
-
 # Flutter/Dart/Pub ile İlgili Dosyalar
 **/doc/api/      
 **/ios/Flutter/.last_build_id 
