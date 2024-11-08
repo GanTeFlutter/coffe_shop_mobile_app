@@ -1,6 +1,11 @@
+
+
 {
+  "id": "",
+  "latlong": "",
   "name": "",
   "description": "",
-  "fiyat": "",
-  "raiting": ""
+  "note": "",
+  "status": "",
+  "ext":""
 }

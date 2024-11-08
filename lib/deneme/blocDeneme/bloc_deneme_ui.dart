@@ -1,6 +1,7 @@
 import 'package:coffe_shop_mobile_app/deneme/blocDeneme/counterBloc/counter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class BLocBuilderDagitici extends StatelessWidget {
   const BLocBuilderDagitici({super.key});

@@ -66,13 +66,16 @@ class _HomeViewCoffeeCardState extends State<HomeViewCoffeeCard> {
                         textStyle: Theme.of(context)
                             .textTheme
                             .bodyMedium
-                            ?.copyWith(color: ApplicationColors.black, fontWeight: FontWeight.w600),
+                            ?.copyWith(
+                                color: ApplicationColors.black,
+                                fontWeight: FontWeight.w600),
                       ),
                     ),
                     const Spacer(),
                     IconButton(
                       style: ButtonStyle(
-                        backgroundColor: WidgetStateProperty.all(ApplicationColors.kahve),
+                        backgroundColor:
+                            WidgetStateProperty.all(ApplicationColors.kahve),
                         shape: WidgetStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),

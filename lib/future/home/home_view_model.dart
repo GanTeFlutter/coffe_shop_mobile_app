@@ -2,7 +2,8 @@ import 'package:coffe_shop_mobile_app/future/home/home_view.dart';
 import 'package:flutter/material.dart';
 
 abstract class HomeViewModel extends State<HomeView> {
-  final containerDeceration = ScreenCustomContainerDeceration().customContainerDeceration();
+  final containerDeceration =
+      ScreenCustomContainerDeceration().customContainerDeceration();
 
   //Bunlar bloc üzerinden veri yönetimi yapılana kadar deneme amaçlı yazıldı
 

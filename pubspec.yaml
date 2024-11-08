@@ -12,8 +12,8 @@ dependencies:
   flutter:
     sdk: flutter
 
-  #hive
-  hive: ^2.2.3
+  #d
+  shared_preferences: ^2.3.2
   path_provider: ^2.1.5
 
   #model
