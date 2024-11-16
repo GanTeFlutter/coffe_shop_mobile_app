@@ -1,5 +1,3 @@
-import 'package:coffe_shop_mobile_app/deneme/blocDeneme/bloc_deneme_ui.dart';
-import 'package:coffe_shop_mobile_app/future/basket/basket_view.dart';
 import 'package:coffe_shop_mobile_app/future/home/bloc/home_view_bloc.dart';
 import 'package:coffe_shop_mobile_app/future/splash/splash_view.dart';
 import 'package:coffe_shop_mobile_app/product/init/application_start.dart';

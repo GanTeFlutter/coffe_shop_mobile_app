@@ -3,16 +3,16 @@ import 'package:coffe_shop_mobile_app/product/model/coffee/coffee.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class HomeViewCoffeeCard extends StatefulWidget {
+class CoffeeCard extends StatefulWidget {
 
-  const HomeViewCoffeeCard({super.key, required this.coffee});
+  const CoffeeCard({super.key, required this.coffee});
   final Coffee coffee;
 
   @override
-  State<HomeViewCoffeeCard> createState() => _HomeViewCoffeeCardState();
+  State<CoffeeCard> createState() => _CoffeeCardState();
 }
 
-class _HomeViewCoffeeCardState extends State<HomeViewCoffeeCard> {
+class _CoffeeCardState extends State<CoffeeCard> {
   @override
   Widget build(BuildContext context) {
     return Card(

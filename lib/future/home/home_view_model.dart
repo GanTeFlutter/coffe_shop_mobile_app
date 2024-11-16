@@ -1,3 +1,5 @@
+// ignore_for_file: public_member_api_docs
+
 import 'package:coffe_shop_mobile_app/future/home/home_view.dart';
 import 'package:flutter/material.dart';
 

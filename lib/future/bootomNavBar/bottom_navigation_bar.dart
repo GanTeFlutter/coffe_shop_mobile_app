@@ -1,4 +1,5 @@
 import 'package:coffe_shop_mobile_app/future/home/home_view.dart';
+import 'package:coffe_shop_mobile_app/future/homeView2/home_page.dart';
 import 'package:coffe_shop_mobile_app/product/constant/application_colors.dart';
 import 'package:flutter/material.dart';
 
@@ -6,12 +7,10 @@ class BottomNavigationBarScreenV2 extends StatefulWidget {
   const BottomNavigationBarScreenV2({super.key});
 
   @override
-  State<BottomNavigationBarScreenV2> createState() =>
-      _BottomNavigationBarScreenV2State();
+  State<BottomNavigationBarScreenV2> createState() => _BottomNavigationBarScreenV2State();
 }
 
-class _BottomNavigationBarScreenV2State
-    extends State<BottomNavigationBarScreenV2> {
+class _BottomNavigationBarScreenV2State extends State<BottomNavigationBarScreenV2> {
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
@@ -21,8 +20,8 @@ class _BottomNavigationBarScreenV2State
   }
 
   final List<Widget> _pages = const [
+    HomePage(),
     HomeView(),
-    BosEkran2(),
     BosEkran1(),
     BosEkran2(),
   ];
@@ -59,18 +58,14 @@ class _BottomNavigationBarScreenV2State
               BottomNavigationBarItem(
                 icon: Icon(
                   Icons.home_filled,
-                  color: _selectedIndex == 0
-                      ? ApplicationColors.kahve
-                      : Colors.grey,
+                  color: _selectedIndex == 0 ? ApplicationColors.kahve : Colors.grey,
                 ),
                 label: '',
               ),
               BottomNavigationBarItem(
                 icon: Icon(
                   Icons.favorite_border_outlined,
-                  color: _selectedIndex == 1
-                      ? ApplicationColors.kahve
-                      : Colors.grey,
+                  color: _selectedIndex == 1 ? ApplicationColors.kahve : Colors.grey,
                 ),
                 label: '',
                 activeIcon: const Icon(
@@ -83,15 +78,12 @@ class _BottomNavigationBarScreenV2State
                   children: [
                     Icon(
                       Icons.shopping_bag_outlined,
-                      color: _selectedIndex == 2
-                          ? ApplicationColors.kahve
-                          : Colors.grey,
+                      color: _selectedIndex == 2 ? ApplicationColors.kahve : Colors.grey,
                     ),
                     const Positioned(
                         right: 1,
                         top: 1,
-                        child: Icon(Icons.circle,
-                            size: 10, color: ApplicationColors.kahve)),
+                        child: Icon(Icons.circle, size: 10, color: ApplicationColors.kahve)),
                   ],
                 ),
                 label: '',
@@ -103,9 +95,7 @@ class _BottomNavigationBarScreenV2State
               BottomNavigationBarItem(
                 icon: Icon(
                   Icons.notifications_none_rounded,
-                  color: _selectedIndex == 3
-                      ? ApplicationColors.kahve
-                      : Colors.grey,
+                  color: _selectedIndex == 3 ? ApplicationColors.kahve : Colors.grey,
                 ),
                 label: '',
                 activeIcon: const Icon(

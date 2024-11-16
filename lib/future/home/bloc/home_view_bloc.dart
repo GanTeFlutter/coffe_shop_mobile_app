@@ -26,7 +26,7 @@ class HomeViewBloc extends Bloc<HomeViewEvent, HomeViewState> {
     } else {
       emit(HomeViewError('No data available'));
     }
-  }
+  }  
 }
 //  try {
 //       final response =

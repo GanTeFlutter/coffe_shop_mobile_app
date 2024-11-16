@@ -1,3 +1,5 @@
+// ignore_for_file: lines_longer_than_80_chars, public_member_api_docs
+
 import 'package:coffe_shop_mobile_app/future/home/bloc/home_view_bloc.dart';
 import 'package:coffe_shop_mobile_app/future/home/home_view_model.dart';
 import 'package:coffe_shop_mobile_app/product/constant/application_colors.dart';
@@ -10,7 +12,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+///HomeView
 class HomeView extends StatefulWidget {
+  ///HomeView
   const HomeView({super.key});
 
   @override
@@ -20,7 +24,7 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends HomeViewModel {
   @override
   Widget build(BuildContext context) {
-    var screenHeigth = MediaQuery.of(context).size.height;
+    final screenHeigth = MediaQuery.of(context).size.height;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: ApplicationColors.acikbeyaz,
@@ -41,13 +45,13 @@ class _HomeViewState extends HomeViewModel {
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 10),
                           child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               const SizedBox(height: 50),
                               Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 15, bottom: 0),
+                                padding: const EdgeInsets.only(
+                                  left: 15,
+                                ),
                                 child: Text(
                                   ApplicationStrings.location,
                                   style: Theme.of(context)
@@ -86,11 +90,9 @@ class _HomeViewState extends HomeViewModel {
                           const SizedBox(height: 10),
                           Expanded(
                             child: GridView.builder(
-                              padding:
-                                  const EdgeInsets.only(top: 0, bottom: 100),
+                              padding: const EdgeInsets.only(top: 0, bottom: 100),
                               itemCount: state.coffeList.length,
-                              gridDelegate:
-                                  const SliverGridDelegateWithFixedCrossAxisCount(
+                              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 2,
                                 childAspectRatio: 0.75,
                                 mainAxisSpacing: 10,
@@ -111,10 +113,13 @@ class _HomeViewState extends HomeViewModel {
                   ],
                 ),
                 // Reklam için
-                banner
-                    ? GestureDetector(
-                        onTap: banerisCheek, child: screenBanner(context))
-                    : Container(),
+                if (banner)
+                  GestureDetector(
+                    onTap: banerisCheek,
+                    child: screenBanner(context),
+                  )
+                else
+                  Container(),
               ],
             );
           } else if (state is HomeViewError) {
@@ -142,8 +147,8 @@ class _HomeViewState extends HomeViewModel {
         scrollDirection: Axis.horizontal,
         itemCount: coffeeList.length,
         itemBuilder: (context, index) {
-          final String item = coffeeList[index];
-          bool isSelected = caffeFilter == index;
+          final item = coffeeList[index];
+          final isSelected = caffeFilter == index;
           return GestureDetector(
             onTap: () => setState(() => caffeFilter = index),
             child: Padding(
@@ -154,19 +159,15 @@ class _HomeViewState extends HomeViewModel {
                   width: 150,
                   color: isSelected ? ApplicationColors.kahve : null,
                   alignment: Alignment.center,
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 8.0, horizontal: 12.0),
+                  padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0),
                   child: Text(
                     item,
                     textAlign: TextAlign.center,
                     style: GoogleFonts.arima(
-                      textStyle:
-                          Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                color: isSelected
-                                    ? ApplicationColors.white
-                                    : ApplicationColors.black,
-                                fontWeight: FontWeight.w700,
-                              ),
+                      textStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                            color: isSelected ? ApplicationColors.white : ApplicationColors.black,
+                            fontWeight: FontWeight.w700,
+                          ),
                     ),
                   ),
                 ),
@@ -252,8 +253,7 @@ class _HomeViewState extends HomeViewModel {
             ),
           ],
         ),
-        width: MediaQuery.of(context).size.width *
-            0.9, // Ekran genişliğine göre ayar
+        width: MediaQuery.of(context).size.width * 0.9, // Ekran genişliğine göre ayar
         height: 200,
         child: Padding(
           padding: const EdgeInsets.all(20),
@@ -261,8 +261,7 @@ class _HomeViewState extends HomeViewModel {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 1),
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 1),
                 decoration: const BoxDecoration(
                   color: ApplicationColors.red,
                   borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -275,25 +274,26 @@ class _HomeViewState extends HomeViewModel {
                       ),
                 ),
               ),
-              Text('Buy one get one free',
-                  style: GoogleFonts.b612(
-                    textStyle:
-                        Theme.of(context).textTheme.displayMedium?.copyWith(
-                      color: ApplicationColors.white,
-                      shadows: [
-                        Shadow(
-                          offset: const Offset(1.5, 1.5),
-                          blurRadius: 3.0,
-                          color: Colors.black.withOpacity(0.8),
-                        ),
-                        Shadow(
-                          offset: const Offset(-1.5, -1.5),
-                          blurRadius: 3.0,
-                          color: Colors.black.withOpacity(0.8),
-                        ),
-                      ],
-                    ),
-                  ))
+              Text(
+                'Buy one get one free',
+                style: GoogleFonts.b612(
+                  textStyle: Theme.of(context).textTheme.displayMedium?.copyWith(
+                    color: ApplicationColors.white,
+                    shadows: [
+                      Shadow(
+                        offset: const Offset(1.5, 1.5),
+                        blurRadius: 3,
+                        color: Colors.black.withOpacity(0.8),
+                      ),
+                      Shadow(
+                        offset: const Offset(-1.5, -1.5),
+                        blurRadius: 3,
+                        color: Colors.black.withOpacity(0.8),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         ),
@@ -302,8 +302,7 @@ class _HomeViewState extends HomeViewModel {
   }
 }
 
-class ScreenCustomPadding {}
-
+///ScreenCustomContainerDeceration
 class ScreenCustomContainerDeceration {
   BoxDecoration customContainerDeceration() {
     return BoxDecoration(
@@ -316,13 +315,10 @@ class ScreenCustomContainerDeceration {
           offset: const Offset(0, 3),
         ),
       ],
-      gradient: const LinearGradient(
-          begin: Alignment.topRight,
-          end: Alignment.bottomLeft,
-          colors: [
-            ApplicationColors.black,
-            ApplicationColors.kahvesiyah,
-          ]),
+      gradient: const LinearGradient(begin: Alignment.topRight, end: Alignment.bottomLeft, colors: [
+        ApplicationColors.black,
+        ApplicationColors.kahvesiyah,
+      ]),
     );
   }
 }
