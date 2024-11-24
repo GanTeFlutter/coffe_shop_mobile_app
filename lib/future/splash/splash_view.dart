@@ -1,10 +1,10 @@
-// ignore_for_file: library_prefixes
+// ignore_for_file: library_prefixes, inference_failure_on_instance_creation
 
 import 'package:coffe_shop_mobile_app/future/bootomNavBar/bottom_navigation_bar.dart';
-import 'package:coffe_shop_mobile_app/product/widget/applicaton_default_custom_button.dart'
-    as customButton;
 import 'package:coffe_shop_mobile_app/product/constant/application_colors.dart';
 import 'package:coffe_shop_mobile_app/product/constant/application_strings.dart';
+import 'package:coffe_shop_mobile_app/product/widget/applicaton_default_custom_button.dart'
+    as customButton;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -18,7 +18,7 @@ class SplashView extends StatefulWidget {
 class _SplashViewState extends State<SplashView> {
   @override
   Widget build(BuildContext context) {
-    final double paddingHeight = MediaQuery.of(context).size.height * 0.02;
+    final paddingHeight = MediaQuery.of(context).size.height * 0.02;
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -60,7 +60,7 @@ class _SplashViewState extends State<SplashView> {
       left: 0,
       right: 0,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 30.0),
+        padding: const EdgeInsets.symmetric(horizontal: 30),
         child: Column(
           children: [
             Text(
@@ -69,7 +69,7 @@ class _SplashViewState extends State<SplashView> {
               style: GoogleFonts.b612(
                 textStyle: Theme.of(context).textTheme.displaySmall?.copyWith(
                     color: ApplicationColors.white,
-                    fontWeight: FontWeight.bold),
+                    fontWeight: FontWeight.bold,),
               ),
             ),
             SizedBox(height: paddingHeight),
@@ -87,17 +87,14 @@ class _SplashViewState extends State<SplashView> {
             SizedBox(height: paddingHeight),
             customButton.CustomElevatedButton(
               onPressed: () {
-                //TODO: navigator u kur
 
                 Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => const BottomNavigationBarScreenV2(),
-                    ));
+                    ),);
               },
               text: ApplicationStrings.splashbuttonText,
-              backgroundColor: ApplicationColors.kahve,
-              textColor: ApplicationColors.white,
               borderRadius: 20,
             ),
             SizedBox(height: paddingHeight * 2),

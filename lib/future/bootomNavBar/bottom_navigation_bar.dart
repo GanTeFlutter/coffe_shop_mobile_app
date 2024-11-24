@@ -83,7 +83,7 @@ class _BottomNavigationBarScreenV2State extends State<BottomNavigationBarScreenV
                     const Positioned(
                         right: 1,
                         top: 1,
-                        child: Icon(Icons.circle, size: 10, color: ApplicationColors.kahve)),
+                        child: Icon(Icons.circle, size: 10, color: ApplicationColors.kahve),),
                   ],
                 ),
                 label: '',
@@ -123,7 +123,9 @@ class BosEkran1 extends StatelessWidget {
       body: const Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [],
+          children: [ 
+            Text('BosEkran1'),
+          ],
         ),
       ),
     );
@@ -142,7 +144,9 @@ class BosEkran2 extends StatelessWidget {
       body: const Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [],
+          children: [
+            Text('BosEkran2'),
+          ],
         ),
       ),
     );

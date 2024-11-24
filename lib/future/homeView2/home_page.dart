@@ -1,4 +1,3 @@
-import 'package:coffe_shop_mobile_app/future/home/home_view_model.dart';
 import 'package:coffe_shop_mobile_app/future/homeView2/home_page_model.dart';
 import 'package:coffe_shop_mobile_app/future/homeView2/mixin/show_m_b.dart';
 import 'package:coffe_shop_mobile_app/product/constant/application_colors.dart';
@@ -23,18 +22,16 @@ class _HomePageState extends HomePageModel with ShowModalBottomSheetMixin {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              child: Column(
-                children: [
-                  HomeViewLocation(
-                    location: 'Ankara',
-                    onPressed: () {
-                      showModalBottomSheetCustom(screenHeight);
-                    },
-                  ),
-                ],
-              ),
-            )
+            Column(
+              children: [
+                HomeViewLocation(
+                  location: 'Ankara',
+                  onPressed: () {
+                    showModalBottomSheetCustom(screenHeight);
+                  },
+                ),
+              ],
+            ),
           ],
         ),
       ),

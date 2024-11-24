@@ -23,7 +23,7 @@ class _BasketViewState extends State<BasketView> {
       body: const Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [],
+          children: [Center(child: Text('BasketView'))],
         ),
       ),
     );

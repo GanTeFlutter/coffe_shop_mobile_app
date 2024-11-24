@@ -1,5 +1,6 @@
-// ignore_for_file: lines_longer_than_80_chars, public_member_api_docs
+// ignore_for_file: lines_longer_than_80_chars, public_member_api_docs, inference_failure_on_instance_creation
 
+import 'package:coffe_shop_mobile_app/future/coffee_detail/coffee_detail_view.dart';
 import 'package:coffe_shop_mobile_app/future/home/bloc/home_view_bloc.dart';
 import 'package:coffe_shop_mobile_app/future/home/home_view_model.dart';
 import 'package:coffe_shop_mobile_app/product/constant/application_colors.dart';
@@ -73,7 +74,7 @@ class _HomeViewState extends HomeViewModel {
                                     child: HomeViewTextfield(),
                                   ),
                                   const SizedBox(width: 10),
-                                  filterButton()
+                                  filterButton(),
                                 ],
                               ),
                             ],
@@ -90,7 +91,7 @@ class _HomeViewState extends HomeViewModel {
                           const SizedBox(height: 10),
                           Expanded(
                             child: GridView.builder(
-                              padding: const EdgeInsets.only(top: 0, bottom: 100),
+                              padding: const EdgeInsets.only(bottom: 100),
                               itemCount: state.coffeList.length,
                               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 2,
@@ -100,7 +101,6 @@ class _HomeViewState extends HomeViewModel {
                               ),
                               itemBuilder: (context, index) {
                                 final coffeItem = state.coffeList[index];
-
                                 return HomeViewCoffeeCard(
                                   coffee: coffeItem,
                                 );
@@ -152,14 +152,14 @@ class _HomeViewState extends HomeViewModel {
           return GestureDetector(
             onTap: () => setState(() => caffeFilter = index),
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              padding: const EdgeInsets.symmetric(horizontal: 8),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(15),
                 child: Container(
                   width: 150,
                   color: isSelected ? ApplicationColors.kahve : null,
                   alignment: Alignment.center,
-                  padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0),
+                  padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
                   child: Text(
                     item,
                     textAlign: TextAlign.center,
@@ -184,31 +184,31 @@ class _HomeViewState extends HomeViewModel {
       barrierColor: Colors.black.withOpacity(0.7),
       isScrollControlled: true,
       backgroundColor: ApplicationColors.acikbeyaz,
-      enableDrag: true,
       context: context,
       builder: (context) {
         return SizedBox(
-            height: height * 0.4,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                ShowModalBottomSheetElevatedButton(
-                  onPressed: () {},
-                  text: 'En yakın Caffee',
-                  isIcon: false,
-                ),
-                ShowModalBottomSheetElevatedButton(
-                  onPressed: () {},
-                  text: 'En çok tercih edilen Caffee',
-                  isIcon: false,
-                ),
-                ShowModalBottomSheetElevatedButton(
-                  onPressed: () {},
-                  text: 'Kendin Seç',
-                  isIcon: true,
-                ),
-              ],
-            ));
+          height: height * 0.4,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ShowModalBottomSheetElevatedButton(
+                onPressed: () {},
+                text: 'En yakın Caffee',
+                isIcon: false,
+              ),
+              ShowModalBottomSheetElevatedButton(
+                onPressed: () {},
+                text: 'En çok tercih edilen Caffee',
+                isIcon: false,
+              ),
+              ShowModalBottomSheetElevatedButton(
+                onPressed: () {},
+                text: 'Kendin Seç',
+                isIcon: true,
+              ),
+            ],
+          ),
+        );
       },
     );
   }
@@ -315,10 +315,14 @@ class ScreenCustomContainerDeceration {
           offset: const Offset(0, 3),
         ),
       ],
-      gradient: const LinearGradient(begin: Alignment.topRight, end: Alignment.bottomLeft, colors: [
-        ApplicationColors.black,
-        ApplicationColors.kahvesiyah,
-      ]),
+      gradient: const LinearGradient(
+        begin: Alignment.topRight,
+        end: Alignment.bottomLeft,
+        colors: [
+          ApplicationColors.black,
+          ApplicationColors.kahvesiyah,
+        ],
+      ),
     );
   }
 }

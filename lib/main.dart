@@ -1,10 +1,11 @@
+import 'package:coffe_shop_mobile_app/future/bootomNavBar/bottom_navigation_bar.dart';
 import 'package:coffe_shop_mobile_app/future/home/bloc/home_view_bloc.dart';
 import 'package:coffe_shop_mobile_app/future/splash/splash_view.dart';
 import 'package:coffe_shop_mobile_app/product/init/application_start.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-Future main() async {
+Future<void> main() async {
   await ApplicationStart.init();
   runApp(const MyApp());
 }
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData.light(),
-        home: const SplashView(),
+        home: const BottomNavigationBarScreenV2(),
       ),
     );
   }

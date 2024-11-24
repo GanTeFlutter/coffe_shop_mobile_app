@@ -5,5 +5,5 @@ part 'basket_event.dart';
 part 'basket_state.dart';
 
 class BasketBloc extends Bloc<BasketEvent, BasketState> {
-  BasketBloc() : super(BasketInitial()) {}
+  BasketBloc() : super(BasketInitial());
 }
