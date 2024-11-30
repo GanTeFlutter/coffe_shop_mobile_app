@@ -4,8 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CoffeeCard extends StatefulWidget {
-
-  const CoffeeCard({super.key, required this.coffee});
+  const CoffeeCard({required this.coffee, super.key});
   final Coffee coffee;
 
   @override
@@ -16,16 +15,15 @@ class _CoffeeCardState extends State<CoffeeCard> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.all(8.0),
+      margin: const EdgeInsets.all(8),
       color: ApplicationColors.white,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
             flex: 3,
             child: Container(
-              margin: const EdgeInsets.all(8.0),
+              margin: const EdgeInsets.all(8),
               decoration: BoxDecoration(
                 boxShadow: [
                   BoxShadow(
@@ -45,7 +43,7 @@ class _CoffeeCardState extends State<CoffeeCard> {
           ),
           const SizedBox(height: 8),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            padding: const EdgeInsets.symmetric(horizontal: 8),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -63,19 +61,16 @@ class _CoffeeCardState extends State<CoffeeCard> {
                     Text(
                       widget.coffee.fiyat!,
                       style: GoogleFonts.b612(
-                        textStyle: Theme.of(context)
-                            .textTheme
-                            .bodyMedium
-                            ?.copyWith(
-                                color: ApplicationColors.black,
-                                fontWeight: FontWeight.w600),
+                        textStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                              color: ApplicationColors.black,
+                              fontWeight: FontWeight.w600,
+                            ),
                       ),
                     ),
                     const Spacer(),
                     IconButton(
                       style: ButtonStyle(
-                        backgroundColor:
-                            WidgetStateProperty.all(ApplicationColors.kahve),
+                        backgroundColor: WidgetStateProperty.all(ApplicationColors.kahve),
                         shape: WidgetStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),

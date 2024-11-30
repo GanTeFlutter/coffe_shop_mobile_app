@@ -5,13 +5,6 @@ part 'address.g.dart';
 
 @JsonSerializable()
 class Address extends Equatable {
-  final String? id;
-  final String? latlong;
-  final String? name;
-  final String? description;
-  final String? note;
-  final String? status;
-  final String? ext;
 
   const Address({
     this.id,
@@ -26,6 +19,13 @@ class Address extends Equatable {
   factory Address.fromJson(Map<String, dynamic> json) {
     return _$AddressFromJson(json);
   }
+  final String? id;
+  final String? latlong;
+  final String? name;
+  final String? description;
+  final String? note;
+  final String? status;
+  final String? ext;
 
   Map<String, dynamic> toJson() => _$AddressToJson(this);
 

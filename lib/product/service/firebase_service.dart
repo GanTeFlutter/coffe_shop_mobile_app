@@ -1,10 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coffe_shop_mobile_app/product/model/coffee/coffee.dart';
+import 'package:flutter/foundation.dart';
 
 abstract class BaseFirebaseServiceModel {
   Future<List<Coffee>> firebaseService();
   Future<List<T>> firebaseService2<T>(String modelName,
-      T Function(Map<String, dynamic>) fromJson, String docName);
+      T Function(Map<String, dynamic>) fromJson, String docName,);
 }
 
 class FirebaseService implements BaseFirebaseServiceModel {
@@ -12,10 +13,10 @@ class FirebaseService implements BaseFirebaseServiceModel {
 
   @override
   Future<List<T>> firebaseService2<T>(String modelName,
-      T Function(Map<String, dynamic>) fromJson, String docName) async {
+      T Function(Map<String, dynamic>) fromJson, String docName,) async {
     final response = await _firestore.collection(modelName).doc(docName).get();
 
-    final data = response.data() as Map<String, dynamic>;
+    final data = response.data()!;
     final models = [fromJson(data)];
 
     return models;
@@ -34,13 +35,15 @@ class FirebaseService implements BaseFirebaseServiceModel {
         return data.entries
             .where((entry) => entry.value is Map<String, dynamic>)
             .map(
-                (entry) => Coffee.fromJson(entry.value as Map<String, dynamic>))
+                (entry) => Coffee.fromJson(entry.value as Map<String, dynamic>),)
             .toList();
       } else {
         return [];
       }
     } catch (e) {
-      print("Error fetching coffee data: $e");
+      if (kDebugMode) {
+        print('Error fetching coffee data: $e');
+      }
       return [];
     }
   }

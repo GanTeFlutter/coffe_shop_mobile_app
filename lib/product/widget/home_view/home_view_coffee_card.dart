@@ -27,6 +27,7 @@ class _HomeViewCoffeeCardState extends State<HomeViewCoffeeCard> {
               onTap: () {
                 Navigator.push(
                   context,
+                  // ignore: inference_failure_on_instance_creation
                   MaterialPageRoute(
                     builder: (context) => CoffeeDetailView(coffee: widget.coffee),
                   ),

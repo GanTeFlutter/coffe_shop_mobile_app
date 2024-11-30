@@ -5,12 +5,6 @@ part 'postmodel.g.dart';
 
 @JsonSerializable()
 class Postmodel extends Equatable {
-  final String? id;
-  final String? name;
-  final String? image;
-  final String? price;
-  final String? description;
-  final String? raiting;
 
   const Postmodel({
     this.id,
@@ -24,6 +18,12 @@ class Postmodel extends Equatable {
   factory Postmodel.fromJson(Map<String, dynamic> json) {
     return _$PostmodelFromJson(json);
   }
+  final String? id;
+  final String? name;
+  final String? image;
+  final String? price;
+  final String? description;
+  final String? raiting;
 
   Map<String, dynamic> toJson() => _$PostmodelToJson(this);
 

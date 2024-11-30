@@ -1,22 +1,20 @@
 import 'package:flutter/material.dart';
 
 class CustomElevatedButton extends StatelessWidget {
+
+  const CustomElevatedButton({
+    required this.onPressed, required this.text, super.key,
+    this.backgroundColor = Colors.blue,
+    this.textColor = Colors.white,
+    this.borderRadius = 12.0,
+    this.padding = const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+  });
   final VoidCallback onPressed; // onPressed işlevi dışarıdan alınır
   final String text; // Buton metni
   final Color backgroundColor;
   final Color textColor;
   final double borderRadius;
   final EdgeInsetsGeometry padding;
-
-  const CustomElevatedButton({
-    super.key,
-    required this.onPressed,
-    required this.text,
-    this.backgroundColor = Colors.blue,
-    this.textColor = Colors.white,
-    this.borderRadius = 12.0,
-    this.padding = const EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
-  });
 
   @override
   Widget build(BuildContext context) {

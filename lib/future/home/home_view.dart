@@ -1,6 +1,5 @@
 // ignore_for_file: lines_longer_than_80_chars, public_member_api_docs, inference_failure_on_instance_creation
 
-import 'package:coffe_shop_mobile_app/future/coffee_detail/coffee_detail_view.dart';
 import 'package:coffe_shop_mobile_app/future/home/bloc/home_view_bloc.dart';
 import 'package:coffe_shop_mobile_app/future/home/home_view_model.dart';
 import 'package:coffe_shop_mobile_app/product/constant/application_colors.dart';
