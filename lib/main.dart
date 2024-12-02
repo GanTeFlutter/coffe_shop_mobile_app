@@ -1,10 +1,8 @@
 import 'dart:async';
-import 'package:coffe_shop_mobile_app/future/bootomNavBar/bottom_navigation_bar.dart';
 import 'package:coffe_shop_mobile_app/future/home/home_view.dart';
 import 'package:coffe_shop_mobile_app/product/init/app_initialize.dart';
 import 'package:coffe_shop_mobile_app/product/init/state_initialize.dart';
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 
 Future<void> main() async {
   await AppInitialize().make();

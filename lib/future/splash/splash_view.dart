@@ -11,8 +11,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
-
-
 class SplashViewLottie extends StatefulWidget {
   const SplashViewLottie({super.key});
 
@@ -48,8 +46,6 @@ class _SplashViewLottieState extends State<SplashViewLottie> {
     );
   }
 }
-
-
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -111,8 +107,9 @@ class _SplashViewState extends State<SplashView> {
               textAlign: TextAlign.center,
               style: GoogleFonts.b612(
                 textStyle: Theme.of(context).textTheme.displaySmall?.copyWith(
-                    color: ApplicationColors.white,
-                    fontWeight: FontWeight.bold,),
+                      color: ApplicationColors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
               ),
             ),
             SizedBox(height: paddingHeight),
@@ -130,12 +127,12 @@ class _SplashViewState extends State<SplashView> {
             SizedBox(height: paddingHeight),
             customButton.CustomElevatedButton(
               onPressed: () {
-
                 Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const BottomNavigationBarScreenV2(),
-                    ),);
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const BottomNavigationBarScreenV2(),
+                  ),
+                );
               },
               text: ApplicationStrings.splashbuttonText,
               borderRadius: 20,
@@ -147,4 +144,3 @@ class _SplashViewState extends State<SplashView> {
     );
   }
 }
-

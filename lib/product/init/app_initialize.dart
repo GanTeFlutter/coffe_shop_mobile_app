@@ -5,11 +5,9 @@ import 'package:flutter/material.dart';
 
 @immutable
 class AppInitialize {
-
-
-    Future<void> make() async {
+  Future<void> make() async {
     WidgetsFlutterBinding.ensureInitialized();
-      WidgetsFlutterBinding.ensureInitialized();
+    WidgetsFlutterBinding.ensureInitialized();
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
@@ -18,6 +16,4 @@ class AppInitialize {
     // );
     // HydratedBloc.storage = storage;
   }
-
 }
-

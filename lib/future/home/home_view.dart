@@ -43,11 +43,7 @@ class _HomeViewState extends HomeViewModel {
           //
           //Alt kısım
           //
-          const Expanded(
-              flex: 4,
-              child: Column(
-                children: [],
-              )),
+          const Expanded(flex: 4, child: Column()),
         ],
       ),
     );
