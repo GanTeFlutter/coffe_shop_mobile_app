@@ -1,5 +1,7 @@
 // ignore_for_file: library_prefixes, inference_failure_on_instance_creation
 
+import 'dart:async';
+
 import 'package:coffe_shop_mobile_app/future/bootomNavBar/bottom_navigation_bar.dart';
 import 'package:coffe_shop_mobile_app/product/constant/application_colors.dart';
 import 'package:coffe_shop_mobile_app/product/constant/application_strings.dart';
@@ -7,6 +9,47 @@ import 'package:coffe_shop_mobile_app/product/widget/applicaton_default_custom_b
     as customButton;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
+
+
+
+class SplashViewLottie extends StatefulWidget {
+  const SplashViewLottie({super.key});
+
+  @override
+  State<SplashViewLottie> createState() => _SplashViewLottieState();
+}
+
+class _SplashViewLottieState extends State<SplashViewLottie> {
+  @override
+  void initState() {
+    Timer(const Duration(seconds: 5), () {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const SplashView(),
+        ),
+      );
+    });
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Lottie.asset('assets/lottie/lottieee.json'),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -104,3 +147,4 @@ class _SplashViewState extends State<SplashView> {
     );
   }
 }
+
