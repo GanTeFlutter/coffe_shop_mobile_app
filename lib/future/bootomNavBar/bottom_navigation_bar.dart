@@ -1,5 +1,4 @@
 import 'package:coffe_shop_mobile_app/future/home/home_view.dart';
-import 'package:coffe_shop_mobile_app/future/homeView2/home_page.dart';
 import 'package:coffe_shop_mobile_app/product/constant/application_colors.dart';
 import 'package:flutter/material.dart';
 
@@ -20,10 +19,10 @@ class _BottomNavigationBarScreenV2State extends State<BottomNavigationBarScreenV
   }
 
   final List<Widget> _pages = const [
-    HomePage(),
     HomeView(),
     BosEkran1(),
-    BosEkran2(),
+    BosEkran1(),
+    BosEkran1(),
   ];
 
   @override
@@ -81,9 +80,10 @@ class _BottomNavigationBarScreenV2State extends State<BottomNavigationBarScreenV
                       color: _selectedIndex == 2 ? ApplicationColors.kahve : Colors.grey,
                     ),
                     const Positioned(
-                        right: 1,
-                        top: 1,
-                        child: Icon(Icons.circle, size: 10, color: ApplicationColors.kahve),),
+                      right: 1,
+                      top: 1,
+                      child: Icon(Icons.circle, size: 10, color: ApplicationColors.kahve),
+                    ),
                   ],
                 ),
                 label: '',
@@ -123,29 +123,8 @@ class BosEkran1 extends StatelessWidget {
       body: const Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [ 
-            Text('BosEkran1'),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class BosEkran2 extends StatelessWidget {
-  const BosEkran2({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('BosEkran2'),
-      ),
-      body: const Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('BosEkran2'),
+            Text('BosEkran1'),
           ],
         ),
       ),

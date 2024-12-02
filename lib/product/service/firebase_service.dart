@@ -3,7 +3,7 @@ import 'package:coffe_shop_mobile_app/product/model/coffee/coffee.dart';
 import 'package:flutter/foundation.dart';
 
 abstract class BaseFirebaseServiceModel {
-  Future<List<Coffee>> firebaseService();
+ Future<List<Coffee>> firebaseService(String collectionPath,String? path);
   Future<List<T>> firebaseService2<T>(String modelName,
       T Function(Map<String, dynamic>) fromJson, String docName,);
 }
@@ -21,9 +21,8 @@ class FirebaseService implements BaseFirebaseServiceModel {
 
     return models;
   }
-
   @override
-  Future<List<Coffee>> firebaseService() async {
+  Future<List<Coffee>> firebaseService(String collectionPath,String? path) async {
     try {
       final response = await FirebaseFirestore.instance
           .collection('coffee')
@@ -41,9 +40,7 @@ class FirebaseService implements BaseFirebaseServiceModel {
         return [];
       }
     } catch (e) {
-      if (kDebugMode) {
-        print('Error fetching coffee data: $e');
-      }
+      debugPrint('Error fetching data: $e');
       return [];
     }
   }

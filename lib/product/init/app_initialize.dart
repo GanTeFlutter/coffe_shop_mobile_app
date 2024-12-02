@@ -5,10 +5,12 @@ import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 
 @immutable
-class ApplicationStart {
-  const ApplicationStart._();
-  static Future<void> init() async {
+class AppInitialize {
+
+
+    Future<void> make() async {
     WidgetsFlutterBinding.ensureInitialized();
+      WidgetsFlutterBinding.ensureInitialized();
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
@@ -16,8 +18,8 @@ class ApplicationStart {
       storageDirectory: await getApplicationDocumentsDirectory(),
     );
     HydratedBloc.storage = storage;
-   
   }
+
 }
 
 
