@@ -1,4 +1,4 @@
-import 'package:coffe_shop_mobile_app/future/home/cubit/home_cubit.dart';
+import 'package:coffe_shop_mobile_app/future/home/bloc/home_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -11,7 +11,7 @@ class StateInitialize extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) =>HomeCubit(),
+          create: (context) =>HomeBloc(),
         ),
       ],
       child: child,

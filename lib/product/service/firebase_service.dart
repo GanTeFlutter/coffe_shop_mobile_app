@@ -1,47 +1,47 @@
-// import 'package:cloud_firestore/cloud_firestore.dart';
-// import 'package:coffe_shop_mobile_app/product/model/coffee/coffee.dart';
-// import 'package:flutter/foundation.dart';
+// ignore: dangling_library_doc_comments
+/*
 
-// abstract class BaseFirebaseServiceModel {
-//  Future<List<Coffee>> firebaseService(String collectionPath,String? path);
-//   Future<List<T>> firebaseService2<T>(String modelName,
-//       T Function(Map<String, dynamic>) fromJson, String docName,);
-// }
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-// class FirebaseService implements BaseFirebaseServiceModel {
-//   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+abstract class FirebaseBaseService {
+  Future<List<T>> firebaseService<T>({
+    required String collectionName,
+    required T Function(Map<String, dynamic>) fromJson,
+    required String docName,
+  });
+}
 
-//   @override
-//   Future<List<T>> firebaseService2<T>(String modelName,
-//       T Function(Map<String, dynamic>) fromJson, String docName,) async {
-//     final response = await _firestore.collection(modelName).doc(docName).get();
+class FirebaseService implements FirebaseBaseService {
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-//     final data = response.data()!;
-//     final models = [fromJson(data)];
+  @override
+  Future<List<T>> firebaseService<T>({
+    required String collectionName,
+    required T Function(Map<String, dynamic>) fromJson,
+    required String docName,
+  }) async {
+    final response = await _firestore.collection(collectionName).doc(docName).get();
 
-//     return models;
-//   }
-//   @override
-//   Future<List<Coffee>> firebaseService(String collectionPath,String? path) async {
-//     try {
-//       final response = await FirebaseFirestore.instance
-//           .collection('coffee')
-//           .doc('EspressoBazlıKahveler')
-//           .get();
+    final data = response.data();
+    if (data == null) {
+      throw Exception("Data null$docName");
+    }
 
-//       final data = response.data();
-//       if (data != null) {
-//         return data.entries
-//             .where((entry) => entry.value is Map<String, dynamic>)
-//             .map(
-//                 (entry) => Coffee.fromJson(entry.value as Map<String, dynamic>),)
-//             .toList();
-//       } else {
-//         return [];
-//       }
-//     } catch (e) {
-//       debugPrint('Error fetching data: $e');
-//       return [];
-//     }
-//   }
-// }
+    final coffeesArray = data['coffees'];
+    if (coffeesArray == null || coffeesArray is! List) {
+      throw Exception("Null veya List Degil$docName");
+    }
+
+    final List<T> models = coffeesArray.map((item) {
+      if (item is Map<String, dynamic>) {
+        return fromJson(item);
+      } else {
+        throw Exception("Map değil$docName");
+      }
+    }).toList();
+
+    return models;
+  }
+}
+
+ */

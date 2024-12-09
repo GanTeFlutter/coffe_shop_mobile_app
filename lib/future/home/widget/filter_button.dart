@@ -9,6 +9,7 @@ class FilterButton extends StatelessWidget {
     return GestureDetector(
       onTap: () {},
       child: Container(
+        margin: const EdgeInsets.only(right: 10),
         width: 60,
         height: 60,
         decoration: BoxDecoration(
@@ -18,7 +19,7 @@ class FilterButton extends StatelessWidget {
         child: const Icon(
           Icons.blur_on_sharp,
           color: ApplicationColors.white,
-          size: 30,
+          size: 27,
         ),
       ),
     );
