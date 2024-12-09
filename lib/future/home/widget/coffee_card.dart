@@ -2,14 +2,11 @@ import 'package:coffe_shop_mobile_app/product/constant/application_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class HomeViewCoffeeCard extends StatefulWidget {
-  const HomeViewCoffeeCard({super.key});
+class CoffeeCard extends StatelessWidget {
+  const CoffeeCard({
+    super.key,
+  });
 
-  @override
-  State<HomeViewCoffeeCard> createState() => _HomeViewCoffeeCardState();
-}
-
-class _HomeViewCoffeeCardState extends State<HomeViewCoffeeCard> {
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -65,7 +62,7 @@ class _HomeViewCoffeeCardState extends State<HomeViewCoffeeCard> {
                 Row(
                   children: [
                     Text(
-                      '15',
+                      r'$15',
                       style: GoogleFonts.b612(
                         textStyle: Theme.of(context).textTheme.bodyLarge?.copyWith(
                               color: ApplicationColors.black,

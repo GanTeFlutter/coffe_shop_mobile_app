@@ -28,6 +28,7 @@ class _BottomNavigationBarScreenV2State extends State<BottomNavigationBarScreenV
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       extendBody: true,
       body: IndexedStack(
         index: _selectedIndex,

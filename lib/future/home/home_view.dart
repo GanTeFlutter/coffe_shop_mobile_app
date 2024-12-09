@@ -3,6 +3,7 @@ import 'package:coffe_shop_mobile_app/future/home/home_view_model.dart';
 import 'package:coffe_shop_mobile_app/future/home/widget/coffee_card.dart';
 import 'package:coffe_shop_mobile_app/future/home/widget/custom_textfield.dart';
 import 'package:coffe_shop_mobile_app/future/home/widget/filter_button.dart';
+import 'package:coffe_shop_mobile_app/future/home/widget/kategory_button.dart';
 import 'package:coffe_shop_mobile_app/future/home/widget/location_text_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,10 +18,9 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends HomeViewModel {
   @override
   Widget build(BuildContext context) {
-    final blocService = BlocProvider.of<HomeBloc>(context);
-
+    debugPrint('--HomeView: build');
     return Scaffold(
-      backgroundColor: Colors.grey,
+      backgroundColor: const Color.fromARGB(255, 248, 246, 246),
       resizeToAvoidBottomInset: false,
       body: Column(
         children: [
@@ -54,29 +54,49 @@ class _HomeViewState extends HomeViewModel {
             child: Column(
               children: [
                 SizedBox(
-                  height: 50,
-                  child: ListView.builder(
-                    padding: const EdgeInsets.only(left: 10),
-                    scrollDirection: Axis.horizontal,
-                    itemCount: kategoriList.length,
-                    shrinkWrap: true,
-                    itemBuilder: (context, index) {
-                      final kategori = kategoriList[index];
-                      return ElevatedButton(
-                        onPressed: () {
-                          blocService.add(HomeInitialEvent(message: kategori.title));
-                        },
-                        child: Text(kategori.title),
-                      );
-                    },
-                  ),
+                  height: 65,
+                  child: kategoriBuilder(),
+                ),
+                Expanded(
+                  child: coffeeBuilder(),
                 ),
               ],
             ),
           ),
-
         ],
       ),
+    );
+  }
+
+  ListView kategoriBuilder() {
+    return ListView.builder(
+      padding: const EdgeInsets.only(left: 10, top: 10),
+      scrollDirection: Axis.horizontal,
+      itemCount: kategoriList.length,
+      shrinkWrap: true,
+      itemBuilder: (context, index) {
+        final kategori = kategoriList[index];
+        return KategoryButton(
+          kategori: kategori,
+          onPressed: () {
+            BlocProvider.of<HomeBloc>(context).add(HomeInitialEvent(message: kategori.title));
+          },
+        );
+      },
+    );
+  }
+
+  GridView coffeeBuilder() {
+    return GridView.builder(
+      padding: const EdgeInsets.only(top: 10),
+      itemCount: 10,
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        mainAxisExtent: 310,
+      ),
+      itemBuilder: (context, index) {
+        return const CoffeeCard();
+      },
     );
   }
 }

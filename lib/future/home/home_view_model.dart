@@ -8,7 +8,7 @@ abstract class HomeViewModel extends State<HomeView> {
       CustomContainerDeceration().customContainerDeceration();
 
   TextEditingController searchController = TextEditingController();
-
+  int selectedIndex = -1;
   List<HomeKategori> kategoriList = [
     HomeKategori('Espresso Bazlı Kahveler', 'ebk'),
     HomeKategori('Soğuk Kahveler', 'sk'),
