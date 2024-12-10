@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:coffe_shop_mobile_app/product/service/fire/firebase/base_model.dart';
+import 'package:coffe_shop_mobile_app/product/service/fire/base_model.dart';
 import 'package:flutter/material.dart';
 
 mixin FirebaseServiceManager {
@@ -11,7 +11,9 @@ mixin FirebaseServiceManager {
       return response.docs.map((e) {
         return BaseFirebaseModel<T>(
           id: e.id,
-          data: e.data() is T ? (e.data() as T) : null, // Veri alma işlemi data() ile yapılır
+          data: e.data() is T
+              ? (e.data() as T)
+              : null, // Veri alma işlemi data() ile yapılır
         );
       }).toList();
     } catch (e) {

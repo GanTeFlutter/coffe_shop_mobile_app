@@ -1,14 +1,12 @@
 import 'package:coffe_shop_mobile_app/future/home/home_view.dart';
-import 'package:coffe_shop_mobile_app/future/home/widget/model/home_kategory.dart';
+import 'package:coffe_shop_mobile_app/future/home/model/home_kategory.dart';
 import 'package:coffe_shop_mobile_app/product/constant/application_colors.dart';
 import 'package:flutter/material.dart';
 
 abstract class HomeViewModel extends State<HomeView> {
   final BoxDecoration customContainerDeceration =
       CustomContainerDeceration().customContainerDeceration();
-
   TextEditingController searchController = TextEditingController();
-  int selectedIndex = -1;
   List<HomeKategori> kategoriList = [
     HomeKategori('Espresso Bazlı Kahveler', 'ebk'),
     HomeKategori('Soğuk Kahveler', 'sk'),

@@ -25,7 +25,7 @@ class _CoffeeDetailSizeChangeState extends State<CoffeeDetailSizeChange> {
             setState(() {
               selectedSize = size;
             });
-            widget.onChanged(size); 
+            widget.onChanged(size);
           },
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 300),

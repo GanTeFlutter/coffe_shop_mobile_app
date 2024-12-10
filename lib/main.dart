@@ -1,7 +1,6 @@
 import 'dart:async';
-import 'package:coffe_shop_mobile_app/future/bootomNavBar/bottom_navigation_bar.dart';
 import 'package:coffe_shop_mobile_app/future/home/home_view.dart';
-import 'package:coffe_shop_mobile_app/future/home/widget/coffee_card.dart';
+import 'package:coffe_shop_mobile_app/future/splash/splash_view.dart';
 import 'package:coffe_shop_mobile_app/product/init/app_initialize.dart';
 import 'package:coffe_shop_mobile_app/product/init/state_initialize.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +21,7 @@ class _MyApp extends StatelessWidget {
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: const BottomNavigationBarScreenV2(),
+      home: const HomeView(),
     );
   }
 }

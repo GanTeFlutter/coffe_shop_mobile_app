@@ -1,11 +1,10 @@
-import 'package:coffe_shop_mobile_app/future/home/widget/model/home_kategory.dart';
 import 'package:coffe_shop_mobile_app/product/constant/application_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class KategoryButton extends StatelessWidget {
-  const KategoryButton({required this.kategori, required this.onPressed, super.key});
-  final HomeKategori kategori;
+  const KategoryButton({required this.title, required this.onPressed, super.key});
+  final String title;
   final VoidCallback onPressed;
 
   @override
@@ -22,7 +21,7 @@ class KategoryButton extends StatelessWidget {
         ),
         onPressed: onPressed,
         child: Text(
-          kategori.title,
+          title,
           style: GoogleFonts.b612(
             textStyle: Theme.of(context).textTheme.bodyLarge?.copyWith(
                   color: ApplicationColors.white,

@@ -5,16 +5,18 @@ enum FirebaseCollectionName { coffee }
 /// ebk: Espresso Bazlı Kahveler
 /// sk: Soğuk Kahveler
 /// stk: Sütlü Kahveler
-enum FirebaseDocumentName { ebk, sk, stk }
+enum FirebaseCollDocName { coffee, ebk, sk, stk }
 
-extension FirebaseDocumentNameExtension on FirebaseDocumentName {
+extension FirebaseDocumentNameExtension on FirebaseCollDocName {
   String get value {
     switch (this) {
-      case FirebaseDocumentName.ebk:
+      case FirebaseCollDocName.coffee:
+        return 'coffee';
+      case FirebaseCollDocName.ebk:
         return 'Espresso Bazlı Kahveler';
-      case FirebaseDocumentName.sk:
+      case FirebaseCollDocName.sk:
         return 'Soğuk Kahveler';
-      case FirebaseDocumentName.stk:
+      case FirebaseCollDocName.stk:
         return 'Sütlü Kahveler';
     }
   }

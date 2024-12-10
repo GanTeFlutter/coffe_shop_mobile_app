@@ -8,6 +8,9 @@ abstract class HomeEvent extends Equatable {
 }
 
 class HomeInitialEvent extends HomeEvent {
-  const HomeInitialEvent({required this.message});
+
+}
+class HomeKategoryEvent extends HomeEvent {
+  const HomeKategoryEvent({required this.message});
   final String message;
 }

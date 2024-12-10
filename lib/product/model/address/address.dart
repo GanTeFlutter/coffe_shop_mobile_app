@@ -5,7 +5,6 @@ part 'address.g.dart';
 
 @JsonSerializable()
 class Address extends Equatable {
-
   const Address({
     this.id,
     this.latlong,

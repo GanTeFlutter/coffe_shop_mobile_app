@@ -17,7 +17,8 @@ class ShowModalBottomSheetElevatedButton extends StatefulWidget {
       _ShowModalBottomSheetElevatedButtonState();
 }
 
-class _ShowModalBottomSheetElevatedButtonState extends State<ShowModalBottomSheetElevatedButton> {
+class _ShowModalBottomSheetElevatedButtonState
+    extends State<ShowModalBottomSheetElevatedButton> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -39,12 +40,15 @@ class _ShowModalBottomSheetElevatedButtonState extends State<ShowModalBottomShee
         child: SizedBox(
           height: 60,
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.center, // İkon ve metni ortalar
+            mainAxisAlignment:
+                MainAxisAlignment.center, // İkon ve metni ortalar
             children: [
               Text(
                 widget.text,
-                style:
-                    Theme.of(context).textTheme.bodyLarge?.copyWith(color: ApplicationColors.white),
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyLarge
+                    ?.copyWith(color: ApplicationColors.white),
               ),
               const SizedBox(width: 10),
               if (widget.isIcon)

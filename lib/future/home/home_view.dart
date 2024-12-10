@@ -58,7 +58,23 @@ class _HomeViewState extends HomeViewModel {
                   child: kategoriBuilder(),
                 ),
                 Expanded(
-                  child: coffeeBuilder(),
+                  child: BlocBuilder<HomeBloc, HomeState>(
+                    builder: (context, state) {
+                      if (state is HomeInitial) {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
+                      if (state is HomeLoaded2) {
+                        return girdBuilder(state);
+                      }
+                      return const Center(
+                        child: Text(
+                          'Bilinmeyen bir hata oluştu.Lütfen destek ekibimizle iletişime geçiniz.',
+                        ),
+                      );
+                    },
+                  ),
                 ),
               ],
             ),
@@ -68,6 +84,26 @@ class _HomeViewState extends HomeViewModel {
     );
   }
 
+  GridView girdBuilder(HomeLoaded2 state) {
+    return GridView.builder(
+      padding: const EdgeInsets.only(top: 10),
+      itemCount: state.listCoffee.length,
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        mainAxisExtent: 320,
+      ),
+      itemBuilder: (context, index) {
+        final listCoffee = state.listCoffee[index];
+        return CoffeeCard(
+          coffee: listCoffee,
+        );
+      },
+    );
+  }
+
+//
+//metodlar
+//
   ListView kategoriBuilder() {
     return ListView.builder(
       padding: const EdgeInsets.only(left: 10, top: 10),
@@ -77,25 +113,11 @@ class _HomeViewState extends HomeViewModel {
       itemBuilder: (context, index) {
         final kategori = kategoriList[index];
         return KategoryButton(
-          kategori: kategori,
+          title: kategori.title,
           onPressed: () {
-            BlocProvider.of<HomeBloc>(context).add(HomeInitialEvent(message: kategori.title));
+            BlocProvider.of<HomeBloc>(context).add(HomeKategoryEvent(message: kategori.event));
           },
         );
-      },
-    );
-  }
-
-  GridView coffeeBuilder() {
-    return GridView.builder(
-      padding: const EdgeInsets.only(top: 10),
-      itemCount: 10,
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        mainAxisExtent: 310,
-      ),
-      itemBuilder: (context, index) {
-        return const CoffeeCard();
       },
     );
   }

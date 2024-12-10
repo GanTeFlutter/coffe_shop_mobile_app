@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 
 class HomeViewTextfield extends StatelessWidget {
   const HomeViewTextfield({
-    required this.searchController, super.key,
+    required this.searchController,
+    super.key,
   });
   final TextEditingController searchController;
 
@@ -17,8 +18,10 @@ class HomeViewTextfield extends StatelessWidget {
             controller: searchController,
             decoration: InputDecoration(
               hintText: 'Search coffee',
-              hintStyle:
-                  Theme.of(context).textTheme.bodyMedium?.copyWith(color: ApplicationColors.white),
+              hintStyle: Theme.of(context)
+                  .textTheme
+                  .bodyMedium
+                  ?.copyWith(color: ApplicationColors.white),
               prefixIcon: const Icon(
                 Icons.search,
                 color: ApplicationColors.white,
