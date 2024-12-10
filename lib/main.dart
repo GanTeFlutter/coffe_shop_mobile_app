@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:coffe_shop_mobile_app/future/home/home_view.dart';
-import 'package:coffe_shop_mobile_app/future/splash/splash_view.dart';
 import 'package:coffe_shop_mobile_app/product/init/app_initialize.dart';
 import 'package:coffe_shop_mobile_app/product/init/state_initialize.dart';
 import 'package:flutter/material.dart';

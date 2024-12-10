@@ -37,8 +37,9 @@ class _CoffeeCardState extends State<CoffeeCard> {
                           ),
                         ],
                         borderRadius: BorderRadius.circular(15),
-                        image: const DecorationImage(
-                          image: AssetImage('assets/image/coffee/coffee_image (5).jpg'),
+                        image:  DecorationImage(
+                          image:  NetworkImage(
+              'https://picsum.photos/200?random=${DateTime.now().millisecondsSinceEpoch}',),
                           fit: BoxFit.cover,
                         ),
                       ),

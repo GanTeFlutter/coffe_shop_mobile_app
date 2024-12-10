@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:coffe_shop_mobile_app/future/home/model/home_kategory_state.dart';
 import 'package:coffe_shop_mobile_app/product/enums/e.firebase.dart';
 import 'package:coffe_shop_mobile_app/product/model/coffee/coffee.dart';
 import 'package:coffe_shop_mobile_app/product/service/firebase_service.dart';
@@ -25,7 +24,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         docName: event.message,
       );
       debugPrint('--HomeBloc: responseFire: $responseFire');
-      emit(HomeLoaded2(listCoffee: responseFire));
+      emit(HomeLoaded(listCoffee: responseFire));
     } catch (e) {
       debugPrint('--HomeBloc: $e');
       emit(HomeErrorState(message: e.toString()));

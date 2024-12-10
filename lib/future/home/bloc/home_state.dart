@@ -9,8 +9,8 @@ class HomeInitial extends HomeState {
   List<Object?> get props => throw UnimplementedError();
 }
 
-class HomeLoaded2 extends HomeState {
-  const HomeLoaded2({required this.listCoffee});
+class HomeLoaded extends HomeState {
+  const HomeLoaded({required this.listCoffee});
   final List<Coffee> listCoffee;
 
   @override

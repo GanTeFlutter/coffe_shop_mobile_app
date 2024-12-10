@@ -65,7 +65,7 @@ class _HomeViewState extends HomeViewModel {
                           child: CircularProgressIndicator(),
                         );
                       }
-                      if (state is HomeLoaded2) {
+                      if (state is HomeLoaded) {
                         return girdBuilder(state);
                       }
                       return const Center(
@@ -84,7 +84,7 @@ class _HomeViewState extends HomeViewModel {
     );
   }
 
-  GridView girdBuilder(HomeLoaded2 state) {
+  GridView girdBuilder(HomeLoaded state) {
     return GridView.builder(
       padding: const EdgeInsets.only(top: 10),
       itemCount: state.listCoffee.length,

@@ -4,8 +4,7 @@ import 'package:flutter/material.dart';
 class ApplicationStrings {
   const ApplicationStrings._();
 
-  static const String splashTitleText =
-      'Fall in Love with\nCoffee in Blissful\nDelight!';
+  static const String splashTitleText = 'Fall in Love with\nCoffee in Blissful\nDelight!';
   static const String splashTitleText2 =
       'Welcome to our cozy coffee corner, where\nevery cup is a delightful for you.';
   static const String splashbuttonText = 'Get Started';
@@ -19,4 +18,5 @@ class ApplicationStrings {
   static const String enyakin = 'En Yakın Cafe';
   static const String enyakin2 = 'En Cazip Fiyatlar';
   static const String kendinSec = 'Kendin Seç';
+  static const String eny = 'asdasd';
 }
