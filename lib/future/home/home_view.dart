@@ -83,7 +83,7 @@ class _HomeViewState extends HomeViewModel {
       ),
     );
   }
-
+  
   GridView girdBuilder(HomeLoaded state) {
     return GridView.builder(
       padding: const EdgeInsets.only(top: 10),

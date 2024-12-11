@@ -52,6 +52,8 @@ flutter:
     - assets/icon/
     - assets/icon/bottomnavbaricon/
     - assets/image/banner/
-    - assets/image/coffee/
+    - assets/coffee/ebk/
+    - assets/coffee/sk/
+    - assets/coffee/stk/
     - assets/image/splash/
     - assets/lottie/lottieee.json
