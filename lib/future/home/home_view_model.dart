@@ -24,6 +24,7 @@ class CustomContainerDeceration {
       color: ApplicationColors.kahvesiyah,
       boxShadow: [
         BoxShadow(
+          // ignore: deprecated_member_use
           color: ApplicationColors.black.withOpacity(0.2),
           spreadRadius: 3,
           blurRadius: 5,

@@ -1,6 +1,8 @@
 import 'dart:async';
-import 'package:coffe_shop_mobile_app/future/basket/basket_view.dart';
+import 'package:coffe_shop_mobile_app/future/bootomNavBar/bottom_navigation_bar.dart';
 import 'package:coffe_shop_mobile_app/future/coffee_detail/coffee_detail_view.dart';
+import 'package:coffe_shop_mobile_app/future/home/home_view.dart';
+import 'package:coffe_shop_mobile_app/future/splash/splash_view.dart';
 import 'package:coffe_shop_mobile_app/product/init/app_initialize.dart';
 import 'package:coffe_shop_mobile_app/product/init/state_initialize.dart';
 import 'package:coffe_shop_mobile_app/product/model/coffee/coffee.dart';
@@ -22,7 +24,14 @@ class _MyApp extends StatelessWidget {
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: const BasketView (),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const BottomNavigationBarScreenV2(),
+        '/splashView': (context) => const SplashView(),
+        '/bottomNavBar': (context) => const BottomNavigationBarScreenV2(),
+        '/homeView': (context) => const HomeView(),
+        '/coffeeDetail': (context) => const CoffeeDetailView(coffee: Coffee()),
+      },
     );
   }
 }

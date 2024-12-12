@@ -22,12 +22,7 @@ class _SplashViewLottieState extends State<SplashViewLottie> {
   @override
   void initState() {
     Timer(const Duration(seconds: 5), () {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const SplashView(),
-        ),
-      );
+  Navigator.pushNamed(context, '/splashView');
     });
     super.initState();
   }

@@ -12,7 +12,7 @@ class TextButtonLocation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.only(top: 5, bottom: 10, left: 15),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

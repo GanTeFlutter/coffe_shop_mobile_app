@@ -92,7 +92,7 @@ class _BottomNavigationBarScreenV2State
                       right: 1,
                       top: 1,
                       child: Icon(Icons.circle,
-                          size: 10, color: ApplicationColors.kahve),
+                          size: 10, color: ApplicationColors.kahve,),
                     ),
                   ],
                 ),

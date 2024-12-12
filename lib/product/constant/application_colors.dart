@@ -25,4 +25,5 @@ class ApplicationColors {
   static const Color acikgri = Color(0xFFE3E3E3);
   static const Color ten2 = Color(0xFFF9F2ED);
   static const Color acikbeyaz = Color(0xFFEDEDED);
+  static const Color star = Color(0xFFFBBE21);
 }

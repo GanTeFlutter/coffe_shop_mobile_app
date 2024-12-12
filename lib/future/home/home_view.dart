@@ -35,7 +35,25 @@ class _HomeViewState extends HomeViewModel {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  TextButtonLocation(onPressed: () {}),
+                  // ignore: prefer_const_constructors
+                  Row(
+                    children: const [
+                      Spacer(),
+                      Padding(
+                        padding: EdgeInsets.only(right: 5),
+                        child: CircleAvatar(
+                          radius: 30,
+                          backgroundImage: AssetImage('assets/profil/profile.jpg'),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      TextButtonLocation(onPressed: () {}),
+                    ],
+                  ),
                   Row(
                     children: [
                       HomeViewTextfield(searchController: searchController),
@@ -46,6 +64,7 @@ class _HomeViewState extends HomeViewModel {
               ),
             ),
           ),
+
           //
           //Alt kısım
           //
@@ -83,10 +102,10 @@ class _HomeViewState extends HomeViewModel {
       ),
     );
   }
-  
+
   GridView girdBuilder(HomeLoaded state) {
     return GridView.builder(
-      padding: const EdgeInsets.only(top: 10),
+      padding: const EdgeInsets.only(top: 10, bottom: 90),
       itemCount: state.listCoffee.length,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
@@ -101,9 +120,6 @@ class _HomeViewState extends HomeViewModel {
     );
   }
 
-//
-//metodlar
-//
   ListView kategoriBuilder() {
     return ListView.builder(
       padding: const EdgeInsets.only(left: 10, top: 10),
