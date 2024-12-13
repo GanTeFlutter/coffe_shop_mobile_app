@@ -22,7 +22,7 @@ class _SplashViewLottieState extends State<SplashViewLottie> {
   @override
   void initState() {
     Timer(const Duration(seconds: 5), () {
-  Navigator.pushNamed(context, '/splashView');
+      Navigator.pushNamed(context, '/splashView');
     });
     super.initState();
   }
@@ -79,7 +79,9 @@ class _SplashViewState extends State<SplashView> {
           end: Alignment.bottomCenter,
           colors: [
             Colors.transparent,
-            ApplicationColors.black.withOpacity(0.1),
+            // ignore: deprecated_member_use
+            ApplicationColors.black.withOpacity(0.9),
+            // ignore: deprecated_member_use
             ApplicationColors.black.withOpacity(0.9),
             ApplicationColors.black,
           ],
