@@ -1,25 +1,20 @@
 import 'package:coffe_shop_mobile_app/future/basket/model/basket_item_model.dart';
-import 'package:equatable/equatable.dart';
 
-//State sınıfı için bu modeli kullanacağımızdan dolayı Equatable sınıfından türetiyoruz.
-class BaseBasketModel extends Equatable {
-  const BaseBasketModel(this.baseBasket);
+class BaseBasketModel {
+  BaseBasketModel({this.items = const []});
 
-  final List<BasketItemModel> baseBasket;
+  List<BasketItemModel> items;
 
-  double get sepetToplaFiyat =>
-      baseBasket.fold(0, (previousValue, element) => previousValue + element.tekUrunToplamFiyat);
-  int get sepetToplamUrun =>
-      baseBasket.fold(0, (previousValue, element) => previousValue + element.miktar);
+  //Listenin icindeki urunlerin toplam fiyatini hesaplamak icin listenin icindeki tum tekUrunToplamFiyat toplamini alir
+  double get toplamfiyat => items.fold(0, (sum, item) => sum + item.tekUrunToplamFiyat);
+
+  int get totalMiktar => items.fold(0, (sum, item) => sum + item.miktar);
 
   BaseBasketModel copyWith({
-    List<BasketItemModel>? baseBasket,
+    List<BasketItemModel>? items,
   }) {
     return BaseBasketModel(
-      baseBasket ?? this.baseBasket,
+      items: items ?? this.items,
     );
   }
-
-  @override
-  List<Object?> get props => [baseBasket];
 }

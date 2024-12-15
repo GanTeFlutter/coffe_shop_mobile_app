@@ -1,3 +1,4 @@
+import 'package:coffe_shop_mobile_app/future/basket/basket_view.dart';
 import 'package:coffe_shop_mobile_app/future/bootomNavBar/bottom_navigation_bar.dart';
 import 'package:coffe_shop_mobile_app/future/coffee_detail/coffee_detail_view.dart';
 import 'package:coffe_shop_mobile_app/future/home/home_view.dart';
@@ -8,7 +9,7 @@ import 'package:flutter/material.dart';
 
 class AppRoutes {
   static Map<String, WidgetBuilder> get routes => {
-        'default': (context) => const AddNewAddress(),
+        'default': (context) => const BasketView(),
         '/': (context) => const SplashViewLottie(),
         '/splashView': (context) => const SplashView(),
         '/bottomNavBar': (context) => const BottomNavigationBarScreenV2(),

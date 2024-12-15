@@ -1,11 +1,37 @@
 import 'package:coffe_shop_mobile_app/future/basket/basket_view.dart';
 import 'package:coffe_shop_mobile_app/product/constant/application_colors.dart';
+import 'package:coffe_shop_mobile_app/product/enums/e.app_routes.dart';
+import 'package:coffe_shop_mobile_app/product/model/coffee/coffee.dart';
 import 'package:coffe_shop_mobile_app/product/state/address/addressBloc/address_bloc.dart';
+import 'package:coffe_shop_mobile_app/product/state/address/singleAddressBloc/single_address_bloc_bloc.dart';
 import 'package:coffe_shop_mobile_app/product/widget/applicaton_default_custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 abstract class BasketViewModel extends State<BasketView> {
+  final List<Coffee> damyCoffeeList = [
+    const Coffee(
+      id: '1',
+      name: 'Latte',
+      price: '5.0',
+      description: 'asddddddddddddddasdas',
+      image: 'assets/coffee/ebk/codee_image (2).jpg',
+    ),
+    const Coffee(
+      id: '2',
+      name: 'Mocha',
+      price: '6.0',
+      description: 'asddddddddddddddasdas',
+      image: 'assets/coffee/ebk/codee_image (3).jpg',
+    ),
+    const Coffee(
+      id: '3',
+      name: 'Mocha',
+      price: '6.0',
+      description: 'asddddddddddddddasdas',
+      image: 'assets/coffee/ebk/codee_image (3).jpg',
+    ),
+  ];
   void locationSlectedButton(BuildContext context) {
     showModalBottomSheet<Widget>(
       backgroundColor: ApplicationColors.acikbeyaz,
@@ -18,8 +44,12 @@ abstract class BasketViewModel extends State<BasketView> {
               padding: const EdgeInsets.all(20),
               child: CustomElevatedButton(
                 borderRadius: 20,
-                backgroundColor: ApplicationColors.kahve,
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, AppRoute.addNewAddress.name).then((_) {
+                    // ignore: use_build_context_synchronously
+                    Navigator.pop(context);
+                  });
+                },
                 text: 'Add New Address',
               ),
             ),
@@ -88,9 +118,10 @@ abstract class BasketViewModel extends State<BasketView> {
                               leading: Text(address.id!),
                               trailing: const Icon(Icons.home_filled),
                               onTap: () {
-                                BlocProvider.of<AddressBloc>(context).add(
-                                  NewSelectedAddress(addressID: address.id!),
+                                BlocProvider.of<SingleAddressBlocBloc>(context).add(
+                                  AddSingleAddress(address),
                                 );
+                                Navigator.pop(context);
                               },
                             ),
                           );
