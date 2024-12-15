@@ -9,10 +9,18 @@ abstract class AddressEvent extends Equatable {
 
 class LoadAddressList extends AddressEvent {}
 
-class NewSelectedAddress extends AddressEvent {
-  const NewSelectedAddress({required this.address});
+class NewSaveAddress extends AddressEvent {
+  const NewSaveAddress({required this.address});
   final Address address;
 
   @override
   List<Object> get props => [address];
+}
+
+class NewSelectedAddress extends AddressEvent {
+  const NewSelectedAddress({required this.addressID});
+  final String addressID;
+
+  @override
+  List<Object> get props => [addressID];
 }

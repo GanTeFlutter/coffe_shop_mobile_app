@@ -10,15 +10,17 @@ part 'address_state.dart';
 class AddressBloc extends Bloc<AddressEvent, AddressState> {
   AddressBloc() : super(AddressInitial()) {
     on<AddressEvent>(_addressListEemit);
+    on<NewSaveAddress>(_newListEmitAddress);
     on<NewSelectedAddress>(_newSelectedAddress);
   }
   final AddressCache _addressCache = AddressCache();
+
   Future<void> _addressListEemit(AddressEvent event, Emitter<AddressState> emit) async {
     final response = await _addressCache.loadAddressList();
     emit(AddressLoaded(listAddress: response));
   }
 
-  Future<void> _newSelectedAddress(NewSelectedAddress event, Emitter<AddressState> emit) async {
+  Future<void> _newListEmitAddress(NewSaveAddress event, Emitter<AddressState> emit) async {
     final currentList = await _addressCache.loadAddressList();
 
     // Mevcut ID'leri kontrol ederek yeni bir ID oluştur
@@ -44,5 +46,11 @@ class AddressBloc extends Bloc<AddressEvent, AddressState> {
 
     emit(AddressLoaded(listAddress: updatedList));
     debugPrint('--AddressBloc Yeni adres eklendi: ${newAddress.toJson()}');
+  }
+
+  Future<void> _newSelectedAddress(NewSelectedAddress event, Emitter<AddressState> emit) async {
+    final response = await _addressCache.loadAddressList();
+    final selectedAddress = response.firstWhere((element) => element.id == event.addressID);
+    emit(SelectedAddress(selectedAddress: selectedAddress));
   }
 }

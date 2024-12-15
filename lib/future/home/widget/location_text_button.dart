@@ -1,5 +1,7 @@
 import 'package:coffe_shop_mobile_app/product/constant/application_colors.dart';
+import 'package:coffe_shop_mobile_app/product/state/address/singleAddressBloc/single_address_bloc_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class TextButtonLocation extends StatelessWidget {
   const TextButtonLocation({
@@ -29,12 +31,26 @@ class TextButtonLocation extends StatelessWidget {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text(
-                  'Turkey, Istanbul',
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyMedium
-                      ?.copyWith(color: ApplicationColors.white),
+                BlocBuilder<SingleAddressBlocBloc, SingleAddressBlocState>(
+                  builder: (context, state) {
+                    if (state is SingleAddressBlocLoaded) {
+                      return Text(
+                        state.address.name ?? 'Lütfen bir Konum Seçiniz',
+                        style: const TextStyle(
+                          color: ApplicationColors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      );
+                    } else {
+                      return const Text(
+                        'Add New Address',
+                        style: TextStyle(
+                          color: ApplicationColors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      );
+                    }
+                  },
                 ),
                 const SizedBox(width: 8),
                 const Icon(

@@ -34,6 +34,7 @@ class _ShowModalBottomSheetElevatedButtonState
           side: WidgetStateProperty.all(
             const BorderSide(width: 2, color: ApplicationColors.ten),
           ),
+          // ignore: deprecated_member_use
           overlayColor: WidgetStateProperty.all(Colors.grey.withOpacity(0.2)),
         ),
         onPressed: widget.onPressed,

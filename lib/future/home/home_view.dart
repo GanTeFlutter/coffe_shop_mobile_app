@@ -35,9 +35,8 @@ class _HomeViewState extends HomeViewModel {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // ignore: prefer_const_constructors
-                  Row(
-                    children: const [
+                  const Row(
+                    children: [
                       Spacer(),
                       Padding(
                         padding: EdgeInsets.only(right: 5),
@@ -51,7 +50,11 @@ class _HomeViewState extends HomeViewModel {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      TextButtonLocation(onPressed: () {}),
+                      TextButtonLocation(
+                        onPressed: () {
+                          locationSlectedButton(context);
+                        },
+                      ),
                     ],
                   ),
                   Row(

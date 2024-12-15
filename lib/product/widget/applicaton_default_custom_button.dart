@@ -1,3 +1,4 @@
+import 'package:coffe_shop_mobile_app/product/constant/application_colors.dart';
 import 'package:flutter/material.dart';
 
 class CustomElevatedButton extends StatelessWidget {
@@ -5,7 +6,7 @@ class CustomElevatedButton extends StatelessWidget {
     required this.onPressed,
     required this.text,
     super.key,
-    this.backgroundColor = Colors.blue,
+    this.backgroundColor = ApplicationColors.kahve,
     this.textColor = Colors.white,
     this.borderRadius = 12.0,
     this.padding = const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
