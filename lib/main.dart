@@ -21,7 +21,7 @@ class _MyApp extends StatelessWidget {
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.white,
       ),
-      initialRoute: 'default',
+      initialRoute: '/',
       routes: AppRoutes.routes,
     );
   }

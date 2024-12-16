@@ -1,7 +1,10 @@
+import 'package:coffe_shop_mobile_app/future/basket/bloc/basket_bloc.dart';
 import 'package:coffe_shop_mobile_app/future/coffee_detail/coffee_detail_view.dart';
+import 'package:coffe_shop_mobile_app/product/constant/app_text_style.dart';
 import 'package:coffe_shop_mobile_app/product/constant/application_colors.dart';
 import 'package:coffe_shop_mobile_app/product/model/coffee/coffee.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CoffeeCard extends StatefulWidget {
@@ -69,12 +72,7 @@ class _CoffeeCardState extends State<CoffeeCard> {
               children: [
                 Text(
                   widget.coffee.name!,
-                  style: GoogleFonts.babylonica(
-                    textStyle: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                          color: ApplicationColors.black,
-                          fontWeight: FontWeight.w600,
-                        ),
-                  ),
+                  style:CustomTextStyle.coffeeCardName(context),
                 ),
                 Text(
                   widget.coffee.description!,
@@ -103,7 +101,16 @@ class _CoffeeCardState extends State<CoffeeCard> {
                           ),
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+
+                         BlocProvider.of<BasketBloc>(context).add(
+                  AddCoffeeToBasket(
+                    widget.coffee,
+                    1,
+                  
+                  ),
+                );
+                      },
                       icon: const Icon(
                         Icons.add_shopping_cart_rounded,
                         color: ApplicationColors.white,

@@ -11,8 +11,8 @@ class CustomElevatedButton extends StatelessWidget {
     this.borderRadius = 12.0,
     this.padding = const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
   });
-  final VoidCallback onPressed; // onPressed işlevi dışarıdan alınır
-  final String text; // Buton metni
+  final VoidCallback onPressed;
+  final String text;
   final Color backgroundColor;
   final Color textColor;
   final double borderRadius;

@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 
 class AppRoutes {
   static Map<String, WidgetBuilder> get routes => {
-        'default': (context) => const BasketView(),
+        'work': (context) => const BasketView(),
         '/': (context) => const SplashViewLottie(),
         '/splashView': (context) => const SplashView(),
         '/bottomNavBar': (context) => const BottomNavigationBarScreenV2(),

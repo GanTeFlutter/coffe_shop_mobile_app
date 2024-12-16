@@ -1,28 +1,16 @@
-assets/coffee/ebk/codee_image (1).jpg 
-assets/coffee/ebk/codee_image (2).jpg
-assets/coffee/ebk/codee_image (3).jpg
- assets/coffee/ebk/codee_image (4).jpg
-  assets/coffee/ebk/codee_image (5).jpg 
-  assets/coffee/ebk/codee_image (6).jpg
+// ignore_for_file: use_build_context_synchronously, deprecated_member_use
 
-assets/coffee/sk/codee_image (7).jpg 
-assets/coffee/sk/codee_image (8).jpg 
-assets/coffee/sk/codee_image (11).jpg
-assets/coffee/sk/codee_image (12).jpg 
-assets/coffee/sk/codee_image (15).jpg
-assets/coffee/sk/codee_image (16).jpg
+import 'package:coffe_shop_mobile_app/product/enums/e.app_routes.dart';
+import 'package:coffe_shop_mobile_app/product/state/address/addressBloc/address_bloc.dart';
+import 'package:coffe_shop_mobile_app/product/state/address/singleAddressBloc/single_address_bloc_bloc.dart';
+import 'package:coffe_shop_mobile_app/product/widget/applicaton_default_custom_button.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-assets/coffee/stk/codee_image (9).jpg 
-assets/coffee/stk/codee_image (10).jpg 
-assets/coffee/stk/codee_image (13).jpg 
-assets/coffee/stk/codee_image (14).jpg 
-assets/coffee/stk/codee_image (17).jpg 
-assets/coffee/stk/codee_image (18).jpg
-
-
-void locationSlectedButton(BuildContext context) {
-    showModalBottomSheet<Widget>(
-      backgroundColor: ApplicationColors.acikbeyaz,
+class CustomModalBottomSheet {
+  static Future<void> showAddressModal(BuildContext context) async {
+    await showModalBottomSheet<void>(
+      backgroundColor: Colors.white,
       context: context,
       isScrollControlled: true,
       builder: (context) {
@@ -34,7 +22,6 @@ void locationSlectedButton(BuildContext context) {
                 borderRadius: 20,
                 onPressed: () {
                   Navigator.pushNamed(context, AppRoute.addNewAddress.name).then((_) {
-                    // ignore: use_build_context_synchronously
                     Navigator.pop(context);
                   });
                 },
@@ -42,14 +29,13 @@ void locationSlectedButton(BuildContext context) {
               ),
             ),
             Card(
-              color: ApplicationColors.acikbeyaz,
               elevation: 4,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15),
-              ),
               margin: const EdgeInsets.symmetric(
                 horizontal: 16,
                 vertical: 8,
+              ),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15),
               ),
               child: Container(
                 decoration: BoxDecoration(
@@ -61,7 +47,6 @@ void locationSlectedButton(BuildContext context) {
                   ),
                   boxShadow: [
                     BoxShadow(
-                      // ignore: deprecated_member_use
                       color: Colors.black.withOpacity(0.1),
                       blurRadius: 10,
                       offset: const Offset(0, 4),
@@ -84,9 +69,7 @@ void locationSlectedButton(BuildContext context) {
                             ),
                             child: ListTile(
                               shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(
-                                  10,
-                                ),
+                                borderRadius: BorderRadius.circular(10),
                               ),
                               tileColor: Colors.grey.shade200,
                               title: Text(
@@ -120,7 +103,10 @@ void locationSlectedButton(BuildContext context) {
                       return const Center(
                         child: Text(
                           'Error',
-                          style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                            color: Colors.red,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       );
                     }
@@ -136,3 +122,4 @@ void locationSlectedButton(BuildContext context) {
       },
     );
   }
+}

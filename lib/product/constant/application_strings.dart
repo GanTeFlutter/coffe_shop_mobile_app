@@ -14,9 +14,14 @@ class ApplicationStrings {
   static const String locationCtiy = 'Turkey, Istanbul';
   static const String textfieldText = 'Search for coffee or shop';
   static const String buyonegetonefree = 'Buy One Get One Free';
-  //-HomePageShowModelBottomSheet
-  static const String enyakin = 'En Yakın Cafe';
-  static const String enyakin2 = 'En Cazip Fiyatlar';
-  static const String kendinSec = 'Kendin Seç';
-  static const String eny = 'asdasd';
+  //basket screen
+  static const String deliveryaddress = 'Delivery Address';
+  static const String lutfenadresbelirle = 'Lütfen bir Address Belirleyiniz';
+  static const String addnote = 'Add Note';
+  static const String order = 'Order';
+  static const String changeAddress = 'Change Address';
+  static const String indirim = '1 Discount is Applies';
+   static const String paymentsum = 'Payment Summary';
+    static const String totalPrice = 'Price';
+     static const String toplamadet =    'Toplam Adet';
 }
