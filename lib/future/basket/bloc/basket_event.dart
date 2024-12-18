@@ -16,8 +16,8 @@ class AddCoffeeToBasket extends BasketEvent {
   List<Object> get props => [coffee, miktar];
 }
 
-class DercreaseCoffeeFromBasket extends BasketEvent {
-  const DercreaseCoffeeFromBasket(this.coffee, this.miktar);
+class MiktarAzalatma extends BasketEvent {
+  const MiktarAzalatma(this.coffee, this.miktar);
   final Coffee coffee;
   final int miktar;
 
