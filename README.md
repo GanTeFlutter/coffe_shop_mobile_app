@@ -11,8 +11,6 @@ CoffeeDetail
 - **Sepet Yönetimi**:Firebaseten gelen Coffe model üzerine farklı modeller kullanarak Basket sistemini yönetmeye çalışıyoruz.
 - **Address Seçimi**:Address yönetimini product\state\address altında topladım.Addressleri shared_preferences ile cacheliyorum.Ayrıca adressleri emit etmek iki farklı bloc tanımladım birinde tüm adressler kaydedilip bloc üzeirinden showModalBottomSheet içerisinde gösteriliyor.ikincisi burdan seçilen adresi tek bir addressi emit ediyor.İki farklı veriyi tek bir bloktan farklı zamanlarda yayınlamak istedigimizde biri diğerini yokediyodu  çözüm olarak aynı state te de yayınlanabilirdi ancak daha basit olamsı açısından SingleAddressBloc diye ayırdım.
 
-## Görseller
-
 ## Uygulama Görselleri
 
 ### Ana Ekranlar
@@ -34,6 +32,9 @@ CoffeeDetail
 <img src="https://github.com/user-attachments/assets/b24e659a-5229-4935-85d1-5db40d1ac52d" width="150" />
 
 
-Card Verileri Bloc ile firebase ten geliyor
 
-<img src="https://github.com/user-attachments/assets/46a669db-c640-4844-b699-b868da7dcb39" width="150" />
+## HomePage:
+
+HomePage in HomeViewModel da kategoriList adında bir liste belirleyip bununla bir listviewbuilder oluşturdum.Liste içindeki Stringleri kullanarak kullanıcı bunlara tıklayınca bloc mekanizması tetiklenerek yeni liste yayınlanıyor.
+BlocProvider.of<HomeBloc>(context).add(HomeKategoryEvent(message: kategori.event)); 
+Kategori.event listem içinde tanımlı ListviewBuilder da indexe göre listeleme yağtığı için Eventi doğru bir şekilde gönderebiliyoruz.
