@@ -6,7 +6,7 @@ import 'package:coffe_shop_mobile_app/future/basket/widget/basket_item_card.dart
 import 'package:coffe_shop_mobile_app/future/basket/widget/basket_payment.dart';
 import 'package:coffe_shop_mobile_app/future/basket/widget/custom_elevated_button.dart';
 import 'package:coffe_shop_mobile_app/future/basket/widget/indirim_button.dart';
-import 'package:coffe_shop_mobile_app/product/constant/app_text_style.dart';
+import 'package:coffe_shop_mobile_app/product/constant/app_custom_text_style.dart';
 import 'package:coffe_shop_mobile_app/product/constant/application_colors.dart';
 import 'package:coffe_shop_mobile_app/product/constant/application_strings.dart';
 import 'package:coffe_shop_mobile_app/product/state/address/singleAddressBloc/single_address_bloc_bloc.dart';
@@ -105,9 +105,9 @@ class _BasketViewState extends BasketViewModel {
         children: [
           Text(
             ApplicationStrings.deliveryaddress,
-            style: CustomTextStyle.titleMedium(context),
+            style: AppCustomTextStyle.titleMedium(context),
           ),
-          BlocBuilder<SingleAddressBlocBloc, SingleAddressBlocState>(
+          BlocBuilder<SingleAddressBloc, SingleAddressBlocState>(
             builder: (context, state) {
               if (state is SingleAddressBlocLoaded) {
                 return ListTile(
@@ -131,7 +131,7 @@ class _BasketViewState extends BasketViewModel {
                       ),
                       TextSpan(
                         text: ApplicationStrings.lutfenadresbelirle,
-                        style: CustomTextStyle.bodyMedium(
+                        style: AppCustomTextStyle.bodyMedium(
                           context,
                         ),
                       ),

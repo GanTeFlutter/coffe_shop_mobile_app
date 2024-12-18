@@ -1,4 +1,3 @@
-///Firebase Collection isimlerini tutar.
 enum FirebaseCollectionName { coffee }
 
 /// Firebase Document isimlerini tutar.

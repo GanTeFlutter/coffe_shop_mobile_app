@@ -1,6 +1,6 @@
 import 'package:coffe_shop_mobile_app/future/basket/bloc/basket_bloc.dart';
 import 'package:coffe_shop_mobile_app/future/basket/model/basket_item_model.dart';
-import 'package:coffe_shop_mobile_app/product/constant/app_text_style.dart';
+import 'package:coffe_shop_mobile_app/product/constant/app_custom_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -16,9 +16,9 @@ class BasketItemCard extends StatelessWidget {
       contentPadding: const EdgeInsets.all(10),
       title: Text(
         item.coffee.name ?? '',
-        style: CustomTextStyle.coffeeCardName(context),
+        style: AppCustomTextStyle.coffeeCardName(context),
       ),
-      subtitle: Text(item.coffee.extra ?? '', style: CustomTextStyle.bodyMedium(context)),
+      subtitle: Text(item.coffee.extra ?? '', style: AppCustomTextStyle.bodyMedium(context)),
       leading: Container(
         width: size.width * 0.17,
         decoration: BoxDecoration(
@@ -57,7 +57,7 @@ class BasketItemCard extends StatelessWidget {
             ),
             Text(
               item.miktar.toString(),
-              style: CustomTextStyle.bodyMedium(context),
+              style: AppCustomTextStyle.bodyMedium(context),
             ),
             IconButton(
               padding: EdgeInsets.zero,

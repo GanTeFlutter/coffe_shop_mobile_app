@@ -1,10 +1,11 @@
 import 'package:coffe_shop_mobile_app/future/coffee_detail/coffee_detail_view_model.dart';
+import 'package:coffe_shop_mobile_app/future/coffee_detail/widget/cd_custom_button.dart';
 import 'package:coffe_shop_mobile_app/future/coffee_detail/widget/size_kategory.dart';
-import 'package:coffe_shop_mobile_app/product/constant/app_text_style.dart';
+import 'package:coffe_shop_mobile_app/product/constant/app_custom_text_style.dart';
 import 'package:coffe_shop_mobile_app/product/constant/application_colors.dart';
+import 'package:coffe_shop_mobile_app/product/constant/application_strings.dart';
 import 'package:coffe_shop_mobile_app/product/model/coffee/coffee.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class CoffeeDetailView extends StatefulWidget {
   const CoffeeDetailView({required this.coffee, super.key});
@@ -24,31 +25,18 @@ class _CoffeeDetailViewState extends CoffeeDetailViewModel {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30),
           child: Column(
+            spacing: 15,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: size.height * sized),
               appbar(context),
-              SizedBox(
-                height: size.height * sized,
-              ),
               image(size),
-              SizedBox(
-                height: size.height * 0.02,
-              ),
-              Text(
-                widget.coffee.name!,
-                style: GoogleFonts.babylonica(
-                  textStyle: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                        color: ApplicationColors.black,
-                        fontWeight: FontWeight.w600,
-                      ),
-                ),
-              ),
+              Text(widget.coffee.name!, style: AppCustomTextStyle.coffeeCardName(context)),
               Row(
                 children: [
                   Text(
                     widget.coffee.extra!,
-                    style: CustomTextStyle.bodyMedium(context),
+                    style: AppCustomTextStyle.bodyMedium(context),
                   ),
                   const Spacer(),
                   const Icon(
@@ -68,9 +56,6 @@ class _CoffeeDetailViewState extends CoffeeDetailViewModel {
                   ),
                 ],
               ),
-              SizedBox(
-                height: size.height * 0.02,
-              ),
               Row(
                 children: [
                   const Icon(
@@ -82,35 +67,31 @@ class _CoffeeDetailViewState extends CoffeeDetailViewModel {
                     padding: const EdgeInsets.symmetric(horizontal: 5),
                     child: Text(
                       widget.coffee.rating.toString(),
-                      style: CustomTextStyle.titleMedium(context),
+                      style: AppCustomTextStyle.titleMedium(context),
                     ),
                   ),
                   Text(
                     '(230)',
-                    style: CustomTextStyle.bodyMedium(context),
+                    style: AppCustomTextStyle.bodyMedium(context),
                   ),
                 ],
               ),
               Divider(
-                height: 50,
                 color: Colors.grey[200],
               ),
               Text(
-                'Description',
-                style: CustomTextStyle.titleMedium(context),
-              ),
-              SizedBox(
-                height: size.height * 0.02,
+                ApplicationStrings.description,
+                style: AppCustomTextStyle.titleMedium(context),
               ),
               Text(
                 widget.coffee.description!,
-                style: CustomTextStyle.bodyMedium(context),
+                style: AppCustomTextStyle.bodyMedium(context),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 15),
                 child: Text(
-                  'Size',
-                  style: CustomTextStyle.titleMedium(context),
+                  ApplicationStrings.cdsize,
+                  style: AppCustomTextStyle.titleMedium(context),
                 ),
               ),
               SizedKategory(sizes: sizes, cofeeSize: cofeeSize),
@@ -123,53 +104,13 @@ class _CoffeeDetailViewState extends CoffeeDetailViewModel {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Price',
-                          style: CustomTextStyle.bodyMedium(context),
-                        ),
-                        ValueListenableBuilder<String>(
-                          valueListenable: cofeeSize,
-                          builder: (context, value, child) {
-                            final selectedPrice =
-                                sizePrices[value] ?? 5.0; // Varsayılan fiyat 'S' için 5.0
-
-                            return Text(
-                              '\$${selectedPrice.toStringAsFixed(2)}', // Fiyatı göster
-                              style: CustomTextStyle.titleMedium(context),
-                            );
-                          },
+                          '${widget.coffee.price} Tl',
+                          style: AppCustomTextStyle.titleMedium(context),
                         ),
                       ],
                     ),
                     const Spacer(),
-                    Padding(
-                      padding: const EdgeInsets.all(8),
-                      child: OutlinedButton(
-                        style: OutlinedButton.styleFrom(
-                          side: const BorderSide(
-                            color: Colors.white,
-                            width: 2,
-                          ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
-                          backgroundColor: ApplicationColors.kahve,
-                        ),
-                        onPressed: () {},
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 5),
-                          child: Text(
-                            'Add to cart',
-                            style: GoogleFonts.b612(
-                              textStyle: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                                    color: ApplicationColors.white,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
+                    const CdCustomButton(),
                   ],
                 ),
               ),

@@ -18,8 +18,7 @@ class FirebaseService implements FirebaseBaseService {
     required T Function(Map<String, dynamic>) fromJson,
     required String docName,
   }) async {
-    final response =
-        await _firestore.collection(collectionName).doc(docName).get();
+    final response = await _firestore.collection(collectionName).doc(docName).get();
 
     final data = response.data();
     if (data == null) {
@@ -38,7 +37,6 @@ class FirebaseService implements FirebaseBaseService {
         throw Exception('Map değil$docName');
       }
     }).toList();
-
     return models;
   }
 }

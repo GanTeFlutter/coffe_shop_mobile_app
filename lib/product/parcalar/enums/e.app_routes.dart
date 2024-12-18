@@ -1,5 +1,4 @@
 enum AppRoute {
-  
   splash,
   splashView,
   bottomNavBar,

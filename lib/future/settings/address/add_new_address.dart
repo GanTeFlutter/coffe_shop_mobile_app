@@ -1,5 +1,5 @@
-import 'package:coffe_shop_mobile_app/future/settings/add_news_ad_view_model.dart';
-import 'package:coffe_shop_mobile_app/product/constant/app_text_style.dart';
+import 'package:coffe_shop_mobile_app/future/settings/address/add_news_ad_view_model.dart';
+import 'package:coffe_shop_mobile_app/product/constant/app_custom_text_style.dart';
 import 'package:coffe_shop_mobile_app/product/model/address/address.dart';
 import 'package:coffe_shop_mobile_app/product/state/address/addressBloc/address_bloc.dart';
 import 'package:coffe_shop_mobile_app/product/widget/applicaton_default_custom_button.dart';
@@ -34,7 +34,7 @@ class _AddNewAddressState extends AddNewsAdViewModel {
                     icon: const Icon(Icons.arrow_back_ios),
                   ),
                   const Spacer(),
-                  Text('Add New Address', style: CustomTextStyle.titleMedium(context)),
+                  Text('Add New Address', style: AppCustomTextStyle.titleMedium(context)),
                   const Spacer(),
                 ],
               ),
@@ -44,7 +44,7 @@ class _AddNewAddressState extends AddNewsAdViewModel {
               ),
               Text(
                 'I need your full address so I can ship your order to you.',
-                style: CustomTextStyle.bodyMedium(context),
+                style: AppCustomTextStyle.bodyMedium(context),
               ),
               SizedBox(height: size.height * textfSize),
               Padding(

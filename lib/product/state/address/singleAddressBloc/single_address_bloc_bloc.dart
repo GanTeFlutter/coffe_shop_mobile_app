@@ -8,8 +8,8 @@ import 'package:equatable/equatable.dart';
 part 'single_address_bloc_event.dart';
 part 'single_address_bloc_state.dart';
 
-class SingleAddressBlocBloc extends Bloc<SingleAddressBlocEvent, SingleAddressBlocState> {
-  SingleAddressBlocBloc() : super(SingleAddressBlocInitial()) {
+class SingleAddressBloc extends Bloc<SingleAddressBlocEvent, SingleAddressBlocState> {
+  SingleAddressBloc() : super(SingleAddressBlocInitial()) {
     on<AddSingleAddress>(_addSingleAddress);
   }
   final AddressCache _addressCache = AddressCache();

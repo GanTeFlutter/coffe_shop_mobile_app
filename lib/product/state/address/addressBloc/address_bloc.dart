@@ -23,11 +23,9 @@ class AddressBloc extends Bloc<AddressEvent, AddressState> {
   Future<void> _newListEmitAddress(NewSaveAddress event, Emitter<AddressState> emit) async {
     final currentList = await _addressCache.loadAddressList();
 
-    // Mevcut ID'leri kontrol ederek yeni bir ID oluştur
     final ids = currentList.map((address) => int.tryParse(address.id ?? '0') ?? 0).toList();
     final newId = (ids.isNotEmpty ? ids.reduce((a, b) => a > b ? a : b) + 1 : 1).toString();
 
-    // Yeni Address nesnesini oluştur
     final newAddress = Address(
       id: newId,
       name: event.address.name,
@@ -38,10 +36,8 @@ class AddressBloc extends Bloc<AddressEvent, AddressState> {
       status: event.address.status,
     );
 
-    // Adresi kaydet
     await _addressCache.addNewAddress(newAddress);
 
-    // Listeyi güncelleyip yeniden yay
     final updatedList = await _addressCache.loadAddressList();
 
     emit(AddressLoaded(listAddress: updatedList));

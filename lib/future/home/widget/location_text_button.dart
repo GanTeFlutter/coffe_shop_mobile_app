@@ -31,7 +31,7 @@ class TextButtonLocation extends StatelessWidget {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                BlocBuilder<SingleAddressBlocBloc, SingleAddressBlocState>(
+                BlocBuilder<SingleAddressBloc, SingleAddressBlocState>(
                   builder: (context, state) {
                     if (state is SingleAddressBlocLoaded) {
                       return Text(

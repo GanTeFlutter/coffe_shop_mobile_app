@@ -5,6 +5,8 @@ import 'package:coffe_shop_mobile_app/future/home/widget/custom_textfield.dart';
 import 'package:coffe_shop_mobile_app/future/home/widget/filter_button.dart';
 import 'package:coffe_shop_mobile_app/future/home/widget/kategory_button.dart';
 import 'package:coffe_shop_mobile_app/future/home/widget/location_text_button.dart';
+import 'package:coffe_shop_mobile_app/product/constant/application_strings.dart';
+import 'package:coffe_shop_mobile_app/product/widget/show_mbs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -42,7 +44,7 @@ class _HomeViewState extends HomeViewModel {
                         padding: EdgeInsets.only(right: 5),
                         child: CircleAvatar(
                           radius: 30,
-                          backgroundImage: AssetImage('assets/profil/profile.jpg'),
+                          backgroundImage: AssetImage(ApplicationStrings.prfilImage),
                         ),
                       ),
                     ],
@@ -52,7 +54,7 @@ class _HomeViewState extends HomeViewModel {
                     children: [
                       TextButtonLocation(
                         onPressed: () {
-                          locationSlectedButton(context);
+                          CustomModalBottomSheet.showAddressModal(context);
                         },
                       ),
                     ],
@@ -91,9 +93,7 @@ class _HomeViewState extends HomeViewModel {
                         return girdBuilder(state);
                       }
                       return const Center(
-                        child: Text(
-                          'Bilinmeyen bir hata oluştu.Lütfen destek ekibimizle iletişime geçiniz.',
-                        ),
+                        child: Text(ApplicationStrings.hata),
                       );
                     },
                   ),

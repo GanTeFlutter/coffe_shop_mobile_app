@@ -1,4 +1,5 @@
 import 'package:coffe_shop_mobile_app/product/constant/application_colors.dart';
+import 'package:coffe_shop_mobile_app/product/constant/application_strings.dart';
 import 'package:flutter/material.dart';
 
 class HomeViewTextfield extends StatelessWidget {
@@ -17,17 +18,15 @@ class HomeViewTextfield extends StatelessWidget {
           child: TextField(
             controller: searchController,
             decoration: InputDecoration(
-              hintText: 'Search coffee',
-              hintStyle: Theme.of(context)
-                  .textTheme
-                  .bodyMedium
-                  ?.copyWith(color: ApplicationColors.white),
+              hintText: ApplicationStrings.searchcoffe,
+              hintStyle:
+                  Theme.of(context).textTheme.bodyMedium?.copyWith(color: ApplicationColors.white),
               prefixIcon: const Icon(
                 Icons.search,
                 color: ApplicationColors.white,
               ),
               filled: true,
-              fillColor: ApplicationColors.kahvesiyah,
+              fillColor: ApplicationColors.kahvesiyah2,
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(20),
                 borderSide: BorderSide.none,
