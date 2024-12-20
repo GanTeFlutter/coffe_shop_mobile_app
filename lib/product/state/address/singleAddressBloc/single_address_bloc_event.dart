@@ -14,3 +14,5 @@ class AddSingleAddress extends SingleAddressBlocEvent {
   @override
   List<Object> get props => [address];
 }
+
+class ClearSingleAddress extends SingleAddressBlocEvent {}

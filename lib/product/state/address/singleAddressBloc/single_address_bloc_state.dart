@@ -9,6 +9,8 @@ abstract class SingleAddressBlocState extends Equatable {
 
 class SingleAddressBlocInitial extends SingleAddressBlocState {}
 
+class SingleAddressBlocLoading extends SingleAddressBlocState {}
+
 class SingleAddressBlocLoaded extends SingleAddressBlocState {
   const SingleAddressBlocLoaded(this.address);
 
@@ -16,4 +18,13 @@ class SingleAddressBlocLoaded extends SingleAddressBlocState {
 
   @override
   List<Object> get props => [address];
+}
+
+class SingleAddressBlocError extends SingleAddressBlocState {
+  const SingleAddressBlocError(this.message);
+
+  final String message;
+
+  @override
+  List<Object> get props => [message];
 }

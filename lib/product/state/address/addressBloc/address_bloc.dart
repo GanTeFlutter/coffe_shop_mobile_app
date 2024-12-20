@@ -2,51 +2,75 @@ import 'package:bloc/bloc.dart';
 import 'package:coffe_shop_mobile_app/product/model/address/address.dart';
 import 'package:coffe_shop_mobile_app/product/state/address/cache/address_cache.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
 
 part 'address_event.dart';
 part 'address_state.dart';
 
 class AddressBloc extends Bloc<AddressEvent, AddressState> {
-  AddressBloc() : super(AddressInitial()) {
-    on<AddressEvent>(_addressListEemit);
-    on<NewSaveAddress>(_newListEmitAddress);
-    on<NewSelectedAddress>(_newSelectedAddress);
-  }
-  final AddressCache _addressCache = AddressCache();
-
-  Future<void> _addressListEemit(AddressEvent event, Emitter<AddressState> emit) async {
-    final response = await _addressCache.loadAddressList();
-    emit(AddressLoaded(listAddress: response));
+  AddressBloc({AddressCache? addressCache})
+      : _addressCache = addressCache ?? AddressCache(),
+        super(AddressInitial()) {
+    on<LoadAddressList>(_onLoadAddresses);
+    on<NewSaveAddress>(_onSaveAddress);
+    on<NewSelectedAddress>(_onSelectAddress);
   }
 
-  Future<void> _newListEmitAddress(NewSaveAddress event, Emitter<AddressState> emit) async {
-    final currentList = await _addressCache.loadAddressList();
+  final AddressCache _addressCache;
 
-    final ids = currentList.map((address) => int.tryParse(address.id ?? '0') ?? 0).toList();
-    final newId = (ids.isNotEmpty ? ids.reduce((a, b) => a > b ? a : b) + 1 : 1).toString();
+  Future<void> _onLoadAddresses(LoadAddressList event, Emitter<AddressState> emit) async {
+    try {
+      emit(AddressLoading());
+      final addresses = await _addressCache.loadAddressList();
+      emit(AddressLoaded(listAddress: addresses));
+    } catch (e) {
+      emit(AddressError(message: 'Adresler yüklenirken hata oluştu: $e'));
+    }
+  }
 
-    final newAddress = Address(
+  Future<void> _onSaveAddress(NewSaveAddress event, Emitter<AddressState> emit) async {
+    try {
+      emit(AddressLoading());
+      final newAddress = await _createNewAddress(event.address);
+      await _addressCache.addNewAddress(newAddress);
+
+      final updatedList = await _addressCache.loadAddressList();
+      emit(AddressLoaded(listAddress: updatedList));
+    } catch (e) {
+      emit(AddressError(message: 'Adres eklenirken hata oluştu: $e'));
+    }
+  }
+
+  Future<void> _onSelectAddress(NewSelectedAddress event, Emitter<AddressState> emit) async {
+    try {
+      emit(AddressLoading());
+      final addresses = await _addressCache.loadAddressList();
+      final selected = addresses.firstWhere(
+        (element) => element.id == event.addressID,
+        orElse: () => throw Exception('Adres bulunamadı'),
+      );
+      emit(SelectedAddress(selectedAddress: selected));
+    } catch (e) {
+      emit(AddressError(message: 'Adres seçilirken hata oluştu: $e'));
+    }
+  }
+
+  Future<Address> _createNewAddress(Address address) async {
+    final addresses = await _addressCache.loadAddressList();
+    final newId = _generateNewId(addresses);
+
+    return Address(
       id: newId,
-      name: event.address.name,
-      description: event.address.description,
-      ext: event.address.ext,
-      latlong: event.address.latlong,
-      note: event.address.note,
-      status: event.address.status,
+      name: address.name,
+      description: address.description,
+      ext: address.ext,
+      latlong: address.latlong,
+      note: address.note,
+      status: address.status,
     );
-
-    await _addressCache.addNewAddress(newAddress);
-
-    final updatedList = await _addressCache.loadAddressList();
-
-    emit(AddressLoaded(listAddress: updatedList));
-    debugPrint('--AddressBloc Yeni adres eklendi: ${newAddress.toJson()}');
   }
 
-  Future<void> _newSelectedAddress(NewSelectedAddress event, Emitter<AddressState> emit) async {
-    final response = await _addressCache.loadAddressList();
-    final selectedAddress = response.firstWhere((element) => element.id == event.addressID);
-    emit(SelectedAddress(selectedAddress: selectedAddress));
+  String _generateNewId(List<Address> addresses) {
+    final ids = addresses.map((address) => int.tryParse(address.id ?? '0') ?? 0).toList();
+    return (ids.isEmpty ? 1 : ids.reduce((a, b) => a > b ? a : b) + 1).toString();
   }
 }

@@ -9,6 +9,8 @@ abstract class AddressState extends Equatable {
 
 class AddressInitial extends AddressState {}
 
+class AddressLoading extends AddressState {}
+
 class AddressLoaded extends AddressState {
   const AddressLoaded({required this.listAddress});
   final List<Address> listAddress;
@@ -32,4 +34,3 @@ class AddressError extends AddressState {
   @override
   List<Object> get props => [message];
 }
-

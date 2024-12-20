@@ -11,16 +11,25 @@ part 'single_address_bloc_state.dart';
 class SingleAddressBloc extends Bloc<SingleAddressBlocEvent, SingleAddressBlocState> {
   SingleAddressBloc() : super(SingleAddressBlocInitial()) {
     on<AddSingleAddress>(_addSingleAddress);
+    on<ClearSingleAddress>(_clearSingleAddress);
   }
   final AddressCache _addressCache = AddressCache();
 
   Future<void> _addSingleAddress(
-     AddSingleAddress event, Emitter<SingleAddressBlocState> emit) async {
-    //cacheden adres listesini çektik
-    final response = await _addressCache.loadAddressList();
-    //kullanicinin sectigi adres le listedeki adresleri karsilastirip secileni bulduk
-    final selectedAddress = response.firstWhere((element) => element.id == event.address.id);
-    //bulunan adresi yaydik
-    emit(SingleAddressBlocLoaded(selectedAddress));
+      AddSingleAddress event, Emitter<SingleAddressBlocState> emit) async {
+    try {
+      final response = await _addressCache.loadAddressList();
+      final selectedAddress = response.firstWhere(
+        (element) => element.id == event.address.id,
+        orElse: () => throw Exception('Adres bulunamadı'),
+      );
+      emit(SingleAddressBlocLoaded(selectedAddress));
+    } catch (e) {
+      emit(SingleAddressBlocError('Adres seçilirken hata oluştu: $e'));
+    }
+  }
+
+  void _clearSingleAddress(ClearSingleAddress event, Emitter<SingleAddressBlocState> emit) {
+    emit(SingleAddressBlocInitial());
   }
 }

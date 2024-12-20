@@ -3,30 +3,33 @@ import 'package:coffe_shop_mobile_app/product/model/coffee/coffee.dart';
 import 'package:coffe_shop_mobile_app/product/parcalar/enums/e.firebase.dart';
 import 'package:coffe_shop_mobile_app/product/service/firebase_service.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
 
 part 'home_event.dart';
 part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  HomeBloc() : super(HomeInitial()) {
-    on<HomeKategoryEvent>(_debugDeneme);
+  HomeBloc({IFirebaseService? firebaseService})
+      : _firebaseService = firebaseService ?? FirebaseService(),
+        super(HomeInitial()) {
+    on<HomeKategoryEvent>(_onLoadCategory);
   }
 
-  final _firebaseService = FirebaseService();
-  Future<void> _debugDeneme(HomeKategoryEvent event, Emitter<HomeState> emit) async {
-    debugPrint('--HomeBloc: ${event.message}');
-
+  final IFirebaseService _firebaseService;
+  Future<void> _onLoadCategory(HomeKategoryEvent event, Emitter<HomeState> emit) async {
     try {
-      final responseFire = await _firebaseService.fetchCoffee(
+      emit(HomeLoading());
+
+      final coffees = await _firebaseService.fetchCollection(
         collectionName: FirebaseCollDocName.coffee.name,
-        fromJson: Coffee.fromJson,
         docName: event.message,
+        fromJson: Coffee.fromJson,
       );
-      debugPrint('--HomeBloc: responseFire: $responseFire');
-      emit(HomeLoaded(listCoffee: responseFire));
-    } catch (e) {
+
+      emit(HomeLoaded(listCoffee: coffees));
+    } on FirebaseServiceException catch (e) {
       emit(HomeErrorState(message: e.toString()));
+    } catch (e) {
+      emit(HomeErrorState(message: 'Beklenmeyen bir hata oluştu: $e'));
     }
   }
 }

@@ -1,42 +1,76 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:coffe_shop_mobile_app/product/parcalar/enums/e.firebase_fields.dart';
 
 // ignore: one_member_abstracts
-abstract class FirebaseBaseService {
-  Future<List<T>> fetchCoffee<T>({
+abstract class IFirebaseService {
+  Future<List<T>> fetchCollection<T>({
     required String collectionName,
-    required T Function(Map<String, dynamic>) fromJson,
     required String docName,
+    required T Function(Map<String, dynamic>) fromJson,
   });
 }
 
-class FirebaseService implements FirebaseBaseService {
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+class FirebaseService implements IFirebaseService {
+  FirebaseService({FirebaseFirestore? firestore})
+      : _firestore = firestore ?? FirebaseFirestore.instance;
+
+  final FirebaseFirestore _firestore;
 
   @override
-  Future<List<T>> fetchCoffee<T>({
+  Future<List<T>> fetchCollection<T>({
     required String collectionName,
-    required T Function(Map<String, dynamic>) fromJson,
     required String docName,
+    required T Function(Map<String, dynamic>) fromJson,
   }) async {
-    final response = await _firestore.collection(collectionName).doc(docName).get();
+    try {
+      final snapshot = await _getDocumentSnapshot(collectionName, docName);
+      final data = _validateData(snapshot, docName);
+      final items = _validateArray(data, docName);
 
-    final data = response.data();
-    if (data == null) {
-      throw Exception('Data null$docName');
+      return _parseItems(items, fromJson, docName);
+    } catch (e) {
+      throw FirebaseServiceException('Veri çekilirken hata: $e');
     }
-
-    final coffeesArray = data['coffees'];
-    if (coffeesArray == null || coffeesArray is! List) {
-      throw Exception('Null veya List Degil$docName');
-    }
-
-    final models = coffeesArray.map((item) {
-      if (item is Map<String, dynamic>) {
-        return fromJson(item);
-      } else {
-        throw Exception('Map değil$docName');
-      }
-    }).toList();
-    return models;
   }
+
+  Future<DocumentSnapshot> _getDocumentSnapshot(String collection, String doc) async {
+    return _firestore.collection(collection).doc(doc).get();
+  }
+
+  Map<String, dynamic> _validateData(DocumentSnapshot snapshot, String docName) {
+    final data = snapshot.data() as Map<String, dynamic>?;
+    if (data == null) {
+      throw FirebaseServiceException('Veri bulunamadı: $docName');
+    }
+    return data;
+  }
+
+  List<dynamic> _validateArray(Map<String, dynamic> data, String docName) {
+    final items = data[FirebaseFields.coffees.value];
+    if (items == null || items is! List<dynamic>) {
+      throw FirebaseServiceException('Geçersiz veri formatı: $docName');
+    }
+    return items;
+  }
+
+  List<T> _parseItems<T>(
+    List<dynamic> items,
+    T Function(Map<String, dynamic>) fromJson,
+    String docName,
+  ) {
+    return items.map((item) {
+      if (item is! Map<String, dynamic>) {
+        throw FirebaseServiceException('Geçersiz item formatı: $docName');
+      }
+      return fromJson(item);
+    }).toList();
+  }
+}
+
+class FirebaseServiceException implements Exception {
+  FirebaseServiceException(this.message);
+  final String message;
+
+  @override
+  String toString() => message;
 }

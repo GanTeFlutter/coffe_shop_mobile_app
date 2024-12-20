@@ -1,7 +1,7 @@
 import 'package:coffe_shop_mobile_app/future/basket/bloc/basket_bloc.dart';
+import 'package:coffe_shop_mobile_app/future/basket/utils/constant/basket_strings.dart';
 import 'package:coffe_shop_mobile_app/product/constant/app_custom_text_style.dart';
 import 'package:coffe_shop_mobile_app/product/constant/application_colors.dart';
-import 'package:coffe_shop_mobile_app/product/constant/application_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -34,7 +34,7 @@ class _BasketPaymentState extends State<BasketPayment> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      ApplicationStrings.paymentsum,
+                      BasketStrings.paymentsum,
                       style: AppCustomTextStyle.titleMedium(context),
                     ),
                     Row(
@@ -53,7 +53,7 @@ class _BasketPaymentState extends State<BasketPayment> {
                     Row(
                       children: [
                         Text(
-                          ApplicationStrings.toplamadet,
+                          BasketStrings.toplamadet,
                           style: AppCustomTextStyle.bodyMedium(context),
                         ),
                         const Spacer(),

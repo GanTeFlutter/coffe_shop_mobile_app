@@ -9,6 +9,7 @@
 .svn/            
 assets/
 ios/
+lib/product/parcalar/dinleme/firebase_options.dart
 lib/product/dinleme/firebase_options.dart
 # IDE ve Editör Dosyaları
 *.iml           
