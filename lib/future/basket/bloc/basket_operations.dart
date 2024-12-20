@@ -28,13 +28,11 @@ class BasketOperations {
     required int quantity,
   }) {
     final item = items[index];
-
     if (item.miktar > 1) {
       items[index] = item.copyWith(miktar: item.miktar - quantity);
     } else {
       items.removeAt(index);
     }
-
     return items;
   }
 

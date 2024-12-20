@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:coffe_shop_mobile_app/product/parcalar/enums/e.firebase_fields.dart';
+import 'package:coffe_shop_mobile_app/product/enums/e.firebase_fields.dart';
 
 // ignore: one_member_abstracts
 abstract class IFirebaseService {
@@ -33,8 +33,8 @@ class FirebaseService implements IFirebaseService {
     }
   }
 
-  Future<DocumentSnapshot> _getDocumentSnapshot(String collection, String doc) async {
-    return _firestore.collection(collection).doc(doc).get();
+  Future<DocumentSnapshot> _getDocumentSnapshot(String collectionName, String docName) async {
+    return _firestore.collection(collectionName).doc(docName).get();
   }
 
   Map<String, dynamic> _validateData(DocumentSnapshot snapshot, String docName) {

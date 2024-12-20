@@ -49,7 +49,14 @@ class BasketItemCard extends StatelessWidget {
             ),
             IconButton(
               padding: EdgeInsets.zero,
-              onPressed: () {},
+              onPressed: () {
+                BlocProvider.of<BasketBloc>(context).add(
+                  MiktarAzalatma(
+                    item.coffee,
+                    -1,
+                  ),
+                );
+              },
               icon: const Icon(
                 Icons.remove,
                 size: 23,

@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:coffe_shop_mobile_app/product/model/coffee/coffee.dart';
-import 'package:coffe_shop_mobile_app/product/parcalar/enums/e.firebase.dart';
+import 'package:coffe_shop_mobile_app/product/enums/e.firebase.dart';
 import 'package:coffe_shop_mobile_app/product/service/firebase_service.dart';
 import 'package:equatable/equatable.dart';
 
@@ -29,7 +29,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     } on FirebaseServiceException catch (e) {
       emit(HomeErrorState(message: e.toString()));
     } catch (e) {
-      emit(HomeErrorState(message: 'Beklenmeyen bir hata oluştu: $e'));
+      
+   
     }
   }
 }

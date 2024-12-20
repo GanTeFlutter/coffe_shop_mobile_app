@@ -9,8 +9,6 @@
 .svn/            
 assets/
 ios/
-lib/product/parcalar/dinleme/firebase_options.dart
-lib/product/dinleme/firebase_options.dart
 # IDE ve Editör Dosyaları
 *.iml           
 *.ipr
@@ -39,4 +37,4 @@ app.*.map.json
 /android/app/debug  
 /android/app/profile
 /android/app/release 
-lib/product/dinleme/firebase_options.dart
+lib/product/parcalar/dinleme/firebase_options.dart

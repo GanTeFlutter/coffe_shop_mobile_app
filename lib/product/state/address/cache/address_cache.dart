@@ -22,7 +22,6 @@ class AddressCache {
       if (_isAddressExists(addresses, newAddress.id)) {
         return;
       }
-
       await _saveAddressToPrefs(prefs, newAddress);
     } catch (e) {
       throw AddressCacheException('Adres eklenirken hata oluştu: $e');
