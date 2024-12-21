@@ -8,15 +8,10 @@ mixin BasketMixin {
     return Divider(
       indent: 30,
       endIndent: 30,
-      // ignore: deprecated_member_use
-      color: Colors.black.withOpacity(0.5),
+      color: Colors.grey[300],
       thickness: 1,
     );
   }
 
-  void showOrderComplete(BuildContext context, String message) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(message)),
-    );
-  }
+  
 }

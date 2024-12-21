@@ -1,6 +1,6 @@
 import 'package:coffe_shop_mobile_app/product/model/coffee/coffee.dart';
 
-//Tek bir ürünün sepete eklenmesi için kullanılan model
+
 //ter bir ürünün sepetteki miktarını ve topam fiyatını hesaplamak için
 class BasketItemModel {
   BasketItemModel({

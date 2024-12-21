@@ -10,18 +10,15 @@ class BasketAddressText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(15),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            BasketStrings.deliveryaddress,
-            style: AppCustomTextStyle.titleMedium(context),
-          ),
-          _buildAddressContent(context),
-        ],
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          BasketStrings.deliveryaddress,
+          style: AppCustomTextStyle.titleMedium(context),
+        ),
+        _buildAddressContent(context),
+      ],
     );
   }
 

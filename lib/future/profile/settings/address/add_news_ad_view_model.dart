@@ -1,4 +1,4 @@
-import 'package:coffe_shop_mobile_app/future/settings/address/add_new_address.dart';
+import 'package:coffe_shop_mobile_app/future/profile/settings/address/add_new_address.dart';
 import 'package:flutter/material.dart';
 
 abstract class AddNewsAdViewModel extends State<AddNewAddress> {

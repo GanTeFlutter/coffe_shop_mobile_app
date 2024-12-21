@@ -5,8 +5,11 @@ import 'package:coffe_shop_mobile_app/future/home/bloc/home_bloc.dart';
 import 'package:coffe_shop_mobile_app/product/enums/e.firebase.dart';
 import 'package:coffe_shop_mobile_app/product/state/address/addressBloc/address_bloc.dart';
 import 'package:coffe_shop_mobile_app/product/state/address/singleAddressBloc/single_address_bloc_bloc.dart';
+import 'package:coffe_shop_mobile_app/product/state/bottom_nav_bar/page_provider.dart';
+import 'package:coffe_shop_mobile_app/product/state/indirim.dart/indirim.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 
 class StateInitialize extends StatelessWidget {
   const StateInitialize({required this.child, super.key});
@@ -16,16 +19,25 @@ class StateInitialize extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        //Bloc
         BlocProvider(
-            create: (context) =>
-                HomeBloc()..add(HomeKategoryEvent(message: FirebaseCollDocName.sk.name))),
-        BlocProvider(create: (context) => AddressBloc()..add(LoadAddressList())),
+          create: (context) =>
+              HomeBloc()..add(HomeKategoryEvent(message: FirebaseCollDocName.sk.name)),
+        ),
+        BlocProvider(
+          create: (context) => AddressBloc()..add(LoadAddressList()),
+        ),
         BlocProvider(
           create: (context) => SingleAddressBloc(),
         ),
         BlocProvider(
           create: (context) => BasketBloc(),
-        )
+        ),
+        //Provider  
+        ChangeNotifierProvider(
+          create: (context) => PageProvider(),
+        ),
+        ChangeNotifierProvider(create: (context) =>  Indirim(),)
       ],
       child: child,
     );

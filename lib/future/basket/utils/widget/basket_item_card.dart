@@ -70,7 +70,7 @@ class BasketItemCard extends StatelessWidget {
               padding: EdgeInsets.zero,
               onPressed: () {
                 BlocProvider.of<BasketBloc>(context).add(
-                  AddCoffeeToBasket(
+                  AddCoffee(
                     item.coffee,
                     1,
                   ),

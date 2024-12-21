@@ -103,7 +103,7 @@ class _CoffeeCardState extends State<CoffeeCard> {
                       ),
                       onPressed: () {
                         BlocProvider.of<BasketBloc>(context).add(
-                          AddCoffeeToBasket(
+                          AddCoffee(
                             widget.coffee,
                             1,
                           ),

@@ -7,8 +7,8 @@ abstract class BasketEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class AddCoffeeToBasket extends BasketEvent {
-  const AddCoffeeToBasket(this.coffee, this.miktar);
+class AddCoffee extends BasketEvent {
+  const AddCoffee(this.coffee, this.miktar);
   final Coffee coffee;
   final int miktar;
 
@@ -25,10 +25,6 @@ class MiktarAzalatma extends BasketEvent {
   List<Object> get props => [coffee, miktar];
 }
 
-class RemoveCoffeeFromBasket extends BasketEvent {
-  const RemoveCoffeeFromBasket(this.coffee);
-  final Coffee coffee;
-
-  @override
-  List<Object> get props => [coffee];
+class RemoveBasket extends BasketEvent {
+  const RemoveBasket();
 }

@@ -19,7 +19,7 @@ class BasketOperations {
       items.add(BasketItemModel(coffee: coffee, miktar: quantity));
     }
 
-    return items;
+    return List<BasketItemModel>.from(items);
   }
 
   static List<BasketItemModel> decreaseItemQuantity({
@@ -27,13 +27,15 @@ class BasketOperations {
     required int index,
     required int quantity,
   }) {
-    final item = items[index];
-    if (item.miktar > 1) {
-      items[index] = item.copyWith(miktar: item.miktar - quantity);
+    final updatedItems = List<BasketItemModel>.from(items);
+    final item = updatedItems[index];
+
+    if (item.miktar > quantity) {
+      updatedItems[index] = item.copyWith(miktar: item.miktar - quantity);
     } else {
-      items.removeAt(index);
+      updatedItems.removeAt(index);
     }
-    return items;
+    return updatedItems;
   }
 
   static int findItemIndex(List<BasketItemModel> items, int id) {

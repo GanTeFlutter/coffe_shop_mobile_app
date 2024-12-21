@@ -12,7 +12,6 @@ class AddressBloc extends Bloc<AddressEvent, AddressState> {
         super(AddressInitial()) {
     on<LoadAddressList>(_onLoadAddresses);
     on<NewSaveAddress>(_onSaveAddress);
-    on<NewSelectedAddress>(_onSelectAddress);
   }
 
   final AddressCache _addressCache;
@@ -20,6 +19,7 @@ class AddressBloc extends Bloc<AddressEvent, AddressState> {
   Future<void> _onLoadAddresses(LoadAddressList event, Emitter<AddressState> emit) async {
     try {
       emit(AddressLoading());
+      //cache'den adres listesini alıyoruz
       final addresses = await _addressCache.loadAddressList();
       emit(AddressLoaded(listAddress: addresses));
     } catch (e) {
@@ -30,9 +30,11 @@ class AddressBloc extends Bloc<AddressEvent, AddressState> {
   Future<void> _onSaveAddress(NewSaveAddress event, Emitter<AddressState> emit) async {
     try {
       emit(AddressLoading());
+      //yeni id li adres oluşturuyoruz
       final newAddress = await _createNewAddress(event.address);
+      //cache'ye yeni adresi ekliyoruz
       await _addressCache.addNewAddress(newAddress);
-
+      //cache'den adres listesini  alıyoruz
       final updatedList = await _addressCache.loadAddressList();
       emit(AddressLoaded(listAddress: updatedList));
     } catch (e) {
@@ -40,22 +42,11 @@ class AddressBloc extends Bloc<AddressEvent, AddressState> {
     }
   }
 
-  Future<void> _onSelectAddress(NewSelectedAddress event, Emitter<AddressState> emit) async {
-    try {
-      emit(AddressLoading());
-      final addresses = await _addressCache.loadAddressList();
-      final selected = addresses.firstWhere(
-        (element) => element.id == event.addressID,
-        orElse: () => throw Exception('Adres bulunamadı'),
-      );
-      emit(SelectedAddress(selectedAddress: selected));
-    } catch (e) {
-      emit(AddressError(message: 'Adres seçilirken hata oluştu: $e'));
-    }
-  }
-
   Future<Address> _createNewAddress(Address address) async {
+    //cache'den adres listesini aldık
     final addresses = await _addressCache.loadAddressList();
+
+    //cache deki adres listesindeki id lere bakarak yeni addresse bir id oluşturuyoruz
     final newId = _generateNewId(addresses);
 
     return Address(

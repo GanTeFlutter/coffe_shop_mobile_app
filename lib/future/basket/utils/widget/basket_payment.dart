@@ -2,6 +2,8 @@ import 'package:coffe_shop_mobile_app/future/basket/bloc/basket_bloc.dart';
 import 'package:coffe_shop_mobile_app/future/basket/utils/constant/basket_strings.dart';
 import 'package:coffe_shop_mobile_app/product/constant/app_custom_text_style.dart';
 import 'package:coffe_shop_mobile_app/product/constant/application_colors.dart';
+import 'package:coffe_shop_mobile_app/product/state/bottom_nav_bar/page_provider.dart';
+import 'package:coffe_shop_mobile_app/product/widget/applicaton_default_custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -24,12 +26,11 @@ class _BasketPaymentState extends State<BasketPayment> {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20),
             ),
-            margin: EdgeInsets.all(screenPaddingTen),
             color: ApplicationColors.white,
-            child: SizedBox(
-              width: double.infinity,
-              child: Padding(
-                padding: EdgeInsets.all(screenPaddingTen),
+            child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: SizedBox(
+                width: double.infinity,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -69,8 +70,11 @@ class _BasketPaymentState extends State<BasketPayment> {
             ),
           );
         }
-        return const Center(
-          child: Text('Sepetinizde ürün bulunmamaktadır.'),
+        return CustomElevatedButton(
+          onPressed: () {
+            context.read<PageProvider>().setSelectedIndex(0);
+          },
+          text: 'Hemen Alışverişe Başla :)',
         );
       },
     );

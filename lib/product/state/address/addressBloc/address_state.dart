@@ -19,14 +19,6 @@ class AddressLoaded extends AddressState {
   List<Object> get props => [listAddress];
 }
 
-class SelectedAddress extends AddressState {
-  const SelectedAddress({required this.selectedAddress});
-  final Address selectedAddress;
-
-  @override
-  List<Object> get props => [selectedAddress];
-}
-
 class AddressError extends AddressState {
   const AddressError({required this.message});
   final String message;

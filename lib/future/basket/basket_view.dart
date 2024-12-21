@@ -9,10 +9,12 @@ import 'package:coffe_shop_mobile_app/future/basket/utils/widget/basket_payment.
 import 'package:coffe_shop_mobile_app/future/basket/utils/widget/custom_elevated_button.dart';
 import 'package:coffe_shop_mobile_app/future/basket/utils/widget/indirim_button.dart';
 import 'package:coffe_shop_mobile_app/product/constant/application_colors.dart';
+import 'package:coffe_shop_mobile_app/product/state/bottom_nav_bar/page_provider.dart';
 import 'package:coffe_shop_mobile_app/product/widget/applicaton_default_custom_button.dart';
 import 'package:coffe_shop_mobile_app/product/widget/show_mbs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lottie/lottie.dart';
 
 class BasketView extends StatefulWidget {
   const BasketView({super.key});
@@ -28,43 +30,59 @@ class _BasketViewState extends BasketViewModel with BasketMixin {
     return Scaffold(
       body: SingleChildScrollView(
         child: SafeArea(
-          child: Column(
-            children: [
-              Text(
-                BasketStrings.order,
-                style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.bold,
-                    ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 15),
-                child: Column(
+          child: Padding(
+            padding: const EdgeInsets.only(top: 10, left: 15, right: 15),
+            child: Column(
+              children: [
+                Column(
                   spacing: screenPaddingTen,
                   children: [
                     const BasketAddressText(),
                     selectedAddressButton(context),
                     IndirimBurtton(size: size),
-                    buildDivider(),
+                    divider(),
                     itemCardBuilder(size),
                     const BasketPayment(),
-                    Padding(
-                      padding: const EdgeInsets.all(20),
-                      child: CustomElevatedButton(
-                        borderRadius: 20,
-                        onPressed: () => showOrderComplete(
-                          context,
-                          BasketStrings.orderCompleted,
-                        ),
-                        text: BasketStrings.completeOrder,
-                      ),
+                    BlocBuilder<BasketBloc, BasketState>(
+                      builder: (context, state) {
+                        if (state is BasketLoaded) {
+                          return Column(
+                            children: [
+                              CustomElevatedButton(
+                                onPressed: () {
+                                  context.read<PageProvider>().setSelectedIndex(0);
+                                },
+                                text: state.basket.items.isEmpty
+                                    ? BasketStrings.emptyBasket
+                                    : BasketStrings.alisverisitamamla,
+                              ),
+                              const SizedBox(height: 50),
+                              if (state.basket.items.isEmpty)
+                                Lottie.asset('assets/lottie/ctny7NtMAT.json'),
+                            ],
+                          );
+                        }
+                        return Center(
+                          child: Lottie.asset('assets/lottie/ctny7NtMAT.json'),
+                        );
+                      },
                     ),
                   ],
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
+    );
+  }
+
+  Divider divider() {
+    return Divider(
+      indent: 30,
+      endIndent: 30,
+      color: Colors.grey[300],
+      thickness: 1,
     );
   }
 

@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 class CustomElevatedButton extends StatelessWidget {
   const CustomElevatedButton({
     required this.onPressed,
-    required this.text,
     super.key,
+    this.text = 'Texttt',
     this.backgroundColor = ApplicationColors.kahve,
     this.textColor = Colors.white,
     this.borderRadius = 12.0,

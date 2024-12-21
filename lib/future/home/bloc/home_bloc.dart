@@ -1,36 +1,32 @@
 import 'package:bloc/bloc.dart';
-import 'package:coffe_shop_mobile_app/product/model/coffee/coffee.dart';
 import 'package:coffe_shop_mobile_app/product/enums/e.firebase.dart';
+import 'package:coffe_shop_mobile_app/product/model/coffee/coffee.dart';
 import 'package:coffe_shop_mobile_app/product/service/firebase_service.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 
 part 'home_event.dart';
 part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  HomeBloc({IFirebaseService? firebaseService})
-      : _firebaseService = firebaseService ?? FirebaseService(),
-        super(HomeInitial()) {
-    on<HomeKategoryEvent>(_onLoadCategory);
+  HomeBloc() : super(HomeInitial()) {
+    on<HomeKategoryEvent>(_debugDeneme);
   }
 
-  final IFirebaseService _firebaseService;
-  Future<void> _onLoadCategory(HomeKategoryEvent event, Emitter<HomeState> emit) async {
+  final _firebaseService = FirebaseService();
+  Future<void> _debugDeneme(HomeKategoryEvent event, Emitter<HomeState> emit) async {
+    debugPrint('--HomeBloc: ${event.message}');
+
     try {
-      emit(HomeLoading());
-
-      final coffees = await _firebaseService.fetchCollection(
+      final responseFire = await _firebaseService.fetchCoffee(
         collectionName: FirebaseCollDocName.coffee.name,
-        docName: event.message,
         fromJson: Coffee.fromJson,
+        docName: event.message,
       );
-
-      emit(HomeLoaded(listCoffee: coffees));
-    } on FirebaseServiceException catch (e) {
-      emit(HomeErrorState(message: e.toString()));
+      debugPrint('--HomeBloc: responseFire: $responseFire');
+      emit(HomeLoaded(listCoffee: responseFire));
     } catch (e) {
-      
-   
+      emit(HomeErrorState(message: e.toString()));
     }
   }
 }

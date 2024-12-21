@@ -1,9 +1,9 @@
 import 'package:coffe_shop_mobile_app/future/basket/basket_view.dart';
-import 'package:coffe_shop_mobile_app/future/basket/bloc/basket_bloc.dart';
 import 'package:coffe_shop_mobile_app/future/home/home_view.dart';
 import 'package:coffe_shop_mobile_app/product/constant/application_colors.dart';
+import 'package:coffe_shop_mobile_app/product/state/bottom_nav_bar/page_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 
 class BottomNavigationBarScreenV2 extends StatefulWidget {
   const BottomNavigationBarScreenV2({super.key});
@@ -18,18 +18,21 @@ class _BottomNavigationBarScreenV2State extends State<BottomNavigationBarScreenV
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
+      context.read<PageProvider>().setSelectedIndex(index);
     });
   }
 
   final List<Widget> _pages = const [
     HomeView(),
-    BosEkran1(),
+    BosEkran(),
     BasketView(),
-    BosEkran1(),
+    BosEkran(),
   ];
 
   @override
   Widget build(BuildContext context) {
+    debugPrint('--BottomNavigationBarScreenV2: build');
+    _selectedIndex = context.watch<PageProvider>().selectedIndex;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       extendBody: true,
@@ -50,11 +53,8 @@ class _BottomNavigationBarScreenV2State extends State<BottomNavigationBarScreenV
             onTap: _onItemTapped,
             currentIndex: _selectedIndex,
             showUnselectedLabels: false,
-            //secili icon
             selectedItemColor: ApplicationColors.kahve,
             selectedIconTheme: const IconThemeData(size: 30),
-
-            //secili olmayan icon
             unselectedItemColor: Colors.grey,
             enableFeedback: true,
             items: [
@@ -103,35 +103,11 @@ class _BottomNavigationBarScreenV2State extends State<BottomNavigationBarScreenV
             Icons.shopping_bag_outlined,
             color: _selectedIndex == 2 ? ApplicationColors.kahve : Colors.grey,
           ),
-          BlocBuilder<BasketBloc, BasketState>(
-            builder: (context, state) {
-              var totalItems = 0;
-              if (state is BasketLoaded) {
-                totalItems = state.toplamAdet;
-              }
-
-              return Positioned(
-                right: 0,
-                top: -2,
-                child: totalItems > 0
-                    ? Container(
-                        padding: const EdgeInsets.all(3),
-                        decoration: const BoxDecoration(
-                          color: ApplicationColors.kahve,
-                          shape: BoxShape.circle,
-                        ),
-                        child: Text(
-                          totalItems.toString(),
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 10,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      )
-                    : const SizedBox.shrink(),
-              );
-            },
+          // Sepet durumu için mevcut BlocBuilder kodu
+          const Positioned(
+            right: 0,
+            top: -2,
+            child: SizedBox.shrink(),
           ),
         ],
       ),
@@ -144,21 +120,23 @@ class _BottomNavigationBarScreenV2State extends State<BottomNavigationBarScreenV
   }
 }
 
-class BosEkran1 extends StatelessWidget {
-  const BosEkran1({super.key});
+class BosEkran extends StatefulWidget {
+  const BosEkran({super.key});
 
+  @override
+  State<BosEkran> createState() => _BosEkranState();
+}
+
+class _BosEkranState extends State<BosEkran> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('BosEkran1'),
+        title: const Text('BosEkran'),
       ),
       body: const Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('BosEkran1'),
-          ],
         ),
       ),
     );

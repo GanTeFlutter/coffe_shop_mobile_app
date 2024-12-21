@@ -1,7 +1,6 @@
-// ignore_for_file: unrelated_type_equality_checks
+// ignore_for_file: prefer_final_locals, unused_local_variable
 
 import 'package:bloc/bloc.dart';
-import 'package:coffe_shop_mobile_app/future/basket/bloc/basket_operations.dart';
 import 'package:coffe_shop_mobile_app/future/basket/model/basaket_model.dart';
 import 'package:coffe_shop_mobile_app/future/basket/model/basket_item_model.dart';
 import 'package:coffe_shop_mobile_app/product/model/coffee/coffee.dart';
@@ -12,54 +11,97 @@ part 'basket_state.dart';
 
 class BasketBloc extends Bloc<BasketEvent, BasketState> {
   BasketBloc() : super(BasketInitial()) {
-    on<AddCoffeeToBasket>(_onAddCoffeeToBasket);
-    on<MiktarAzalatma>(_onDecreaseCoffeeQuantity);
+    on<AddCoffee>(_addCoffeeToBasket);
+    on<MiktarAzalatma>(_miktaraAzalt);
+    on<RemoveBasket>(_removeBasket);
   }
 
-  final BaseBasketModel _basket = BaseBasketModel();
+  BaseBasketModel _basket = BaseBasketModel();
 
-  void _onAddCoffeeToBasket(AddCoffeeToBasket event, Emitter<BasketState> emit) {
-    try {
-      final updatedItems = BasketOperations.updateBasketItems(
-        items: List<BasketItemModel>.from(_basket.items),
-        coffee: event.coffee,
-        quantity: event.miktar,
-      );
+  void _addCoffeeToBasket(AddCoffee event, Emitter<BasketState> emit) {
+    final currentItems = List<BasketItemModel>.from(_basket.items);
 
-      _emitUpdatedBasket(updatedItems, emit);
-    } catch (e) {
-      emit(BasketError(errorMessage: e.toString()));
-    }
-  }
-
-  void _onDecreaseCoffeeQuantity(MiktarAzalatma event, Emitter<BasketState> emit) {
-    try {
-      final currentItems = List<BasketItemModel>.from(_basket.items);
-      final itemIndex = BasketOperations.findItemIndex(
-        currentItems,
-        int.parse(event.coffee.id!),
-      );
-
-      if (itemIndex != -1) {
-        final updatedItems = BasketOperations.decreaseItemQuantity(
-          items: currentItems,
-          index: itemIndex,
-          quantity: event.miktar,
-        );
-
-        _emitUpdatedBasket(updatedItems, emit);
+    var itemindex = -1;
+    //Sepette aynı kahve var mı kontrol et
+    for (var i = 0; i < currentItems.length; i++) {
+      if (currentItems[i].coffee.id == event.coffee.id) {
+        itemindex = i;
+        //varsa inswxini al
+        break;
       }
-    } catch (e) {
-      emit(BasketError(errorMessage: e.toString()));
     }
+
+    if (itemindex != -1) {
+      // Eğer kontrolEtVarMi -1 değilse, yani sepette varsa!!!:
+      final eslesenIndex = currentItems[itemindex];
+      //sepette eslesen indexi aldik
+
+      //sepet icersindeki eslesen indexi guncelledik daha sonra currentItems listesindeki eslesen indexi guncelledik
+      currentItems[itemindex] = eslesenIndex.copyWith(
+        miktar: eslesenIndex.miktar + event.miktar,
+      );
+    } else {
+      // Eğer kontrolEtVarMi -1 ise, yani sepette yoksa!!!:
+      //sepete yeni bir kahve ekledik
+      currentItems.add(
+        BasketItemModel(
+          coffee: event.coffee,
+          miktar: event.miktar,
+        ),
+      );
+    }
+    //sepeti guncelledik
+    _basket = _basket.copyWith(items: currentItems);
+    //sepeti emit ettik
+    emit(
+      BasketLoaded(
+        basket: _basket,
+        toplamAdet: _basket.totalMiktar,
+        toplamTutar: _basket.toplamfiyat,
+      ),
+    );
   }
 
-  void _emitUpdatedBasket(List<BasketItemModel> items, Emitter<BasketState> emit) {
-    _basket.items = items;
-    emit(BasketLoaded(
-      basket: _basket,
-      toplamAdet: _basket.totalMiktar,
-      toplamTutar: _basket.toplamfiyat,
-    ),);
+  void _miktaraAzalt(MiktarAzalatma event, Emitter<BasketState> emit) {
+    final currentItems = List<BasketItemModel>.from(_basket.items);
+
+    var itemindex = -1;
+    for (var i = 0; i < currentItems.length; i++) {
+      if (currentItems[i].coffee.id == event.coffee.id) {
+        itemindex = i;
+        //varsa inswxini al
+        break;
+      }
+    }
+    if (itemindex != -1) {
+      final eslesenIndex = currentItems[itemindex];
+
+      if (eslesenIndex.miktar > 1) {
+        currentItems[itemindex] = eslesenIndex.copyWith(
+          miktar: eslesenIndex.miktar + event.miktar,
+        );
+      } else {
+        currentItems.removeAt(itemindex);
+      }
+    }
+    _basket = _basket.copyWith(items: currentItems);
+    emit(
+      BasketLoaded(
+        basket: _basket,
+        toplamAdet: _basket.totalMiktar,
+        toplamTutar: _basket.toplamfiyat,
+      ),
+    );
+  }
+
+  void _removeBasket(RemoveBasket event, Emitter<BasketState> emit) {
+    _basket = BaseBasketModel();
+    emit(
+      BasketLoaded(
+        basket: _basket,
+        toplamAdet: _basket.totalMiktar,
+        toplamTutar: _basket.toplamfiyat,
+      ),
+    );
   }
 }

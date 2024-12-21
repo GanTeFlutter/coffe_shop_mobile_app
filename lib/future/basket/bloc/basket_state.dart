@@ -7,7 +7,9 @@ abstract class BasketState extends Equatable {
   List<Object> get props => [];
 }
 
-class BasketInitial extends BasketState {}
+class BasketInitial extends BasketState {
+  
+}
 
 class BasketLoaded extends BasketState {
   const BasketLoaded({required this.basket,required this.toplamAdet,required this.toplamTutar});

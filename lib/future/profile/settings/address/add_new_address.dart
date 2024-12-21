@@ -1,4 +1,4 @@
-import 'package:coffe_shop_mobile_app/future/settings/address/add_news_ad_view_model.dart';
+import 'package:coffe_shop_mobile_app/future/profile/settings/address/add_news_ad_view_model.dart';
 import 'package:coffe_shop_mobile_app/product/constant/app_custom_text_style.dart';
 import 'package:coffe_shop_mobile_app/product/model/address/address.dart';
 import 'package:coffe_shop_mobile_app/product/state/address/addressBloc/address_bloc.dart';
