@@ -33,7 +33,7 @@ abstract class SplashOnboardingViewModel extends State<SplashOnboardingView> {
     );
   }
 
-  void goToNewPage() {
+  void nextPage() {
     if (selectPage < pageModelList.length - 1) {
       setState(() {
         selectPage += 1;
@@ -45,6 +45,18 @@ abstract class SplashOnboardingViewModel extends State<SplashOnboardingView> {
       });
     } else {
       actionNextScreen();
+    }
+  }
+  void backPage() {
+    if (selectPage > 0) {
+      setState(() {
+        selectPage -= 1;
+        controller.animateToPage(
+          selectPage,
+          duration: const Duration(milliseconds: 200),
+          curve: Curves.fastOutSlowIn,
+        );
+      });
     }
   }
 }

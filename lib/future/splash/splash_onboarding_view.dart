@@ -61,11 +61,23 @@ class _SplashOnboardingViewState extends SplashOnboardingViewModel {
                   }).toList(),
                 ),
                 //Next Button
-                SplashCustomInkButton(
-                  onTap: goToNewPage,
-                  text: 'Next',
-                  cardColor: ApplicationColors.kahve,
-                  textColor: ApplicationColors.white,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    if (selectPage != 0)
+                      SplashCustomInkButton(
+                        onTap: backPage,
+                        text: 'Back',
+                        cardColor: ApplicationColors.kahve,
+                        textColor: ApplicationColors.white,
+                      ),
+                    SplashCustomInkButton(
+                      onTap: nextPage,
+                      text: 'Next',
+                      cardColor: ApplicationColors.kahve,
+                      textColor: ApplicationColors.white,
+                    ),
+                  ],
                 ),
               ],
             ),

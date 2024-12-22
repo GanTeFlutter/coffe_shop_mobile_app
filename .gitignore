@@ -7,7 +7,6 @@
 .buildlog/        
 .history        
 .svn/            
-assets/
 ios/
 # IDE ve Editör Dosyaları
 *.iml           
