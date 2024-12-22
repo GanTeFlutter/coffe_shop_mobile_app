@@ -24,6 +24,7 @@ dependencies:
   google_fonts: ^6.2.1
   lottie: ^3.1.3
   flutter_svg: ^2.0.16
+  flutter_native_splash: ^2.4.3
 
   #State Management
   provider: ^6.1.2
@@ -49,13 +50,45 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/icon/
-    - assets/icon/bottomnavbaricon/
-    - assets/image/banner/
-    - assets/coffee/ebk/
-    - assets/coffee/sk/
-    - assets/coffee/stk/
-    - assets/image/splash/
-    - assets/lottie/lottieee.json
-    - assets/profil/
+    - assets/
     - assets/lottie/
+    - assets/profile/
+    - assets/image/
+    - assets/image/banner/
+    - assets/image/coffee/
+    - assets/image/splash/
+    - assets/image/splash/
+    - assets/image/native/
+
+
+flutter_native_splash:
+  # Arka plan rengi
+  color: "#ffffff"  # Açık mavi
+  # Karanlık mod arka plan rengi
+  color_dark: "#111111"  # Koyu mavi
+
+  # Splash ekranında kullanılacak görüntü (PNG formatında)
+  image: "assets/image/native/native (1).png"
+  image_dark: "assets/image/native/native (1).png"
+
+  # Android 12 ve sonrası için özel ayarlar
+  android_12:
+    # Splash ekranında kullanılacak ikon
+    image: "assets/image/native/native (1).png"
+    # İkonun arka plan rengi
+    icon_background_color: "#ffffff"
+    # Karanlık mod ikon arka plan rengi
+    icon_background_color_dark: "#111111"
+
+  # Android ekran yönlendirme (isteğe bağlı)
+  android_screen_orientation: sensorPortrait
+
+  # Splash ekranı tam ekran mı olacak?
+  fullscreen: true
+
+  # Platforma özel ayarlar
+  color_android: "#ffffff"
+  color_dark_android: "#111111"
+  image_android: "assets/image/native/native (1).png"
+  image_dark_android: "assets/image/native/native (1).png"
+

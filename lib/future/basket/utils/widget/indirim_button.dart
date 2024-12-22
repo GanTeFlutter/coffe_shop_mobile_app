@@ -74,9 +74,7 @@ class _IndirimBurttonState extends State<IndirimBurtton> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
-        _showMyDialog();
-      },
+      onTap: _showMyDialog,
       child: Container(
         height: 70,
         width: widget.size.width * 0.9,

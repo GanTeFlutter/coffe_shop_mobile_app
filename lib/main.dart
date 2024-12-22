@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:coffe_shop_mobile_app/product/init/app_initialize.dart';
 import 'package:coffe_shop_mobile_app/product/init/app_routes.dart';
 import 'package:coffe_shop_mobile_app/product/init/state_initialize.dart';
