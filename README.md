@@ -12,8 +12,14 @@ CoffeeDetail
 - **Address Seçimi**:Address yönetimini product\state\address altında topladım.Addressleri shared_preferences ile cacheliyorum.Ayrıca adressleri emit etmek iki farklı bloc tanımladım birinde tüm adressler kaydedilip bloc üzeirinden showModalBottomSheet içerisinde gösteriliyor.ikincisi burdan seçilen adresi tek bir addressi emit ediyor.İki farklı veriyi tek bir bloktan farklı zamanlarda yayınlamak istedigimizde biri diğerini yokediyodu  çözüm olarak aynı state te de yayınlanabilirdi ancak daha basit olamsı açısından SingleAddressBloc diye ayırdım.
 
 ## Uygulama Görselleri
+### Splash Screen
+<img src="https://github.com/user-attachments/assets/e6a739f5-a080-44cc-b834-cb7f4c92d77d" width="150" />
+<img src="https://github.com/user-attachments/assets/20a379b4-fa40-4a6c-8655-23227f663fae" width="150" />
+<img src="https://github.com/user-attachments/assets/21aa7b9f-373f-491d-8197-465dee6ebbd6" width="150" />
+<img src="https://github.com/user-attachments/assets/b0fd421c-eb50-47c8-87d6-0c74a9658bd9" width="150" />
 
-### Ana Ekranlar
+
+### Home Screens
 <img src="https://github.com/user-attachments/assets/a6d7376f-d07b-4ae4-a553-ebda5bf32099" width="150" />
 <img src="https://github.com/user-attachments/assets/ac347484-2ea4-4bea-8816-dc36d3d8fef5" width="150" />
 <img src="https://github.com/user-attachments/assets/3e0a5517-3384-486f-9da7-b3503c5355a9" width="150" />
