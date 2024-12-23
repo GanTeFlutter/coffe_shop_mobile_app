@@ -12,6 +12,5 @@ mixin BasketMixin {
       thickness: 1,
     );
   }
-
   
 }

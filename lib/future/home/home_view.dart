@@ -22,7 +22,6 @@ class _HomeViewState extends HomeViewModel {
   Widget build(BuildContext context) {
     debugPrint('--HomeView: build');
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 248, 246, 246),
       resizeToAvoidBottomInset: false,
       body: Column(
         children: [

@@ -1,4 +1,4 @@
-import 'package:coffe_shop_mobile_app/product/state/bottom_nav_bar/page_provider.dart';
+import 'package:coffe_shop_mobile_app/future/bootom_nav_bar/state/page_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -23,7 +23,7 @@ class _FavoriteCoffeesViewState extends State<FavoriteCoffeesView> {
             FloatingActionButton(
               
               onPressed: () {
-                context.read<PageProvider>().setSelectedIndex(0);
+                context.read<PageProvider>().updatePage(0);
               },
               child: const Icon(Icons.add),
             ),

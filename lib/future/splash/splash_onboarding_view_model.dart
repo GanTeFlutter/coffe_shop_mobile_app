@@ -23,15 +23,6 @@ abstract class SplashOnboardingViewModel extends State<SplashOnboardingView> {
       image: 'assets/image/splash/coffee_illustrasyon (1).png',
     ),
   ];
-  void actionNextScreen() {
-    Navigator.pushReplacement(
-      context,
-      // ignore: inference_failure_on_instance_creation
-      MaterialPageRoute(
-        builder: (context) => const LoginScreen(),
-      ),
-    );
-  }
 
   void nextPage() {
     if (selectPage < pageModelList.length - 1) {
@@ -44,7 +35,7 @@ abstract class SplashOnboardingViewModel extends State<SplashOnboardingView> {
         );
       });
     } else {
-      actionNextScreen();
+      
     }
   }
   void backPage() {

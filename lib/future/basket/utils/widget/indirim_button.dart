@@ -1,6 +1,7 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:coffe_shop_mobile_app/product/constant/application_colors.dart';
+import 'package:coffe_shop_mobile_app/product/constant/application_strings.dart';
 import 'package:coffe_shop_mobile_app/product/state/indirim.dart/indirim.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -25,15 +26,15 @@ class _IndirimBurttonState extends State<IndirimBurtton> {
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Enter your voucher code'),
+          title: const Text(ApplicationStrings.enterVoucherCode),
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
-                const Text('Sadece bir indirim kodu kullanabilirsiniz.'),
+                const Text(ApplicationStrings.onlyOneDiscount),
                 TextField(
                   controller: _controller,
                   decoration: const InputDecoration(
-                    hintText: 'Kodunuzu girin',
+                    hintText: ApplicationStrings.enterYourDiscountCode,
                   ),
                 ),
               ],
@@ -41,26 +42,26 @@ class _IndirimBurttonState extends State<IndirimBurtton> {
           ),
           actions: <Widget>[
             TextButton(
-              child: const Text('Uygula'),
+              child: const Text(ApplicationStrings.applyDiscount),
               onPressed: () {
                 if (_controller.text.isEmpty) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
-                      content: Text('Lütfen bir kod girin.'),
+                      content: Text(ApplicationStrings.enterCodeFirst),
                     ),
                   );
                 } else {
                   context.read<Indirim>().setSelectedIndex(visible: true);
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
-                      content: Text('Kod başarıyla uygulandı.'),
+                      content: Text(ApplicationStrings.discountAppliedSuccessfully),
                     ),
                   );
                 }
               },
             ),
             TextButton(
-              child: const Text('Kapat'),
+              child: const Text(ApplicationStrings.close),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -104,8 +105,8 @@ class _IndirimBurttonState extends State<IndirimBurtton> {
             const SizedBox(width: 12),
             Text(
               context.watch<Indirim>().isIndirimButtonVisible
-                  ? 'İndirim Kodu Kullanıldı'
-                  : 'Enter your discount coupon',
+                  ? ApplicationStrings.discountApplied
+                  : ApplicationStrings.enterVoucherCode,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     color: ApplicationColors.kahve,
                     fontWeight: FontWeight.bold,

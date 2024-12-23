@@ -5,6 +5,7 @@ import 'package:coffe_shop_mobile_app/future/splash/widget/splash_custom_ink_but
 import 'package:coffe_shop_mobile_app/product/constant/app_custom_text_style.dart';
 import 'package:coffe_shop_mobile_app/product/constant/application_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class SplashOnboardingView extends StatefulWidget {
   const SplashOnboardingView({super.key});
@@ -28,7 +29,9 @@ class _SplashOnboardingViewState extends SplashOnboardingViewModel {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 SplashCustomInkButton(
-                  onTap: actionNextScreen,
+                  onTap: () {
+                    context.go('/home');
+                  },
                   text: 'Skip >',
                   cardColor: ApplicationColors.white,
                   textColor: ApplicationColors.kahve,

@@ -1,7 +1,10 @@
 import 'dart:async';
+
 import 'package:coffe_shop_mobile_app/product/init/app_initialize.dart';
-import 'package:coffe_shop_mobile_app/product/init/app_routes.dart';
 import 'package:coffe_shop_mobile_app/product/init/state_initialize.dart';
+import 'package:coffe_shop_mobile_app/product/navigation/app_gorouter.dart';
+import 'package:coffe_shop_mobile_app/product/theme/app_dark_theme.dart';
+import 'package:coffe_shop_mobile_app/product/theme/app_light_theme.dart';
 import 'package:flutter/material.dart';
 
 Future<void> main() async {
@@ -14,14 +17,12 @@ class _MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(
-        scaffoldBackgroundColor: Colors.white,
-      ),
-      initialRoute: '/',
-      routes: AppRoutes.routes,
+      theme: AppLightTheme().themeData,
+      darkTheme: AppDarkTheme().themeData,
+      routerConfig: router,
     );
   }
 }

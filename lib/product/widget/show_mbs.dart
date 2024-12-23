@@ -1,11 +1,11 @@
 // ignore_for_file: use_build_context_synchronously, deprecated_member_use
 
-import 'package:coffe_shop_mobile_app/product/enums/e.app_routes.dart';
 import 'package:coffe_shop_mobile_app/product/state/address/addressBloc/address_bloc.dart';
 import 'package:coffe_shop_mobile_app/product/state/address/singleAddressBloc/single_address_bloc_bloc.dart';
 import 'package:coffe_shop_mobile_app/product/widget/applicaton_default_custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class CustomModalBottomSheet {
   static Future<void> showAddressModal(BuildContext context) async {
@@ -21,9 +21,7 @@ class CustomModalBottomSheet {
               child: CustomElevatedButton(
                 borderRadius: 20,
                 onPressed: () {
-                  Navigator.pushNamed(context, AppRoute.addNewAddress.name).then((_) {
-                    Navigator.pop(context);
-                  });
+                  context.go('/home/settings');
                 },
                 text: 'Add New Address',
               ),

@@ -5,6 +5,7 @@ import 'package:coffe_shop_mobile_app/product/constant/application_colors.dart';
 import 'package:coffe_shop_mobile_app/product/model/coffee/coffee.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CoffeeCard extends StatefulWidget {
@@ -23,21 +24,15 @@ class _CoffeeCardState extends State<CoffeeCard> {
   Widget build(BuildContext context) {
     return Card(
       margin: const EdgeInsets.all(8),
-      color: ApplicationColors.white,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
             child: GestureDetector(
               onTap: () {
-                Navigator.push(
-                  context,
-                  // ignore: inference_failure_on_instance_creation
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return CoffeeDetailView(coffee: widget.coffee);
-                    },
-                  ),
+                context.go(
+                  '/home/details',
+                  extra: widget.coffee,
                 );
               },
               child: Hero(

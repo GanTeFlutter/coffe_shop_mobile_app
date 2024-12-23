@@ -5,7 +5,7 @@ import 'package:coffe_shop_mobile_app/future/home/bloc/home_bloc.dart';
 import 'package:coffe_shop_mobile_app/product/enums/e.firebase.dart';
 import 'package:coffe_shop_mobile_app/product/state/address/addressBloc/address_bloc.dart';
 import 'package:coffe_shop_mobile_app/product/state/address/singleAddressBloc/single_address_bloc_bloc.dart';
-import 'package:coffe_shop_mobile_app/product/state/bottom_nav_bar/page_provider.dart';
+import 'package:coffe_shop_mobile_app/future/bootom_nav_bar/state/page_provider.dart';
 import 'package:coffe_shop_mobile_app/product/state/indirim.dart/indirim.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

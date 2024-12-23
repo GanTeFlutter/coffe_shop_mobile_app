@@ -19,6 +19,7 @@ dependencies:
   #model
   equatable: ^2.0.7
   json_annotation: ^4.9.0
+
   #UI
   cupertino_icons: ^1.0.8
   google_fonts: ^6.2.1
@@ -28,16 +29,20 @@ dependencies:
 
   #State Management
   provider: ^6.1.2
-  #Bloc
   bloc: ^8.1.4
   flutter_bloc: ^8.1.6
   #hydrated_bloc: ^9.1.5
   meta: ^1.15.0
+
   #Firebase
   firebase_core: ^3.8.0
   cloud_firestore: ^5.5.0
+
   #very_good_analysis
   very_good_analysis: ^6.0.0
+  
+  #Navigation
+  go_router: ^14.6.2
 
 dev_dependencies:
   flutter_test:
@@ -50,15 +55,15 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/
     - assets/lottie/
-    - assets/profile/
-    - assets/image/
+    - assets/image/profile/
     - assets/image/banner/
-    - assets/image/coffee/
     - assets/image/splash/
     - assets/image/splash/
     - assets/image/native/
+    - assets/coffee/ebk/
+    - assets/coffee/sk/
+    - assets/coffee/stk/
 
 
 flutter_native_splash:
