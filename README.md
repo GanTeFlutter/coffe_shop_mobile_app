@@ -1,15 +1,17 @@
 # Kahve Sipariş Uygulaması ☕
 
-üç screenli bir uygulama
+Aktif olarak geliştirdiğim proje 
 
 Homepage
 Basket 
 CoffeeDetail 
 - Figma Tasarımı: [Coffee Shop Mobile App Design](https://www.figma.com/design/HEHEkOvpW6XZg7PNLRbHVm/Coffee-Shop-Mobile-App-Design-(Community)?node-id=417-156&node-type=canvas)
+
 ## Özellikler
-- **Seçilen Coffenin Sepete Eklenmesi**:Coffee List firebasten çekilip bloc üzerinden homepage yayınlanıyor sonrasında sepet tekrar kaydedilmiyor
-- **Sepet Yönetimi**:Firebaseten gelen Coffe model üzerine farklı modeller kullanarak Basket sistemini yönetmeye çalışıyoruz.
-- **Address Seçimi**:Address yönetimini product\state\address altında topladım.Addressleri shared_preferences ile cacheliyorum.Ayrıca adressleri emit etmek iki farklı bloc tanımladım birinde tüm adressler kaydedilip bloc üzeirinden showModalBottomSheet içerisinde gösteriliyor.ikincisi burdan seçilen adresi tek bir addressi emit ediyor.İki farklı veriyi tek bir bloktan farklı zamanlarda yayınlamak istedigimizde biri diğerini yokediyodu  çözüm olarak aynı state te de yayınlanabilirdi ancak daha basit olamsı açısından SingleAddressBloc diye ayırdım.
+
+Sayfalarr future altında toplanmıltır o sayfaya özgü herşeyide o klasör altında toplamaya çalıştım widgetler ve state yapılarını.Şimdiye kadar home,basket,coffee_detail,yeni adres ekleme ve splashOnBoard kısımlarını yapabildim bunların dark temalarını henüz ayarlamadım sadece homeView kısmının  
+dark theme mi düzenlendi.Yakın zamanda geri kalanı da güncelleyeceğim.Genel olarak Bloc yapısını kullandım basit yerlerde ise provider.
+
 
 ## Uygulama Görselleri
 ### Splash Screen
