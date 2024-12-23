@@ -1,8 +1,8 @@
 // ignore_for_file: deprecated_member_use
 
+import 'package:coffe_shop_mobile_app/future/basket/state/provider/indirim.dart';
 import 'package:coffe_shop_mobile_app/product/constant/application_colors.dart';
 import 'package:coffe_shop_mobile_app/product/constant/application_strings.dart';
-import 'package:coffe_shop_mobile_app/product/state/indirim.dart/indirim.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

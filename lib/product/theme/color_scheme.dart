@@ -44,7 +44,7 @@ final class CustomColorScheme {
     onPrimary: Color(0xFF381E72),
     primaryContainer: Color(0xFF4F378B),
     onPrimaryContainer: Color(0xFFEADDFF),
-    secondary: Color(0xFFCCC2D),
+    secondary: Color(0x0ffccc2d),
     onSecondary: Color(0xFF332D41),
     secondaryContainer: Color(0xFF211717),
     onSecondaryContainer: Color(0xFFE8DEF8),

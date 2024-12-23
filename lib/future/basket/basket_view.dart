@@ -1,15 +1,14 @@
 // ignore_for_file: deprecated_member_use
 import 'package:coffe_shop_mobile_app/future/basket/basket_view_model.dart';
-import 'package:coffe_shop_mobile_app/future/basket/bloc/basket_bloc.dart';
-import 'package:coffe_shop_mobile_app/future/basket/utils/mixin/basket_mixin.dart';
-import 'package:coffe_shop_mobile_app/future/basket/utils/widget/basket_address_text.dart';
-import 'package:coffe_shop_mobile_app/future/basket/utils/widget/basket_item_card.dart';
-import 'package:coffe_shop_mobile_app/future/basket/utils/widget/basket_payment.dart';
-import 'package:coffe_shop_mobile_app/future/basket/utils/widget/custom_elevated_button.dart';
-import 'package:coffe_shop_mobile_app/future/basket/utils/widget/indirim_button.dart';
+import 'package:coffe_shop_mobile_app/future/basket/state/bloc/basket_bloc.dart';
+import 'package:coffe_shop_mobile_app/future/basket/widget/basket_address_text.dart';
+import 'package:coffe_shop_mobile_app/future/basket/widget/basket_item_card.dart';
+import 'package:coffe_shop_mobile_app/future/basket/widget/basket_payment.dart';
+import 'package:coffe_shop_mobile_app/future/basket/widget/custom_elevated_button.dart';
+import 'package:coffe_shop_mobile_app/future/basket/widget/indirim_button.dart';
+import 'package:coffe_shop_mobile_app/future/bootom_nav_bar/state/page_provider.dart';
 import 'package:coffe_shop_mobile_app/product/constant/application_colors.dart';
 import 'package:coffe_shop_mobile_app/product/constant/application_strings.dart';
-import 'package:coffe_shop_mobile_app/future/bootom_nav_bar/state/page_provider.dart';
 import 'package:coffe_shop_mobile_app/product/widget/applicaton_default_custom_button.dart';
 import 'package:coffe_shop_mobile_app/product/widget/show_mbs.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +22,7 @@ class BasketView extends StatefulWidget {
   State<BasketView> createState() => _BasketViewState();
 }
 
-class _BasketViewState extends BasketViewModel with BasketMixin {
+class _BasketViewState extends BasketViewModel {
   @override
   Widget build(BuildContext context) {
     debugPrint('--BasketView build');

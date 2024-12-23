@@ -1,5 +1,4 @@
-import 'package:coffe_shop_mobile_app/future/basket/bloc/basket_bloc.dart';
-import 'package:coffe_shop_mobile_app/future/coffee_detail/coffee_detail_view.dart';
+import 'package:coffe_shop_mobile_app/future/basket/state/bloc/basket_bloc.dart';
 import 'package:coffe_shop_mobile_app/product/constant/app_custom_text_style.dart';
 import 'package:coffe_shop_mobile_app/product/constant/application_colors.dart';
 import 'package:coffe_shop_mobile_app/product/model/coffee/coffee.dart';

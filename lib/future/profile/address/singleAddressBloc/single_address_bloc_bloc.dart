@@ -1,8 +1,8 @@
 // ignore_for_file: require_trailing_commas
 
 import 'package:bloc/bloc.dart';
+import 'package:coffe_shop_mobile_app/product/cache/address_cache.dart';
 import 'package:coffe_shop_mobile_app/product/model/address/address.dart';
-import 'package:coffe_shop_mobile_app/product/state/address/cache/address_cache.dart';
 import 'package:equatable/equatable.dart';
 
 part 'single_address_bloc_event.dart';

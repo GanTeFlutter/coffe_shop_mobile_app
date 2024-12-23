@@ -1,6 +1,6 @@
 import 'package:coffe_shop_mobile_app/future/bootom_nav_bar/bottom_navigation_bar.dart';
 import 'package:coffe_shop_mobile_app/future/coffee_detail/coffee_detail_view.dart';
-import 'package:coffe_shop_mobile_app/future/profile/settings/address/add_new_address.dart';
+import 'package:coffe_shop_mobile_app/future/profile/address/add_new_address.dart';
 import 'package:coffe_shop_mobile_app/future/splash/splash_onboarding_view.dart';
 import 'package:coffe_shop_mobile_app/product/model/coffee/coffee.dart';
 import 'package:go_router/go_router.dart';

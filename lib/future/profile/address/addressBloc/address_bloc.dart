@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
+import 'package:coffe_shop_mobile_app/product/cache/address_cache.dart';
 import 'package:coffe_shop_mobile_app/product/model/address/address.dart';
-import 'package:coffe_shop_mobile_app/product/state/address/cache/address_cache.dart';
 import 'package:equatable/equatable.dart';
 
 part 'address_event.dart';
