@@ -1,11 +1,13 @@
 import 'package:coffe_shop_mobile_app/future/coffee_detail/coffee_detail_view_model.dart';
 import 'package:coffe_shop_mobile_app/future/coffee_detail/widget/cd_custom_button.dart';
 import 'package:coffe_shop_mobile_app/future/coffee_detail/widget/size_kategory.dart';
+import 'package:coffe_shop_mobile_app/future/favori/bloc/favorite_bloc.dart';
 import 'package:coffe_shop_mobile_app/product/constant/app_custom_text_style.dart';
 import 'package:coffe_shop_mobile_app/product/constant/application_colors.dart';
 import 'package:coffe_shop_mobile_app/product/constant/application_strings.dart';
 import 'package:coffe_shop_mobile_app/product/model/coffee/coffee.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CoffeeDetailView extends StatefulWidget {
   const CoffeeDetailView({required this.coffee, super.key});
@@ -142,7 +144,13 @@ class _CoffeeDetailViewState extends CoffeeDetailViewModel {
           builder: (context, value, child) {
             return IconButton(
               onPressed: () {
+                context.read<FavoriteBloc>().add(AddFavoriteEvenet(widget.coffee));
+
                 isSelected.value = !value;
+                if (value) {
+                } else {
+                  // context.read<FavoriteBloc>().add(DeleteAllList());
+                }
               },
               icon: value
                   ? const Icon(

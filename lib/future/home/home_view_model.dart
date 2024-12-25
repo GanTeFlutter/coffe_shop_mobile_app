@@ -9,9 +9,10 @@ abstract class HomeViewModel extends State<HomeView> {
   final BoxDecoration customContainerDeceration =
       CustomContainerDeceration.customContainerDeceration();
   TextEditingController searchController = TextEditingController();
-  List<HomeKategori> kategoriList = [
-    HomeKategori('Espresso Bazlı Kahveler', 'ebk'),
-    HomeKategori('Soğuk Kahveler', 'sk'),
-    HomeKategori('Sütlü Kahveler', 'stk'),
-  ];
+ List<HomeKategori> kategoriList = [
+  HomeKategori('Espresso Based Coffees', 'ebk'),
+  HomeKategori('Cold Coffees', 'sk'),
+  HomeKategori('Milk-Based Coffees', 'stk'),
+];
+
 }

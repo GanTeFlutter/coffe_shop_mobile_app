@@ -41,7 +41,7 @@ class _BasketPaymentState extends State<BasketPayment> {
                     Row(
                       children: [
                         Text(
-                          'Toplam Tutar',
+                          ApplicationStrings.totalPrice,
                           style: AppCustomTextStyle.bodyMedium(context),
                         ),
                         const Spacer(),
@@ -74,7 +74,7 @@ class _BasketPaymentState extends State<BasketPayment> {
           onPressed: () {
             context.read<PageProvider>().updatePage(0);
           },
-          text: 'Hemen Alışverişe Başla :)',
+          text: ApplicationStrings.hemenalisverisebasla,
         );
       },
     );

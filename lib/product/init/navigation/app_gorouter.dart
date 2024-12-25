@@ -11,7 +11,7 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/',
       name: 'splash',
-      builder: (context, state) => const SplashOnboardingView(),
+      builder: (context, state) => const BottomNavigationBarScreenV2(),
     ),
     GoRoute(
       path: '/home',

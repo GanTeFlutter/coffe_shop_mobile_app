@@ -18,7 +18,7 @@ class ApplicationColors {
   static const Color purple = Color(0xFF800080);
   static const Color pink = Color(0xFFFFC0CB);
 
-  // Figmadaki Tasimdan alinan renkler
+  // App specific colors
   static const Color kahve = Color(0xFFC67C4E);
   static const Color kahvesiyah2 = Color(0xFF313131);
   static const Color ten = Color(0xFFEDD6C8);

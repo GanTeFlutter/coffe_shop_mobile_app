@@ -1,6 +1,7 @@
 import 'package:coffe_shop_mobile_app/future/basket/basket_view.dart';
 import 'package:coffe_shop_mobile_app/future/bootom_nav_bar/state/page_provider.dart';
 import 'package:coffe_shop_mobile_app/future/bootom_nav_bar/widget/bottom_nav_bar_item.dart';
+import 'package:coffe_shop_mobile_app/future/favori/favorite_coffees_view.dart';
 import 'package:coffe_shop_mobile_app/future/home/home_view.dart';
 import 'package:coffe_shop_mobile_app/product/parcalar/y/bosekran.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,7 @@ class BottomNavigationBarScreenV2 extends StatefulWidget {
 class _BottomNavigationBarScreenV2State extends State<BottomNavigationBarScreenV2> {
   final List<Widget> _pages = const [
     HomeView(),
-    Bosekran(),
+    FavoriteCoffeesView(),
     BasketView(),
     Bosekran(),
   ];

@@ -3,6 +3,7 @@
 import 'package:coffe_shop_mobile_app/future/basket/state/bloc/basket_bloc.dart';
 import 'package:coffe_shop_mobile_app/future/basket/state/provider/indirim.dart';
 import 'package:coffe_shop_mobile_app/future/bootom_nav_bar/state/page_provider.dart';
+import 'package:coffe_shop_mobile_app/future/favori/bloc/favorite_bloc.dart';
 import 'package:coffe_shop_mobile_app/future/home/bloc/home_bloc.dart';
 import 'package:coffe_shop_mobile_app/future/profile/address/addressBloc/address_bloc.dart';
 import 'package:coffe_shop_mobile_app/future/profile/address/singleAddressBloc/single_address_bloc_bloc.dart';
@@ -20,24 +21,14 @@ class StateInitialize extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         //Bloc
-        BlocProvider(
-          create: (context) =>
-              HomeBloc()..add(HomeKategoryEvent(message: FirebaseCollDocName.sk.name)),
-        ),
-        BlocProvider(
-          create: (context) => AddressBloc()..add(LoadAddressList()),
-        ),
-        BlocProvider(
-          create: (context) => SingleAddressBloc(),
-        ),
-        BlocProvider(
-          create: (context) => BasketBloc(),
-        ),
-        //Provider  
-        ChangeNotifierProvider(
-          create: (context) => PageProvider(),
-        ),
-        ChangeNotifierProvider(create: (context) =>  Indirim(),)
+        BlocProvider(create: (context) => HomeBloc()..add(HomeKategoryEvent(message: FirebaseCollDocName.sk.name))),
+        BlocProvider(create: (context) => FavoriteBloc()..add(FavoriteListFirstEmit())),
+        BlocProvider(create: (context) => AddressBloc()..add(LoadAddressList())),
+        BlocProvider(create: (context) => SingleAddressBloc()),
+        BlocProvider(create: (context) => BasketBloc()),
+        //Provider
+        ChangeNotifierProvider(create: (context) => PageProvider()),
+        ChangeNotifierProvider(create: (context) => Indirim())
       ],
       child: child,
     );
