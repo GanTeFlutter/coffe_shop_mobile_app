@@ -139,28 +139,11 @@ class _CoffeeDetailViewState extends CoffeeDetailViewModel {
                 fontWeight: FontWeight.bold,
               ),
         ),
-        ValueListenableBuilder<bool>(
-          valueListenable: isSelected,
-          builder: (context, value, child) {
-            return IconButton(
-              onPressed: () {
-                context.read<FavoriteBloc>().add(AddFavoriteEvenet(widget.coffee));
-
-                isSelected.value = !value;
-                if (value) {
-                } else {
-                  // context.read<FavoriteBloc>().add(DeleteAllList());
-                }
-              },
-              icon: value
-                  ? const Icon(
-                      Icons.favorite,
-                      color: ApplicationColors.kahve,
-                      size: 30,
-                    )
-                  : const Icon(Icons.favorite_border),
-            );
+        IconButton(
+          onPressed: () {
+            BlocProvider.of<FavoriteBloc>(context).add(AddFavoriteEvenet(widget.coffee));
           },
+          icon: const Icon(Icons.favorite_border),
         ),
       ],
     );

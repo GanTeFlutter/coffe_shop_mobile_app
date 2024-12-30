@@ -29,11 +29,22 @@ class _FavoriteCoffeesViewState extends FavoriteCoffeesViewModel {
                 } else if (state is FavoriteLoaded) {
                   return GridView.builder(
                     shrinkWrap: true,
-                    gridDelegate:  const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,),
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                    ),
                     itemBuilder: (context, index) {
-                      return CoffeeCard(
-                        coffee: state.favoriteList[index],
+                      return ListView.builder(
+                        itemCount: state.favoriteList.length,
+                        itemBuilder: (context, index) {
+                          return ListTile(
+                            title: Text(state.favoriteList[index].name ?? 'Bilinmeyen'),
+                            subtitle: Text(state.favoriteList[index].description ?? 'Bilinmeyen'),
+                            leading: IconButton(
+                              onPressed: () {},
+                              icon: const Text('Sil'),
+                            ),
+                          );
+                        },
                       );
                     },
                   );
