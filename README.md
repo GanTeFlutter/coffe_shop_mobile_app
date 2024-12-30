@@ -1,10 +1,7 @@
 # Kahve Sipariş Uygulaması ☕
 
-Aktif olarak geliştirdiğim proje 
 
-Homepage
-Basket 
-CoffeeDetail 
+
 - Figma Tasarımı: [Coffee Shop Mobile App Design](https://www.figma.com/design/HEHEkOvpW6XZg7PNLRbHVm/Coffee-Shop-Mobile-App-Design-(Community)?node-id=417-156&node-type=canvas)
 
 ## Özellikler
