@@ -12,7 +12,7 @@ dark theme mi düzenlendi.Yakın zamanda geri kalanı da güncelleyeceğim.Genel
 
 ## Uygulama Görselleri
 ### Splash Screen
-<img src="https://github.com/user-attachments/assets/e6a739f5-a080-44cc-b834-cb7f4c92d77d" width="150" />
+<img src="https://github.com/user-attachments/assets/ce6579c5-6c34-4e68-88d1-b5d0e88bede1" width="150" />
 <img src="https://github.com/user-attachments/assets/20a379b4-fa40-4a6c-8655-23227f663fae" width="150" />
 <img src="https://github.com/user-attachments/assets/21aa7b9f-373f-491d-8197-465dee6ebbd6" width="150" />
 <img src="https://github.com/user-attachments/assets/b0fd421c-eb50-47c8-87d6-0c74a9658bd9" width="150" />
@@ -43,3 +43,4 @@ dark theme mi düzenlendi.Yakın zamanda geri kalanı da güncelleyeceğim.Genel
 HomePage in HomeViewModel da kategoriList adında bir liste belirleyip bununla bir listviewbuilder oluşturdum.Liste içindeki Stringleri kullanarak kullanıcı bunlara tıklayınca bloc mekanizması tetiklenerek yeni liste yayınlanıyor.
 BlocProvider.of<HomeBloc>(context).add(HomeKategoryEvent(message: kategori.event)); 
 Kategori.event listem içinde tanımlı ListviewBuilder da indexe göre listeleme yağtığı için Eventi doğru bir şekilde gönderebiliyoruz.
+
